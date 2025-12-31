@@ -19,12 +19,10 @@ botoes.forEach(botao => {
     produtos.forEach(produto => {
       const cat = normalizar(produto.dataset.categoria);
 
-      if (categoria === 'todos' || cat === categoria) {
-        produto.style.display = 'initial';
-        produto.classList.add('mostrar');
+      if (categoria === 'todos' || cat.includes(categoria)) {
+        produto.style.display = 'block';
       } else {
         produto.style.display = 'none';
-        produto.classList.remove('mostrar');
       }
     });
   });
