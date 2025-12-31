@@ -17,12 +17,17 @@ botoes.forEach(botao => {
     const categoria = normalizar(botao.textContent);
 
     produtos.forEach(produto => {
-      const cat = normalizar(produto.dataset.categoria);
+      // transforma o atributo em lista de categorias
+      const categorias = produto.dataset.categoria
+        .split(" ")
+        .map(c => normalizar(c));
 
-      if (categoria === 'todos' || cat === categoria) {
+      if (categoria === 'todos' || categorias.includes(categoria)) {
         produto.style.display = '';
+        produto.classList.add('mostrar');
       } else {
         produto.style.display = 'none';
+        produto.classList.remove('mostrar');
       }
     });
   });
