@@ -13,8 +13,8 @@ body {
 
 /* HERO */
 .hero {
-  min-height: 55vh; /* azul da pagina */
-  padding: 40px 20px; /* espaço interno */
+  min-height: 45vh; /* azul da pagina */
+  padding: 30px 20px; /* espaço interno */
   background: linear-gradient(to bottom, #a2d5f2, #ffffff);
   display: flex;
   flex-direction: column;
@@ -194,3 +194,14 @@ footer {
   transform: translateY(20px);
   pointer-events: none;
 }
+@media (max-width: 768px) {
+  .hero {
+    min-height: 40vh;
+    padding: 25px 15px;
+  }
+
+  .hero .logo h1 {
+    font-size: 2.2rem;
+  }
+}
+
