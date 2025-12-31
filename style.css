@@ -72,8 +72,8 @@ body {
   margin: 30px auto;
   padding: 0 15px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .filtros-container {
@@ -82,10 +82,9 @@ body {
 
 main.container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
-
 
 .catalogo {
   background-color: #f4f6f8;
