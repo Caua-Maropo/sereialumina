@@ -8,8 +8,9 @@ body {
 /* HERO */
 .hero {
   min-height: 90vh;
-  padding: 30px 40px;
+  padding: 60px 40px;
   background-color: #ffffff;
+  text-align: center;
 }
 
 .top-bar {
