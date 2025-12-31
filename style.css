@@ -13,8 +13,8 @@ body {
 
 /* HERO */
 .hero {
-  min-height: 90vh;
-  padding: 60px 40px;
+  min-height: 55vh; /* azul da pagina */
+  padding: 40px 20px; /* espaço interno */
   background: linear-gradient(to bottom, #a2d5f2, #ffffff);
   display: flex;
   flex-direction: column;
