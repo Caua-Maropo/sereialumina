@@ -18,7 +18,7 @@ body {
 /* HERO - cores do texto */
 .hero {
   min-height: 45vh;
-  padding: 30px 20px;
+  padding: 80px 20px 30px; /* espaço para o header */
   background: linear-gradient(
     to bottom,
     var(--azul-principal) 0%,
@@ -179,7 +179,28 @@ footer {
   }
 
   .hero .logo h1 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
+  /* HEADER FIXO */
+.site-header {
+  position: absolute; /* fica sobre o hero */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  z-index: 10;
 }
+
+.site-header .logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.site-header .logo span {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #e6ecf3;
+}
+
 
