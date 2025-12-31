@@ -77,3 +77,60 @@ footer {
   font-size: 14px;
   color: #777;
 }
+.hero {
+  min-height: 90vh;
+  padding: 30px 40px;
+  background-color: #ffffff;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin: 0;
+}
+
+.logo span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #6c7a89;
+}
+
+.menu {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.hero-text {
+  text-align: center;
+  margin-top: 140px;
+}
+
+.season {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #5dade2;
+}
+
+.hero-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #555;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
