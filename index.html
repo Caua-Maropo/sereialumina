@@ -3,15 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Sereia Lumina</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
   <header class="hero">
@@ -26,72 +21,65 @@
     <div class="hero-text">
       <p class="season">Moda verão 2026</p>
       <h2>A coleção</h2>
-      <p class="subtitle">
-        Tudo sobre moda praia para você!
-      </p>
+      <p class="subtitle">Tudo sobre moda praia para você!</p>
     </div>
   </header>
 
   <section class="catalogo">
-
- <div class="container filtros-container">
-    <div class="filtros">
-      <button class="ativo">Todos</button>
-      <button>Biquínis</button>
-      <button>Maiôs</button>
-      <button>Saídas</button>
+    <div class="container filtros-container">
+      <div class="filtros">
+        <button class="ativo">Todos</button>
+        <button>Biquínis</button>
+        <button>Maiôs</button>
+        <button>Saídas</button>
+      </div>
     </div>
-  </div>
 
-    <!-- produtos -->
- <main class="container">
- <!-- Biquíni Aurora -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/aurora.jpg" alt="Biquíni Aurora">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Aurora</h2>
-    <p class="descricao">Conforto e elegância para o verão.</p>
-    <p class="preco">R$ 149,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Aurora" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
+    <main class="container">
+      <!-- Biquíni Aurora -->
+      <div class="produto" data-categoria="biquini">
+        <div class="produto-img">
+          <span class="tag">Biquíni</span>
+          <img src="imagens/aurora.jpg" alt="Biquíni Aurora">
+        </div>
+        <div class="produto-info">
+          <h2>Biquíni Aurora</h2>
+          <p class="descricao">Conforto e elegância para o verão.</p>
+          <p class="preco">R$ 149,90</p>
+          <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Aurora" target="_blank">Comprar no WhatsApp</a>
+        </div>
+      </div>
 
-<!-- Maiô Oceano -->
-<div class="produto" data-categoria="maio">
-  <div class="produto-img">
-    <span class="tag">Maiô</span>
-    <img src="imagens/oceano.jpg" alt="Maiô Oceano">
-  </div>
-  <div class="produto-info">
-    <h2>Maiô Oceano</h2>
-    <p class="descricao">Estilo sofisticado em azul profundo.</p>
-    <p class="preco">R$ 199,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Maiô%20Oceano" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
+      <!-- Maiô Oceano -->
+      <div class="produto" data-categoria="maio">
+        <div class="produto-img">
+          <span class="tag">Maiô</span>
+          <img src="imagens/oceano.jpg" alt="Maiô Oceano">
+        </div>
+        <div class="produto-info">
+          <h2>Maiô Oceano</h2>
+          <p class="descricao">Estilo sofisticado em azul profundo.</p>
+          <p class="preco">R$ 199,90</p>
+          <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Maiô%20Oceano" target="_blank">Comprar no WhatsApp</a>
+        </div>
+      </div>
 
-<!-- Saída Brisa -->
-<div class="produto" data-categoria="saida">
-  <div class="produto-img">
-    <span class="tag">Saída</span>
-    <img src="imagens/brisa.jpg" alt="Saída Brisa">
-  </div>
-  <div class="produto-info">
-    <h2>Saída Brisa</h2>
-    <p class="descricao">Leveza e charme para o pós-praia.</p>
-    <p class="preco">R$ 129,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20a%20Saída%20Brisa" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
-    
-  <footer>
-    © 2025 • Sereia Lumina
-  </footer>
+      <!-- Saída Brisa -->
+      <div class="produto" data-categoria="saida">
+        <div class="produto-img">
+          <span class="tag">Saída</span>
+          <img src="imagens/brisa.jpg" alt="Saída Brisa">
+        </div>
+        <div class="produto-info">
+          <h2>Saída Brisa</h2>
+          <p class="descricao">Leveza e charme para o pós-praia.</p>
+          <p class="preco">R$ 129,90</p>
+          <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20a%20Saída%20Brisa" target="_blank">Comprar no WhatsApp</a>
+        </div>
+      </div>
+    </main>
+  </section>
 
-<script src="script.js"></script>
-    
+  <footer>© 2025 · Sereia Lumina</footer>
 </body>
 </html>
