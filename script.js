@@ -3,10 +3,13 @@ const produtos = document.querySelectorAll('.produto');
 
 function filtrarProdutos(categoria) {
   produtos.forEach(produto => {
-    if (categoria === 'todos' || produto.dataset.category === categoria) {
-      produto.style.display = 'block';
+    const deveMostrar =
+      categoria === 'todos' || produto.dataset.category === categoria;
+
+    if (deveMostrar) {
+      produto.classList.remove('oculto');
     } else {
-      produto.style.display = 'none';
+      produto.classList.add('oculto');
     }
   });
 }
@@ -21,6 +24,7 @@ botoes.forEach(botao => {
   });
 });
 
+// Mostrar todos ao carregar
 document.addEventListener('DOMContentLoaded', () => {
   filtrarProdutos('todos');
 });
