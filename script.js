@@ -19,7 +19,7 @@ botoes.forEach(botao => {
     produtos.forEach(produto => {
       const cat = normalizar(produto.dataset.categoria);
 
-      if (categoria === 'todos' || cat.includes(categoria)) {
+      if (categoria === 'todos' || cat === categoria) {
         produto.style.display = '';
       } else {
         produto.style.display = 'none';
