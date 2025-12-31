@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Sereia Lumina</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header class="hero">
@@ -21,11 +27,14 @@
     <div class="hero-text">
       <p class="season">Moda verão 2026</p>
       <h2>A coleção</h2>
-      <p class="subtitle">Tudo sobre moda praia para você!</p>
+      <p class="subtitle">
+        Tudo sobre moda praia para você!
+      </p>
     </div>
   </header>
 
   <section class="catalogo">
+
     <div class="container filtros-container">
       <div class="filtros">
         <button class="ativo">Todos</button>
@@ -35,80 +44,38 @@
       </div>
     </div>
 
+    <!-- produtos -->
     <main class="container">
       <!-- Biquíni Aurora -->
-  <!-- Biquíni Aurora -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/aurora.jpg" alt="Biquíni Aurora">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Aurora</h2>
-    <p class="descricao">Conforto e elegância para o verão.</p>
-    <p class="preco">R$ 149,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Aurora" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
+      <div class="produto" data-categoria="biquini">
+        <div class="produto-img">
+          <span class="tag">Biquíni</span>
+          <img src="imagens/aurora.jpg" alt="Biquíni Aurora">
+        </div>
+        <div class="produto-info">
+          <h2>Biquíni Aurora</h2>
+          <p class="descricao">Conforto e elegância para o verão.</p>
+          <p class="preco">R$ 149,90</p>
+          <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Aurora" target="_blank">Comprar no WhatsApp</a>
+        </div>
+      </div>
 
-<!-- Biquíni Amarelo -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/amarelo.jpg" alt="Biquíni Amarelo">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Amarelo</h2>
-    <p class="descricao">Vibrante e cheio de energia.</p>
-    <p class="preco">R$ 59,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Amarelo" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
+      <!-- Maiô Oceano -->
+      <div class="produto" data-categoria="maio">
+        <div class="produto-img">
+          <span class="tag">Maiô</span>
+          <img src="imagens/oceano.jpg" alt="Maiô Oceano">
+        </div>
+        <div class="produto-info">
+          <h2>Maiô Oceano</h2>
+          <p class="descricao">Estilo sofisticado em azul profundo.</p>
+          <p class="preco">R$ 199,90</p>
+          <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Maiô%20Oceano" target="_blank">Comprar no WhatsApp</a>
+        </div>
+      </div>
 
-<!-- Biquíni Azul -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/azul.jpg" alt="Biquíni">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Azul</h2>
-    <p class="descricao">Inspirado no oceano, leve e sofisticado.</p>
-    <p class="preco">R$ 89,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Azul" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
-
-<!-- Biquíni Rosa -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/rosa.jpg" alt="Biquíni Rosa">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Rosa</h2>
-    <p class="descricao">Delicado e cheio de charme.</p>
-    <p class="preco">R$ 79,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Rosa" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
-
-<!-- Biquíni Preto -->
-<div class="produto" data-categoria="biquini">
-  <div class="produto-img">
-    <span class="tag">Biquíni</span>
-    <img src="imagens/preto.jpg" alt="Biquíni Preto">
-  </div>
-  <div class="produto-info">
-    <h2>Biquíni Preto</h2>
-    <p class="descricao">Clássico e elegante para qualquer ocasião.</p>
-    <p class="preco">R$ 99,90</p>
-    <a href="https://wa.me/5581984782598?text=Olá!%20Gostaria%20de%20comprar%20o%20Biquíni%20Preto" target="_blank">Comprar no WhatsApp</a>
-  </div>
-</div>
-    </main>
-  </section>
-
-  <footer>© 2025 · Sereia Lumina</footer>
-</body>
-</html>
+      <!-- Saída Brisa -->
+      <div class="produto" data-categoria="saida">
+        <div class="produto-img">
+          <span class="tag">Saída</span>
+          <img src="imagens/brisa.jpg" alt="Saída Brisa">
