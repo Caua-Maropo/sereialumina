@@ -22,8 +22,8 @@ botoes.forEach(botao => {
         .map(c => normalizar(c));
 
       if (categoria === 'todos' || categorias.includes(categoria)) {
-        produto.style.display = 'block'; // garante que aparece
-        produto.classList.add('mostrar');
+        produto.style.display = 'block';   // garante que aparece
+        produto.classList.add('mostrar');  // aplica animação
       } else {
         produto.style.display = 'none';
         produto.classList.remove('mostrar');
