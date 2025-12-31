@@ -72,8 +72,8 @@ body {
   margin: 30px auto;
   padding: 0 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .filtros-container {
@@ -221,4 +221,19 @@ footer {
   font-weight: 600;
   margin-bottom: 14px;
 }
+@media (max-width: 900px) {
+  main.container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  main.container {
+    grid-template-columns: 1fr;
+  }
+}
+.produto-img img {
+  height: 320px;
+}
+
 
