@@ -24,7 +24,7 @@ botoes.forEach(botao => {
       const cat = normalizar(produto.dataset.categoria);
 
       if (categoria === 'todos' || cat === categoria) {
-        produto.style.display = ''; // volta ao padrão do CSS (grid)
+        produto.style.display = 'initial'; // volta ao padrão do CSS (grid)
         produto.classList.add('mostrar');
       } else {
         produto.style.display = 'none';
