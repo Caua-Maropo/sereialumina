@@ -172,4 +172,53 @@ footer {
   background-color: #1e88e5;
   color: white;
 }
+/* CARD PREMIUM */
+.produto {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.produto-img {
+  position: relative;
+}
+
+.produto-img img {
+  width: 100%;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+
+.tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: rgba(255,255,255,0.9);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.produto-info {
+  padding: 18px;
+}
+
+.produto-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+
+.descricao {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.preco {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
 
