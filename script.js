@@ -25,8 +25,10 @@ botoes.forEach(botao => {
 
       if (categoria === 'todos' || cat === categoria) {
         produto.style.display = 'block';
+        produto.classList.add('mostrar');
       } else {
         produto.style.display = 'none';
+        produto.classList.remove('mostrar');
       }
     });
   });
