@@ -1,7 +1,7 @@
 const botoes = document.querySelectorAll('.filtros button');
 const produtos = document.querySelectorAll('.produto');
 
-// Mapeamento botão → categoria
+// Mapeamento botão → data-categoria
 const mapaCategorias = {
   'todos': 'todos',
   'biquinis': 'biquini',
@@ -19,14 +19,14 @@ function filtrarProdutos(categoria) {
   });
 }
 
-// Eventos de clique
+// Evento de clique
 botoes.forEach(botao => {
   botao.addEventListener('click', () => {
     botoes.forEach(b => b.classList.remove('ativo'));
     botao.classList.add('ativo');
 
     const textoBotao = botao.textContent.toLowerCase().trim();
-    const categoria = mapaCategorias[textoBotao]; // pega a categoria correta do mapa
+    const categoria = mapaCategorias[textoBotao];
 
     filtrarProdutos(categoria);
   });
