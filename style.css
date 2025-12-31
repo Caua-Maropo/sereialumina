@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.produto {
+  background: white;
+  width: 250px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.produto img {
+  width: 100%;
+}
