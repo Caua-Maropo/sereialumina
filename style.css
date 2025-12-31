@@ -1,4 +1,9 @@
 /* Reset básico */
+:root {
+  --azul-principal: #002E6B;
+  --fundo-claro: #FBFAF7;
+  --azul-hover: #01408f;
+}
 * {
   margin: 0;
   padding: 0;
@@ -7,49 +12,35 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
+  background-color: var(--fundo-claro);
 }
 
-/* HERO */
+/* HERO - cores do texto */
 .hero {
-  min-height: 45vh; /* azul da pagina */
-  padding: 30px 20px; /* espaço interno */
-  background: linear-gradient(to bottom, #002E6B, #fBFAF7);
+  min-height: 45vh;
+  padding: 30px 20px;
+  background: linear-gradient(
+    to bottom,
+    var(--azul-principal) 0%,
+    #013a84 60%,
+    var(--fundo-claro) 100%
+  );
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.hero .logo h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  color: #333;
-}
-
-.hero .logo span {
-  font-size: 1rem;
-  color: #666;
-  letter-spacing: 2px;
-}
-
-.hero-text .season {
-  font-weight: 500;
-  color: #666;
-  margin-bottom: 10px;
-}
-
+/* textos do hero*/
+.hero .logo h1,
 .hero-text h2 {
-  font-size: 2.5rem;
-  color: #1a1a1a;
-  margin-bottom: 10px;
+  color: #ffffff;
 }
 
+.hero .logo span,
+.hero-text .season,
 .hero-text .subtitle {
-  font-size: 1.2rem;
-  color: #444;
+  color: #e6ecf3;
 }
 
 /* Catalogo e filtros */
@@ -71,19 +62,14 @@ body {
 }
 
 .filtros button {
-  background-color: #e0f0ff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  background-color: #e6ecf3;
+  color:var(--azul-principal);
 }
 
 .filtros button.ativo,
 .filtros button:hover {
-  background-color: #1ca1f2;
-  color: #fff;
+  background-color: var(--azul-principal);
+  color: #ffffff;
 }
 
 /* Cards produtos */
@@ -125,15 +111,7 @@ body {
 }
 
 .card .tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #1ca1f2;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: 500;
+ background-color: var(--azul-principal);
 }
 
 .card-info {
@@ -162,7 +140,7 @@ body {
 .btn-comprar {
   display: inline-block;
   padding: 8px 14px;
-  background-color: #1ca1f2;
+  background-color: var(--azul-principal);
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
@@ -171,15 +149,15 @@ body {
 }
 
 .btn-comprar:hover {
-  background-color: #0d75c1;
+  background-color: var(--azul-hover);
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #1ca1f2;
-  color: #fff;
+  background-color: var(--azul-principal);
+  color: #ffffff;
   margin-top: 40px;
 }
 /* Animação de filtro */
