@@ -17,7 +17,6 @@ botoes.forEach(botao => {
     const categoria = normalizar(botao.textContent);
 
     produtos.forEach(produto => {
-      // transforma o atributo em lista de categorias
       const categorias = produto.dataset.categoria
         .split(" ")
         .map(c => normalizar(c));
@@ -31,4 +30,10 @@ botoes.forEach(botao => {
       }
     });
   });
+});
+
+// ✅ Ao carregar a página, ativa o filtro "Todos"
+window.addEventListener('DOMContentLoaded', () => {
+  const botaoTodos = document.querySelector('.filtros button'); // primeiro botão é "Todos"
+  botaoTodos.click();
 });
