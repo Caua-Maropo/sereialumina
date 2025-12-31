@@ -22,7 +22,7 @@ botoes.forEach(botao => {
         .map(c => normalizar(c));
 
       if (categoria === 'todos' || categorias.includes(categoria)) {
-        produto.style.display = '';
+        produto.style.display = 'block'; // garante que aparece
         produto.classList.add('mostrar');
       } else {
         produto.style.display = 'none';
