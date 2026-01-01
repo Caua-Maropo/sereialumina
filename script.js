@@ -28,3 +28,17 @@ botoes.forEach(botao => {
 document.addEventListener('DOMContentLoaded', () => {
   filtrarProdutos('todos');
 });
+// WhatsApp dinâmico
+const telefoneWhatsApp = '5581984782598';
+
+document.querySelectorAll('.btn-comprar').forEach(botao => {
+  botao.addEventListener('click', e => {
+    e.preventDefault();
+
+    const produto = botao.dataset.produto;
+    const mensagem = `Olá! Gostaria de comprar o ${produto}`;
+    const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, '_blank');
+  });
+});
