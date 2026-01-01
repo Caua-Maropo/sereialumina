@@ -7,7 +7,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
@@ -46,7 +48,7 @@
   </div>
 </section>
 
-<!-- CATALOGO -->
+<!-- CATÁLOGO -->
 <section class="catalogo">
 
   <!-- FILTROS -->
@@ -60,10 +62,10 @@
   </div>
 
   <!-- PRODUTOS -->
-  <main class="produtos-container">
+  <section class="produtos-container">
 
     <!-- BIQUÍNI AMARELO -->
-    <div class="produto" data-categoria="biquini">
+    <div class="produto" data-category="biquini">
       <div class="card">
         <div class="card-img">
           <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
@@ -83,7 +85,7 @@
           </div>
 
           <a href="#"
-             class="btn-carrinho"
+             class="btn-comprar btn-carrinho"
              data-produto="Biquíni Amarelo">
             Adicionar ao carrinho
           </a>
@@ -92,7 +94,7 @@
     </div>
 
     <!-- BIQUÍNI PRETO -->
-    <div class="produto" data-categoria="biquini">
+    <div class="produto" data-category="biquini">
       <div class="card">
         <div class="card-img">
           <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
@@ -112,7 +114,7 @@
           </div>
 
           <a href="#"
-             class="btn-carrinho"
+             class="btn-comprar btn-carrinho"
              data-produto="Biquíni Preto">
             Adicionar ao carrinho
           </a>
@@ -121,7 +123,7 @@
     </div>
 
     <!-- BIQUÍNI AZUL -->
-    <div class="produto" data-categoria="biquini">
+    <div class="produto" data-category="biquini">
       <div class="card">
         <div class="card-img">
           <img src="imagens/biquini-azul.png" alt="Biquíni Azul">
@@ -141,7 +143,7 @@
           </div>
 
           <a href="#"
-             class="btn-carrinho"
+             class="btn-comprar btn-carrinho"
              data-produto="Biquíni Azul">
             Adicionar ao carrinho
           </a>
@@ -149,7 +151,7 @@
       </div>
     </div>
 
-  </main>
+  </section>
 </section>
 
 <!-- CARRINHO -->
@@ -157,7 +159,8 @@
   <h2>Meu carrinho</h2>
   <ul id="lista-carrinho"></ul>
   <p id="total-carrinho"><strong>Total:</strong> R$ 0,00</p>
-  <button id="finalizar-whatsapp">
+
+  <button id="finalizar-whatsapp" aria-label="Finalizar compra pelo WhatsApp">
     Finalizar no WhatsApp
   </button>
 </section>
