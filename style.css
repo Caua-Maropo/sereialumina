@@ -300,4 +300,34 @@ footer {
   transform: scale(1.1);
   opacity: 0.8;
 }
+/* TAMANHOS */
+.tamanhos {
+  margin: 10px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 
+.tamanhos label {
+  font-size: 0.8rem;
+  color: #555;
+  margin-right: 5px;
+}
+
+.tamanho {
+  border: 1px solid var(--azul-principal);
+  background: transparent;
+  color: var(--azul-principal);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tamanho:hover,
+.tamanho.ativo {
+  background-color: var(--azul-principal);
+  color: #fff;
+}
