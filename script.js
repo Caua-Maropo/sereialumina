@@ -105,3 +105,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+const botaoFinalizar = document.getElementById('finalizar-whatsapp');
+
+botaoFinalizar.addEventListener('click', () => {
+  if (carrinho.length === 0) {
+    alert('Seu carrinho está vazio.');
+    return;
+  }
+
+  let mensagem = 'Olá! Gostaria de finalizar a compra com os seguintes itens:\n\n';
+
+  carrinho.forEach(item => {
+    mensagem += `• ${item.produto} — Tamanho ${item.tamanho}\n`;
+  });
+
+  const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+});
