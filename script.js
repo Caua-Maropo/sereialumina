@@ -122,3 +122,18 @@ botaoFinalizar.addEventListener('click', () => {
   const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, '_blank');
 });
+document.getElementById('finalizar-whatsapp').addEventListener('click', () => {
+  if (carrinho.length === 0) {
+    alert('Seu carrinho está vazio.');
+    return;
+  }
+
+  let mensagem = 'Olá! Gostaria de finalizar meu pedido:%0A%0A';
+
+  carrinho.forEach(item => {
+    mensagem += `• ${item.produto} — Tamanho ${item.tamanho}%0A`;
+  });
+
+  const url = `https://wa.me/${telefoneWhatsApp}?text=${mensagem}`;
+  window.open(url, '_blank');
+});
