@@ -331,3 +331,44 @@ footer {
   background-color: var(--azul-principal);
   color: #fff;
 }
+/* CARRINHO */
+.carrinho-container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.carrinho-container h2 {
+  margin-bottom: 15px;
+  color: var(--azul-principal);
+}
+
+#lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+#finalizar-whatsapp {
+  padding: 12px 20px;
+  background-color: var(--azul-principal);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#finalizar-whatsapp:hover {
+  background-color: var(--azul-hover);
+}
