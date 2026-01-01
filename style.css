@@ -374,3 +374,33 @@ footer {
 #finalizar-whatsapp:hover {
   background: #1ebe5d;
 }
+/* ================================
+   BOTÃO ADICIONAR AO CARRINHO
+================================ */
+.btn-carrinho {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  padding: 10px 14px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  color: var(--azul-principal);
+  background: #f3f6fb;
+
+  border: 1px solid var(--azul-principal);
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-carrinho:hover {
+  background: var(--azul-principal);
+  color: #ffffff;
+}
