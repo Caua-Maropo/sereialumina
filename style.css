@@ -270,3 +270,56 @@ footer {
     font-size: 1.6rem;
   }
 }
+/* ================================
+   CARRINHO BONITO
+================================ */
+.carrinho-container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.carrinho-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: var(--azul-principal);
+}
+
+#lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: #f3f6fb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Botão WhatsApp */
+#finalizar-whatsapp {
+  width: 100%;
+  padding: 12px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#finalizar-whatsapp:hover {
+  background: #1ebe5d;
+}
+
