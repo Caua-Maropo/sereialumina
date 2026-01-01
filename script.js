@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtrarProdutos('todos');
 });
 // WhatsApp dinâmico
-const telefoneWhatsApp = '5581984782598';
+const telefoneWhatsApp = '5581982959208';
 
 document.querySelectorAll('.btn-comprar').forEach(botao => {
   botao.addEventListener('click', e => {
