@@ -99,7 +99,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     carrinho.push({ produto, tamanho });
 
-    atualizarCarrinho();
+    function atualizarCarrinho() {
+  listaCarrinho.innerHTML = '';
+
+  carrinho.forEach((item, index) => {
+    const li = document.createElement('li');
+
+    li.innerHTML = `
+      ${item.produto} — Tam ${item.tamanho}
+      <button class="remover" data-index="${index}">×</button>
+    `;
+
+    listaCarrinho.appendChild(li);
+  });
+
+  // botão remover
+  document.querySelectorAll('.remover').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = btn.dataset.index;
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    });
+  });
+    }
 
     // FEEDBACK VISUAL
     const textoOriginal = botao.textContent;
