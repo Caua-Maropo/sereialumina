@@ -15,21 +15,17 @@
 
 <body>
 
-  <!-- HERO -->
-  <header class="site-header">
+<!-- HEADER -->
+<header class="site-header">
   <div class="header-container">
-    
+
     <div class="logo">
       <span class="use">Use</span>
       <h1>Sereia Lumina</h1>
     </div>
 
     <div class="social-icons">
-    <a href="#"
-   class="btn-comprar"
-   data-produto="Biquíni Amarelo">
-Adicionar ao carrinho
-</a>
+      <a href="https://wa.me/5581984782598" target="_blank" aria-label="WhatsApp">
         <img src="imagens/whatsapp.svg" alt="WhatsApp">
       </a>
 
@@ -40,7 +36,8 @@ Adicionar ao carrinho
 
   </div>
 </header>
-  
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
     <p class="season">Moda verão 2026</p>
@@ -48,135 +45,129 @@ Adicionar ao carrinho
     <p class="subtitle">Tudo sobre moda praia para você!</p>
   </div>
 </section>
-  
-  <!-- CATALOGO E FILTROS -->
-  <section class="catalogo">
-    <div class="filtros-container">
-      <div class="filtros">
-        <button class="ativo" data-category="todos">Todos</button>
-        <button data-category="biquini">Biquínis</button>
-        <button data-category="maio">Maiôs</button>
-        <button data-category="saida">Saídas</button>
-      </div>
-    </div>
 
-<!-- PRODUTOS -->
-<main class="produtos-container">
+<!-- CATALOGO -->
+<section class="catalogo">
 
-  <!-- Biquíni Amarelo -->
-  <div class="produto" data-categoria="biquini">
-    <div class="card">
-      
-      <div class="card-img">
-        <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
-        <span class="tag">Biquíni</span>
-      </div>
-
-      <div class="card-info">
-        <h3>Biquíni Amarelo</h3>
-        <p class="descricao">Conforto e elegância para o verão.</p>
-        <p class="preco">R$ 59,90</p>
-
-        <!-- TAMANHOS -->
-        <div class="tamanhos">
-          <label>Tamanho:</label>
-          <button type="button" class="tamanho ativo">P</button>
-          <button type="button" class="tamanho">M</button>
-          <button type="button" class="tamanho">G</button>
-        </div>
-
-        <!-- BOTÃO COMPRAR -->
-        <a href="#"
-           class="btn-comprar"
-           data-produto="Biquíni Amarelo">
-          Adicionar ao carrinho
-        </a>
-
-      </div>
+  <!-- FILTROS -->
+  <div class="filtros-container">
+    <div class="filtros">
+      <button class="ativo" data-category="todos">Todos</button>
+      <button data-category="biquini">Biquínis</button>
+      <button data-category="maio">Maiôs</button>
+      <button data-category="saida">Saídas</button>
     </div>
   </div>
 
-</main>
+  <!-- PRODUTOS -->
+  <main class="produtos-container">
 
-      <!-- Maiô Oceano -->
-      <div class="produto" data-category="biquini">
-        <div class="card">
-          <div class="card-img">
-            <img src="imagens/biquini-preto.png" alt="Biquini preto">
-            <span class="tag">Biquíni premium</span>
-          </div>
-          <div class="card-info">
-            <h3>Biquíni preto</h3>
-            <p class="descricao">Estilo sofisticado ena cor preta.</p>
-            <p class="preco">R$ 79,90</p>
-            
-              <!-- TAMANHOS -->
-        <div class="tamanhos">
-          <label>Tamanho:</label>
-          <button type="button" class="tamanho ativo">P</button>
-          <button type="button" class="tamanho">M</button>
-          <button type="button" class="tamanho">G</button>
+    <!-- BIQUÍNI AMARELO -->
+    <div class="produto" data-categoria="biquini">
+      <div class="card">
+        <div class="card-img">
+          <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
+          <span class="tag">Biquíni</span>
         </div>
-              <!-- botao comprar -->
-            <a href="#"
-            class="btn-comprar"
-            data-produto="Biquíni Preto">
-              Adicionar ao carrinho
-            </a> 
-            
+
+        <div class="card-info">
+          <h3>Biquíni Amarelo</h3>
+          <p class="descricao">Conforto e elegância para o verão.</p>
+          <p class="preco">R$ 59,90</p>
+
+          <div class="tamanhos">
+            <label>Tamanho:</label>
+            <button type="button" class="tamanho ativo">P</button>
+            <button type="button" class="tamanho">M</button>
+            <button type="button" class="tamanho">G</button>
           </div>
+
+          <a href="#"
+             class="btn-carrinho"
+             data-produto="Biquíni Amarelo">
+            Adicionar ao carrinho
+          </a>
         </div>
       </div>
+    </div>
 
-      <!-- Saída Brisa -->
-      <div class="produto" data-categoria="biquini">
-        <div class="card">
-          <div class="card-img">
-            <img src="imagens/biquini-azul.png" alt="Biquini azul">
-            <span class="tag">Biquíni</span>
-          </div>
-          <div class="card-info">
-            <h3>Biquíni azul</h3>
-            <p class="descricao">Leveza e charme para usar na praia.</p>
-            <p class="preco">R$ 59,90</p>
-            
-            <!-- TAMANHOS -->
-        <div class="tamanhos">
-          <label>Tamanho:</label>
-          <button type="button" class="tamanho ativo">P</button>
-          <button type="button" class="tamanho">M</button>
-          <button type="button" class="tamanho">G</button>
+    <!-- BIQUÍNI PRETO -->
+    <div class="produto" data-categoria="biquini">
+      <div class="card">
+        <div class="card-img">
+          <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
+          <span class="tag">Biquíni premium</span>
         </div>
-            
-           <!-- BOTÃO COMPRAR --> 
-            <a href="#"
-   class="btn-comprar"
-   data-produto="Biquíni Azul">
-  Comprar
-          </a> 
+
+        <div class="card-info">
+          <h3>Biquíni Preto</h3>
+          <p class="descricao">Estilo sofisticado na cor preta.</p>
+          <p class="preco">R$ 79,90</p>
+
+          <div class="tamanhos">
+            <label>Tamanho:</label>
+            <button type="button" class="tamanho ativo">P</button>
+            <button type="button" class="tamanho">M</button>
+            <button type="button" class="tamanho">G</button>
           </div>
+
+          <a href="#"
+             class="btn-carrinho"
+             data-produto="Biquíni Preto">
+            Adicionar ao carrinho
+          </a>
         </div>
       </div>
-    </main>
-  </section>
+    </div>
 
-  <section class="carrinho-container">
+    <!-- BIQUÍNI AZUL -->
+    <div class="produto" data-categoria="biquini">
+      <div class="card">
+        <div class="card-img">
+          <img src="imagens/biquini-azul.png" alt="Biquíni Azul">
+          <span class="tag">Biquíni</span>
+        </div>
+
+        <div class="card-info">
+          <h3>Biquíni Azul</h3>
+          <p class="descricao">Leveza e charme para usar na praia.</p>
+          <p class="preco">R$ 59,90</p>
+
+          <div class="tamanhos">
+            <label>Tamanho:</label>
+            <button type="button" class="tamanho ativo">P</button>
+            <button type="button" class="tamanho">M</button>
+            <button type="button" class="tamanho">G</button>
+          </div>
+
+          <a href="#"
+             class="btn-carrinho"
+             data-produto="Biquíni Azul">
+            Adicionar ao carrinho
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</section>
+
+<!-- CARRINHO -->
+<section class="carrinho-container">
   <h2>Meu carrinho</h2>
-
   <ul id="lista-carrinho"></ul>
-
   <button id="finalizar-whatsapp">
     Finalizar no WhatsApp
   </button>
 </section>
 
+<!-- FOOTER -->
+<footer>
+  © 2025 • Sereia Lumina
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 • Sereia Lumina
-  </footer>
+<!-- JS -->
+<script src="script.js"></script>
 
-  <!-- JS -->
-  <script src="script.js"></script>
 </body>
 </html>
