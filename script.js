@@ -28,15 +28,37 @@ botoes.forEach(botao => {
 document.addEventListener('DOMContentLoaded', () => {
   filtrarProdutos('todos');
 });
-// WhatsApp dinâmico
-const telefoneWhatsApp = '5581982959208';
 
+const telefoneWhatsApp = '5581984782598';
+
+// selecionar tamanho
+document.querySelectorAll('.tamanhos').forEach(grupo => {
+  const botoes = grupo.querySelectorAll('.tamanho');
+
+  botoes.forEach(botao => {
+    botao.addEventListener('click', () => {
+      botoes.forEach(b => b.classList.remove('ativo'));
+      botao.classList.add('ativo');
+    });
+  });
+});
+
+// WhatsApp dinâmico com tamanho
 document.querySelectorAll('.btn-comprar').forEach(botao => {
   botao.addEventListener('click', e => {
     e.preventDefault();
 
     const produto = botao.dataset.produto;
-    const mensagem = `Olá! Gostaria de comprar o ${produto}`;
+    const card = botao.closest('.card');
+    const tamanhoAtivo = card.querySelector('.tamanho.ativo');
+
+    if (!tamanhoAtivo) {
+      alert('Por favor, selecione um tamanho.');
+      return;
+    }
+
+    const tamanho = tamanhoAtivo.textContent;
+    const mensagem = `Olá! Gostaria de comprar o ${produto} – Tamanho ${tamanho}`;
     const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
 
     window.open(url, '_blank');
