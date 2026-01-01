@@ -23,18 +23,231 @@ body {
 ================================ */
 .site-header {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 10;
 }
 
 .header-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 20px 30px;
 }
+
+.logo .use {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #e6ecf3;
+}
+
+.logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 18px;
+}
+
+.social-icons img {
+  width: 22px;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+/* ================================
+   HERO
+================================ */
+.hero {
+  min-height: 45vh;
+  background: linear-gradient(
+    to bottom,
+    var(--azul-principal),
+    #013a84,
+    var(--fundo-claro)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-text h2 {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.hero-text p {
+  color: #e6ecf3;
+}
+
+/* ================================
+   FILTROS
+================================ */
+.filtros-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.filtros button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #e6ecf3;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtros button.ativo,
+.filtros button:hover {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+/* ================================
+   PRODUTOS
+================================ */
+.produtos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-img {
+  height: 200px;
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--azul-principal);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.card-info {
+  padding: 15px;
+  text-align: center;
+}
+
+/* ================================
+   TAMANHOS
+================================ */
+.tamanhos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tamanho {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--azul-principal);
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tamanho.ativo,
+.tamanho:hover {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+/* ================================
+   BOTÃO CARRINHO
+================================ */
+.btn-carrinho {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--azul-principal);
+  background: #f3f6fb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-carrinho:hover {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+.btn-carrinho.adicionado {
+  background: #2ecc71;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+/* ================================
+   CARRINHO
+================================ */
+.carrinho-container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+#lista-carrinho li {
+  background: #f3f6fb;
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+}
+
+#finalizar-whatsapp {
+  width: 100%;
+  padding: 12px;
+  background: #25D366;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#finalizar-whatsapp:hover {
+  background: #1ebe5d;
+}
+
+/* ================================
+   RESPONSIVO
+================================ */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+}}
 
 /* Logo */
 .logo {
