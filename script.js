@@ -64,3 +64,30 @@ document.querySelectorAll('.btn-comprar').forEach(botao => {
     window.open(url, '_blank');
   });
 });
+let carrinho = [];
+
+document.querySelectorAll('.btn-carrinho').forEach(botao => {
+  botao.addEventListener('click', e => {
+    e.preventDefault();
+
+    const card = botao.closest('.card');
+    const produto = botao.dataset.produto;
+    const tamanhoAtivo = card.querySelector('.tamanho.ativo');
+
+    if (!tamanhoAtivo) {
+      alert('Selecione um tamanho.');
+      return;
+    }
+
+    const tamanho = tamanhoAtivo.textContent;
+
+    carrinho.push({
+      produto,
+      tamanho
+    });
+
+    alert(`${produto} (${tamanho}) adicionado ao carrinho`);
+    console.log(carrinho); // para você ver no console
+  });
+});
+
