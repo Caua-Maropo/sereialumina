@@ -83,8 +83,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.btn-carrinho').forEach(botao => {
-    botao.addEventListener('click', e => {
-      e.preventDefault();
+  botao.addEventListener('click', e => {
+    e.preventDefault();
+
+    const card = botao.closest('.card');
+    const produto = botao.dataset.produto;
+    const tamanhoAtivo = card.querySelector('.tamanho.ativo');
+
+    if (!tamanhoAtivo) {
+      alert('Selecione um tamanho.');
+      return;
+    }
+
+    const tamanho = tamanhoAtivo.textContent;
+
+    carrinho.push({ produto, tamanho });
+
+    atualizarCarrinho();
+
+    // FEEDBACK VISUAL
+    const textoOriginal = botao.textContent;
+    botao.textContent = '✓ Adicionado';
+    botao.classList.add('adicionado');
+
+    setTimeout(() => {
+      botao.textContent = textoOriginal;
+      botao.classList.remove('adicionado');
+    }, 1500);
+  });
+});
 
       const card = botao.closest('.card');
       const produto = botao.dataset.produto;
