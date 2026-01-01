@@ -19,40 +19,60 @@ body {
 }
 
 /* ================================
-   HEADER (LOGO FIXO NO TOPO)
+   HEADER
 ================================ */
 .site-header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 30px;
   z-index: 10;
 }
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
 /* Logo */
-.site-header .logo {
+.logo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.site-header .logo .use {
-  font-family: 'Montserrat', sans-serif;
+.logo .use {
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #e6ecf3;
-  margin-bottom: 2px;
 }
 
-.site-header .logo h1 {
+.logo h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: 0.5px;
   color: #ffffff;
+  line-height: 1.1;
+}
+
+/* Ícones sociais */
+.social-icons {
+  display: flex;
+  gap: 18px;
+}
+
+.social-icons img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 /* ================================
@@ -60,7 +80,7 @@ body {
 ================================ */
 .hero {
   min-height: 45vh;
-  padding: 80px 20px 30px; /* espaço para header */
+  padding: 100px 20px 40px;
   background: linear-gradient(
     to bottom,
     var(--azul-principal) 0%,
@@ -73,7 +93,6 @@ body {
   text-align: center;
 }
 
-/* Textos do hero */
 .hero-text h2 {
   color: #ffffff;
   font-size: 2.5rem;
@@ -110,11 +129,10 @@ body {
 
 .filtros button {
   padding: 8px 16px;
-  border: none;
   border-radius: 20px;
+  border: none;
   background-color: #e6ecf3;
   color: var(--azul-principal);
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -135,184 +153,57 @@ body {
   padding: 20px;
 }
 
-/* Card */
 .card {
-  background-color: #ffffff;
+  background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* Imagem */
 .card-img {
-  position: relative;
   height: 200px;
   overflow: hidden;
+  position: relative;
 }
 
 .card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.card:hover .card-img img {
-  transform: scale(1.05);
-}
-
-/* Tag */
 .card .tag {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: var(--azul-principal);
-  color: #ffffff;
+  background: var(--azul-principal);
+  color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.75rem;
 }
 
-/* Info */
 .card-info {
   padding: 15px;
   text-align: center;
 }
 
-.card-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  color: #1a1a1a;
-}
-
-.card-info .descricao {
-  font-size: 0.9rem;
-  color: #555555;
+.card-info .preco {
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.card-info .preco {
-  font-weight: bold;
-  color: #1ca1f2;
-  margin-bottom: 12px;
-}
-
-/* Botão comprar */
-.btn-comprar {
-  display: inline-block;
-  padding: 8px 14px;
-  background-color: var(--azul-principal);
-  color: #ffffff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.btn-comprar:hover {
-  background-color: var(--azul-hover);
-}
-
-/* ================================
-   ANIMAÇÃO DO FILTRO
-================================ */
-.produto {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.produto.oculto {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
-/* ================================
-   FOOTER
-================================ */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: var(--azul-principal);
-  color: #ffffff;
-  margin-top: 40px;
-}
-
-/* ================================
-   RESPONSIVO
-================================ */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 40vh;
-    padding: 90px 15px 30px;
-  }
-
-  .hero-text h2 {
-    font-size: 2rem;
-  }
-
-  .site-header .logo h1 {
-    font-size: 1.6rem;
-  }
-
-  .site-header .logo .use {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-  }
-}
-/* HEADER */
-.site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 30px;
-}
-
-/* ÍCONES SOCIAIS */
-.social-icons {
-  display: flex;
-  gap: 18px;
-}
-
-.social-icons img {
-  width: 22px;
-  height: 22px;
-  filter: brightness(0) invert(1); /* deixa branco */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.social-icons a:hover img {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
-/* TAMANHOS */
+/* Tamanhos */
 .tamanhos {
-  margin: 10px 0 12px;
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 8px;
-}
-
-.tamanhos label {
-  font-size: 0.8rem;
-  color: #555;
-  margin-right: 5px;
+  margin-bottom: 12px;
 }
 
 .tamanho {
@@ -321,54 +212,61 @@ footer {
   color: var(--azul-principal);
   padding: 4px 10px;
   border-radius: 5px;
-  font-size: 0.8rem;
   cursor: pointer;
-  transition: all 0.25s ease;
 }
 
-.tamanho:hover,
-.tamanho.ativo {
-  background-color: var(--azul-principal);
+.tamanho.ativo,
+.tamanho:hover {
+  background: var(--azul-principal);
   color: #fff;
 }
-/* CARRINHO */
+
+/* Botão */
+.btn-comprar {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--azul-principal);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn-comprar:hover {
+  background: var(--azul-hover);
+}
+
+/* ================================
+   CARRINHO
+================================ */
 .carrinho-container {
   max-width: 500px;
   margin: 60px auto;
   padding: 20px;
-  border-radius: 12px;
   background: #fff;
+  border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   text-align: center;
 }
 
-.carrinho-container h2 {
-  margin-bottom: 15px;
-  color: var(--azul-principal);
-}
-
-#lista-carrinho {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-#lista-carrinho li {
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-}
-
-#finalizar-whatsapp {
-  padding: 12px 20px;
-  background-color: var(--azul-principal);
+/* ================================
+   FOOTER
+================================ */
+footer {
+  background: var(--azul-principal);
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
+  padding: 20px;
+  text-align: center;
 }
 
-#finalizar-whatsapp:hover {
-  background-color: var(--azul-hover);
+/* ================================
+   RESPONSIVO
+================================ */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .logo h1 {
+    font-size: 1.6rem;
+  }
 }
