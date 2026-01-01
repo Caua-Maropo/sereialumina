@@ -66,6 +66,18 @@ document.querySelectorAll('.btn-comprar').forEach(botao => {
 });
 let carrinho = [];
 
+const listaCarrinho = document.getElementById('lista-carrinho');
+
+function atualizarCarrinho() {
+  listaCarrinho.innerHTML = '';
+
+  carrinho.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.produto} — Tamanho ${item.tamanho}`;
+    listaCarrinho.appendChild(li);
+  });
+}
+
 document.querySelectorAll('.btn-carrinho').forEach(botao => {
   botao.addEventListener('click', e => {
     e.preventDefault();
@@ -81,13 +93,8 @@ document.querySelectorAll('.btn-carrinho').forEach(botao => {
 
     const tamanho = tamanhoAtivo.textContent;
 
-    carrinho.push({
-      produto,
-      tamanho
-    });
+    carrinho.push({ produto, tamanho });
 
-    alert(`${produto} (${tamanho}) adicionado ao carrinho`);
-    console.log(carrinho); // para você ver no console
+    atualizarCarrinho();
   });
 });
-
