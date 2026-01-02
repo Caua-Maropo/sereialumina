@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Login • Sereia Lumina</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,17 +17,20 @@
   <h2>Login</h2>
   <form id="form-login">
     <label for="email">Email</label>
-    <input type="email" id="email" placeholder="email@exemplo.com" required>
+    <input type="email" id="email" placeholder="seu@email.com" required>
 
     <label for="senha">Senha</label>
     <input type="password" id="senha" placeholder="••••••••" required>
 
     <button type="submit">Entrar</button>
+
     <p id="erro-login" class="erro-login"></p>
   </form>
 </main>
 
+<!-- Firebase + JS -->
 <script type="module" src="firebase.js"></script>
 <script type="module" src="login.js"></script>
+
 </body>
 </html>
