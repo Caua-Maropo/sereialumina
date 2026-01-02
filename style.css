@@ -25,48 +25,72 @@ body {
 ================================ */
 .site-header {
   width: 100%;
+  background: var(--azul-principal);
   position: sticky;
   top: 0;
-  background: var(--azul-principal);
   z-index: 100;
-  padding: 15px 30px;
 }
 
-.header-container {
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 30px;
+  gap: 20px;
 }
 
-.logo .use {
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #e6ecf3;
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
 }
 
 .logo h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #fff;
-  line-height: 1.1;
+  font-size: 1.8rem;
+  line-height: 1;
 }
 
-.social-icons {
+.search-bar {
+  flex: 1;
   display: flex;
-  gap: 18px;
+  max-width: 500px;
 }
 
-.social-icons img {
-  width: 22px;
-  height: 22px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease;
+.search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 20px 0 0 20px;
+  border: none;
+  outline: none;
 }
 
-.social-icons a:hover img {
+.search-bar button {
+  padding: 8px 12px;
+  border-radius: 0 20px 20px 0;
+  border: none;
+  background: var(--verde-whatsapp);
+  color: #fff;
+  cursor: pointer;
+}
+
+.header-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 1.2rem;
+}
+
+.header-icons a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.header-icons a:hover {
   transform: scale(1.1);
 }
+
 
 /* ================================
    HERO SLIDER
