@@ -3,6 +3,13 @@ import { app } from "./firebase.js";
 
 const auth = getAuth(app);
 
+auth.onAuthStateChanged(user => {
+  if(!user){
+    // Usuário não está logado → redireciona para login
+    window.location.href = 'login.html';
+  }
+});
+
 const form = document.getElementById('form-login');
 const erroLogin = document.getElementById('erro-login');
 
