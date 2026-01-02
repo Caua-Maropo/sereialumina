@@ -20,8 +20,9 @@ body {
   color: #333;
 }
 
+
 /* ================================
-   HEADER
+   HEADER ESTILO RIAchuelo
 ================================ */
 .site-header {
   width: 100%;
@@ -44,6 +45,13 @@ body {
   flex-direction: column;
   align-items: flex-start;
   color: #fff;
+}
+
+.logo .use {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e6ecf3;
 }
 
 .logo h1 {
@@ -73,6 +81,7 @@ body {
   background: var(--verde-whatsapp);
   color: #fff;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .header-icons {
@@ -91,6 +100,26 @@ body {
   transform: scale(1.1);
 }
 
+/* ================================
+   RESPONSIVO
+================================ */
+@media (max-width: 1024px) {
+  .search-bar {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
 
 /* ================================
    HERO SLIDER
