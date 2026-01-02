@@ -3,28 +3,38 @@ import { app } from "./firebase.js";
 
 const auth = getAuth(app);
 
-auth.onAuthStateChanged(user => {
-  if(!user){
-    // Usuário não está logado → redireciona para login
-    window.location.href = 'login.html';
-  }
-});
-
-const form = document.getElementById('form-login');
+// Elementos do modal
+const modalLogin = document.getElementById('modal-login');
+const btnLogin = document.getElementById('btn-login'); // botão do header
+const closeLogin = document.getElementById('close-login');
+const formLogin = document.getElementById('form-login');
 const erroLogin = document.getElementById('erro-login');
 
-form.addEventListener('submit', async (e) => {
+// Abre o modal ao clicar no botão Login
+btnLogin?.addEventListener('click', () => {
+  modalLogin?.classList.remove('hidden');
+});
+
+// Fecha o modal ao clicar no X
+closeLogin?.addEventListener('click', () => {
+  modalLogin?.classList.add('hidden');
+});
+
+// Fecha clicando fora do conteúdo do modal
+window.addEventListener('click', (e) => {
+  if(e.target === modalLogin) modalLogin.classList.add('hidden');
+});
+
+// Login com Firebase
+formLogin?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const email = document.getElementById('email').value;
-  const senha = document.getElementById('senha').value;
+  const email = document.getElementById('email-login').value;
+  const senha = document.getElementById('senha-login').value;
 
   try {
-    // Faz login com Firebase
     await signInWithEmailAndPassword(auth, email, senha);
-
-    // Redireciona para perfil
-    window.location.href = 'perfil.html';
+    window.location.href = 'perfil.html'; // redireciona para perfil
   } catch (error) {
     console.error(error);
     erroLogin.textContent = 'Email ou senha inválidos.';
