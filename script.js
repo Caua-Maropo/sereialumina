@@ -72,20 +72,29 @@ document.addEventListener('DOMContentLoaded', () => {
   ================================ */
   let carrinho = [];
   const listaCarrinho = document.getElementById('lista-carrinho');
+  const totalCarrinho = document.getElementyById('total-carrinho');
   const botaoFinalizar = document.getElementById('finalizar-whatsapp');
   const telefoneWhatsApp = '5581984782598';
 
   function atualizarCarrinho() {
     listaCarrinho.innerHTML = '';
+    let total = 0;
 
     carrinho.forEach((item, index) => {
+      const subtotal = item.preco * item.quantidade;
+      total += subtotal;
+      
       const li = document.createElement('li');
       li.innerHTML = `
         ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}
+        <br>
+        R$ ${subtotal.toFixed(2).replace('.',',')}
         <button class="remover" data-index="${index}">×</button>
       `;
       listaCarrinho.appendChild(li);
     });
+
+    totalCarrinho.textContent = total.toFixed(2).replace('.',',');
 
     document.querySelectorAll('.remover').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -98,10 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-carrinho').forEach(botao => {
     botao.addEventListener('click', e => {
       e.preventDefault();
-      e.stopPropagation();
 
       const card = botao.closest('.card');
       const produto = botao.dataset.produto;
+      const preco = parseFloat(botao.dataset.preco);
       const tamanhoAtivo = card.querySelector('.tamanho.ativo');
       const qtdValor = card.querySelector('.qtd-valor');
 
@@ -141,9 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
 
+    let total = 0 ;
+
     carrinho.forEach(item => {
-      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}\n`;
-    });
+      const subtotal = item.preco * item.quantidade;
+      total += subtotal;
+
+      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
+});
+
+    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+      
 
     const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
