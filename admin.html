@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Painel Administrativo • Sereia Lumina</title>
 
-  <!-- Fonte -->
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
   <!-- HEADER ADMIN -->
   <header class="site-header">
     <div class="header-container">
@@ -25,9 +24,7 @@
         <h1>Sereia Lumina</h1>
       </div>
 
-      <button id="logout-admin">
-        Sair
-      </button>
+      <button id="logout-admin">Sair</button>
     </div>
   </header>
 
@@ -36,9 +33,12 @@
 
     <h2>Painel Administrativo</h2>
 
+    <!-- Seções do painel -->
     <section class="admin-card">
       <h3>Pedidos</h3>
-      <p>Aqui você poderá visualizar e atualizar o status dos pedidos.</p>
+      <div id="pedidos-container">
+        <!-- Os pedidos vão aparecer aqui via admin-pedidos.js -->
+      </div>
     </section>
 
     <section class="admin-card">
@@ -51,20 +51,11 @@
       <p>Gerenciar contas e permissões.</p>
     </section>
 
-    <section class="admin-card">
-  <h3>Pedidos</h3>
-  <div id="pedidos-container">
-    <!-- Os pedidos vão ser inseridos aqui pelo JS -->
-  </div>
-</section>
-
-
   </main>
 
-  <!-- JS -->
+  <!-- Scripts -->
+  <script type="module" src="firebase.js"></script>
   <script type="module" src="admin.js"></script>
   <script type="module" src="admin-pedidos.js"></script>
-
 </body>
 </html>
-
