@@ -4,27 +4,29 @@
   <meta charset="UTF-8">
   <title>Login • Sereia Lumina</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<main class="login-container">
-  <h2>Área de Login</h2>
+<div class="login-container">
+  <div class="logo">
+    <span>Sereia</span>
+    <h1>Lumina</h1>
+  </div>
+  
+  <h2>Entrar na sua conta</h2>
 
-  <form id="form-login-admin">
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="admin@email.com" required>
-
-    <label for="senha">Senha</label>
-    <input type="password" id="senha" placeholder="••••••••" required>
-
+  <form id="form-login">
+    <input type="email" id="email-login" placeholder="Email" required>
+    <input type="password" id="senha-login" placeholder="Senha" required>
     <button type="submit">Entrar</button>
-
-    <p id="erro-login" class="erro-login"></p>
   </form>
-</main>
 
-<script type="module" src="firebase.js"></script>
+  <p id="erro-login" class="erro-login"></p>
+
+  <p class="signup-link">Não tem conta? <a href="signup.html">Cadastre-se</a></p>
+</div>
+
 <script type="module" src="login.js"></script>
-
 </body>
 </html>
