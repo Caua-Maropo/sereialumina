@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin • Sereia Lumina</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="login-container">
+
+    <h2>Área Administrativa</h2>
+
+    <form id="form-login-admin">
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="admin@email.com"
+        required
+      >
+
+      <label for="senha">Senha</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        placeholder="••••••••"
+        required
+      >
+
+      <button type="submit">
+        Entrar
+      </button>
+
+      <p id="erro-login" class="erro-login"></p>
+
+    </form>
+
+  </main>
+
+  <!-- Firebase + Login -->
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="admin-login.js"></script>
+
+</body>
+</html>
