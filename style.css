@@ -84,5 +84,12 @@ footer { background:var(--azul-principal); color:#fff; padding:20px; text-align:
 @media (max-width:768px) {
   .hero-text h2 { font-size:2rem; }
   .colecoes-container { grid-template-columns:1fr; gap:20px; }
+
+  /* FADE-IN E SLIDE LATERAL */
+.fade-in { opacity:0; transform:translateY(30px); transition:opacity 0.8s ease-out, transform 0.8s ease-out; }
+.slide-left { opacity:0; transform:translateX(-50px); transition:opacity 0.8s ease-out, transform 0.8s ease-out; }
+.slide-right { opacity:0; transform:translateX(50px); transition:opacity 0.8s ease-out, transform 0.8s ease-out; }
+.aparecer { opacity:1; transform:translateX(0) translateY(0); }
+
   .produtos-container { grid-template-columns:1fr; gap:30px; }
 }
