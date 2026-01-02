@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sereia Lumina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,29 +35,47 @@
     </nav>
 
     <div class="social-icons">
-      <a href="https://wa.me/5581984782598" target="_blank" aria-label="WhatsApp">
-        <img src="imagens/whatsapp.svg" alt="WhatsApp">
-      </a>
-      <a href="https://www.instagram.com/sereialumina" target="_blank" aria-label="Instagram">
-        <img src="imagens/instagram.svg" alt="Instagram">
-      </a>
+      <a href="https://wa.me/5581984782598" target="_blank"><img src="imagens/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.instagram.com/sereialumina" target="_blank"><img src="imagens/instagram.svg" alt="Instagram"></a>
     </div>
+
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
   </div>
 </header>
 
-<!-- HERO / BANNER PRINCIPAL -->
+<!-- HERO/BANNER PRINCIPAL -->
 <section class="hero-banner">
-  <div class="hero-banner-texto">
+  <div class="hero-text">
     <h1>Verão 2026</h1>
     <p>Conheça nossa nova coleção de moda praia</p>
-    <a href="#catalogo" class="btn-banner">Ver Produtos</a>
+    <a href="#catalogo" class="btn-hero">Ver Produtos</a>
+  </div>
+</section>
+
+<!-- SEÇÃO DE DESTAQUES/COLEÇÕES -->
+<section class="colecoes">
+  <h2>Coleções em Destaque</h2>
+  <div class="colecoes-container">
+    <div class="colecao-card">
+      <img src="imagens/biquini-banner.jpg" alt="Biquínis">
+      <h3>Biquínis</h3>
+      <a href="#biquini" class="btn-card">Ver Biquínis</a>
+    </div>
+    <div class="colecao-card">
+      <img src="imagens/maio-banner.jpg" alt="Maiôs">
+      <h3>Maiôs</h3>
+      <a href="#maio" class="btn-card">Ver Maiôs</a>
+    </div>
+    <div class="colecao-card">
+      <img src="imagens/saida-banner.jpg" alt="Saídas de Praia">
+      <h3>Saídas de Praia</h3>
+      <a href="#saida" class="btn-card">Ver Saídas</a>
+    </div>
   </div>
 </section>
 
 <!-- CATÁLOGO -->
 <section id="catalogo" class="catalogo">
-
-  <!-- FILTROS -->
   <div class="filtros-container">
     <div class="filtros">
       <button class="ativo" data-category="todos">Todos</button>
@@ -66,71 +85,11 @@
     </div>
   </div>
 
-  <!-- PRODUTOS -->
   <div class="produtos-container">
-    <!-- Card de exemplo -->
     <div class="produto" data-category="biquini">
       <div class="card">
-        <div class="card-img">
-          <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
-          <span class="tag">Biquíni</span>
-        </div>
+        <div class="card-img"><img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo"><span class="tag">Biquíni</span></div>
         <div class="card-info">
           <h3>Biquíni Amarelo</h3>
           <p class="descricao">Conforto e elegância para o verão.</p>
-          <p class="preco">R$ 59,90</p>
-          <button type="button" class="btn-carrinho">Adicionar ao carrinho</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="produto" data-category="biquini">
-      <div class="card">
-        <div class="card-img">
-          <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
-          <span class="tag">Biquíni Premium</span>
-        </div>
-        <div class="card-info">
-          <h3>Biquíni Preto</h3>
-          <p class="descricao">Estilo sofisticado para o verão.</p>
-          <p class="preco">R$ 79,90</p>
-          <button type="button" class="btn-carrinho">Adicionar ao carrinho</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="produto" data-category="maio">
-      <div class="card">
-        <div class="card-img">
-          <img src="imagens/maio-azul.png" alt="Maiô Azul">
-          <span class="tag">Maiô</span>
-        </div>
-        <div class="card-info">
-          <h3>Maiô Azul</h3>
-          <p class="descricao">Elegância e conforto para praia.</p>
-          <p class="preco">R$ 89,90</p>
-          <button type="button" class="btn-carrinho">Adicionar ao carrinho</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CARRINHO -->
-<section class="carrinho-container">
-  <h2>Meu Carrinho</h2>
-  <ul id="lista-carrinho"></ul>
-  <p class="total">Total: <strong>R$ <span id="total-carrinho">0,00</span></strong></p>
-  <button id="finalizar-whatsapp">Finalizar no WhatsApp</button>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  © 2025 • Sereia Lumina
-</footer>
-
-<script type="module" src="firebase.js"></script>
-<script type="module" src="script.js"></script>
-
-</body>
-</html>
+          <p class="preco">R
