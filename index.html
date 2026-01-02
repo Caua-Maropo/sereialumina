@@ -3,115 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <title>Sereia Lumina</title>
-
-  <!-- Google Fonts -->
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-top">
-    <div class="logo">
-      <span class="use">Sereia</span>
-      <h1>Lumina</h1>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">
+        <span class="use">Sereia</span>
+        <h1>Lumina</h1>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Pesquisar produtos...">
+        <button aria-label="Pesquisar">🔍</button>
+      </div>
+
+      <div class="header-icons">
+        <a href="login.html" aria-label="Login">👤</a>
+        <a href="#" aria-label="Favoritos">❤️</a>
+        <a href="#" aria-label="Carrinho">🛒</a>
+      </div>
     </div>
+  </header>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Pesquisar produtos..." id="search-input">
-      <button id="btn-search">🔍</button>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="season">Moda Verão 2026</p>
+      <h2>Coleções em Destaque</h2>
+      <a href="#produtos" class="btn-hero">Ver Produtos</a>
     </div>
+  </section>
 
-    <div class="header-icons">
-      <a href="login.html" id="btn-login" aria-label="Login">👤</a>
-      <a href="#" id="btn-favorites" aria-label="Favoritos">❤️</a>
-      <a href="#" id="btn-cart" aria-label="Carrinho">🛒</a>
-    </div>
-  </div>
-</header>
+  <!-- CATEGORIAS -->
+  <section class="categorias">
+    <div class="cat-card" data-category="biquini">Biquínis</div>
+    <div class="cat-card" data-category="maio">Maiôs</div>
+    <div class="cat-card" data-category="saida">Saídas de Praia</div>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <p class="season">Moda verão 2026</p>
-    <h2>Coleções em Destaque</h2>
-    <p class="subtitle">Tudo sobre moda praia para você!</p>
-  </div>
-</section>
-
-<!-- CATÁLOGO -->
-<section class="catalogo">
-  <div class="filtros-container">
-    <div class="filtros">
-      <button class="ativo" data-category="todos">Todos</button>
-      <button data-category="biquini">Biquínis</button>
-      <button data-category="maio">Maiôs</button>
-      <button data-category="saida">Saídas</button>
-    </div>
-  </div>
-
-  <div class="produtos-carousel">
+  <!-- PRODUTOS -->
+  <section id="produtos" class="produtos-grid">
     <div class="produto" data-category="biquini">
       <div class="card">
-        <div class="card-img">
-          <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
-          <span class="tag">Biquíni</span>
-        </div>
-        <div class="card-info">
-          <h3>Biquíni Amarelo</h3>
-          <p class="preco">R$ 59,90</p>
-          <button class="btn-carrinho" data-produto="Biquíni Amarelo" data-preco="59.90">Adicionar ao carrinho</button>
-        </div>
+        <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
+        <h3>Biquíni Amarelo</h3>
+        <p class="preco">R$ 59,90</p>
+        <button class="btn-carrinho" data-produto="Biquíni Amarelo" data-preco="59.90">Adicionar ao carrinho</button>
       </div>
     </div>
 
     <div class="produto" data-category="biquini">
       <div class="card">
-        <div class="card-img">
-          <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
-          <span class="tag">Biquíni Premium</span>
-        </div>
-        <div class="card-info">
-          <h3>Biquíni Preto</h3>
-          <p class="preco">R$ 79,90</p>
-          <button class="btn-carrinho" data-produto="Biquíni Preto" data-preco="79.90">Adicionar ao carrinho</button>
-        </div>
+        <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
+        <h3>Biquíni Preto</h3>
+        <p class="preco">R$ 79,90</p>
+        <button class="btn-carrinho" data-produto="Biquíni Preto" data-preco="79.90">Adicionar ao carrinho</button>
       </div>
     </div>
 
     <div class="produto" data-category="maio">
       <div class="card">
-        <div class="card-img">
-          <img src="imagens/maio-azul.png" alt="Maiô Azul">
-          <span class="tag">Maiô</span>
-        </div>
-        <div class="card-info">
-          <h3>Maiô Azul</h3>
-          <p class="preco">R$ 89,90</p>
-          <button class="btn-carrinho" data-produto="Maiô Azul" data-preco="89.90">Adicionar ao carrinho</button>
-        </div>
+        <img src="imagens/maio-azul.png" alt="Maiô Azul">
+        <h3>Maiô Azul</h3>
+        <p class="preco">R$ 89,90</p>
+        <button class="btn-carrinho" data-produto="Maiô Azul" data-preco="89.90">Adicionar ao carrinho</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CARRINHO -->
-<section class="carrinho-container">
-  <h2>Meu carrinho</h2>
-  <ul id="lista-carrinho"></ul>
-  <p class="total">total: <strong>R$ <span id="total-carrinho">0,00</span></strong></p>
-  <button id="finalizar-whatsapp">Finalizar no WhatsApp</button>
-</section>
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <p>© 2025 • Sereia Lumina</p>
+    <p>Contato: WhatsApp (xx) xxxx-xxxx</p>
+  </footer>
 
-<footer>© 2025 • Sereia Lumina</footer>
-
-<script type="module" src="firebase.js"></script>
-<script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
