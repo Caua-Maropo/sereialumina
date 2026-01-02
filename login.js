@@ -6,17 +6,20 @@ const auth = getAuth(app);
 const form = document.getElementById('form-login');
 const erroLogin = document.getElementById('erro-login');
 
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const email = document.getElementById('email').value;
   const senha = document.getElementById('senha').value;
 
   try {
-    const cred = await signInWithEmailAndPassword(auth, email, senha);
-    // login bem-sucedido → redireciona para perfil
+    // Faz login com Firebase
+    await signInWithEmailAndPassword(auth, email, senha);
+
+    // Redireciona para perfil
     window.location.href = 'perfil.html';
   } catch (error) {
+    console.error(error);
     erroLogin.textContent = 'Email ou senha inválidos.';
   }
 });
