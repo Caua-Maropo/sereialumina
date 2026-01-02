@@ -129,3 +129,39 @@ body {
 .pedido-item button:hover {
   opacity: 0.8;
 }
+/* ===== Dashboard ===== */
+.admin-dashboard {
+  margin-bottom: 30px;
+}
+
+.admin-dashboard h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #0077b6;
+  margin-bottom: 15px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-cards .card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.dashboard-cards .card h4 {
+  font-size: 1rem;
+  color: #0077b6;
+  margin-bottom: 8px;
+}
+
+.dashboard-cards .card p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
