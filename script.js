@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     botao.addEventListener('click', () => {
       botoesFiltro.forEach(b => b.classList.remove('ativo'));
       botao.classList.add('ativo');
-
       filtrarProdutos(botao.dataset.category);
     });
   });
@@ -33,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const botoes = grupo.querySelectorAll('.tamanho');
 
     botoes.forEach(botao => {
-      botao.addEventListener('click', () => {
+      botao.addEventListener('click', e => {
+        e.stopPropagation();
         botoes.forEach(b => b.classList.remove('ativo'));
         botao.classList.add('ativo');
       });
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================================
-     QUANTIDADE
+     QUANTIDADE (ISOLADA)
   ================================ */
   document.querySelectorAll('.produto').forEach(produto => {
     const btnMais = produto.querySelector('.qtd-mais');
@@ -51,23 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let quantidade = 1;
 
     btnMais.addEventListener('click', e => {
-  e.stopPropagation(); // 🚫 impede de subir o clique
-  quantidade++;
-  valor.textContent = quantidade;
-});
+      e.preventDefault();
+      e.stopPropagation();
+      quantidade++;
+      valor.textContent = quantidade;
+    });
 
-btnMenos.addEventListener('click', e => {
-  e.stopPropagation();
-  if (quantidade > 1) {
-    quantidade--;
-    valor.textContent = quantidade;
-  }
-});
-    
+    btnMenos.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (quantidade > 1) {
+        quantidade--;
+        valor.textContent = quantidade;
+      }
+    });
+  });
+
   /* ================================
-     CARRINHO
+     CARRINHO (GLOBAL)
   ================================ */
-  const carrinho = [];
+  let carrinho = [];
   const listaCarrinho = document.getElementById('lista-carrinho');
   const botaoFinalizar = document.getElementById('finalizar-whatsapp');
   const telefoneWhatsApp = '5581984782598';
@@ -86,8 +89,7 @@ btnMenos.addEventListener('click', e => {
 
     document.querySelectorAll('.remover').forEach(btn => {
       btn.addEventListener('click', () => {
-        const index = btn.dataset.index;
-        carrinho.splice(index, 1);
+        carrinho.splice(btn.dataset.index, 1);
         atualizarCarrinho();
       });
     });
@@ -96,6 +98,7 @@ btnMenos.addEventListener('click', e => {
   document.querySelectorAll('.btn-carrinho').forEach(botao => {
     botao.addEventListener('click', e => {
       e.preventDefault();
+      e.stopPropagation();
 
       const card = botao.closest('.card');
       const produto = botao.dataset.produto;
