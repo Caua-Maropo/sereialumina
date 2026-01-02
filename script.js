@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function filtrarProdutos(categoria) {
     produtos.forEach(produto => {
       const mostrar =
-        categoria === 'todos' || produto.dataset.categoria === categoria;
+        categoria === 'todos' || produto.dataset.category === categoria;
 
       produto.classList.toggle('oculto', !mostrar);
     });
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ================================ */
   let carrinho = [];
   const listaCarrinho = document.getElementById('lista-carrinho');
-  const totalCarrinho = document.getElementyById('total-carrinho');
+  const totalCarrinho = document.getElementById('total-carrinho');
   const botaoFinalizar = document.getElementById('finalizar-whatsapp');
   const telefoneWhatsApp = '5581984782598';
 
@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
       carrinho.push({
         produto,
         tamanho: tamanhoAtivo.textContent,
-        quantidade: parseInt(qtdValor.textContent)
+        quantidade: parseInt(qtdValor.textContent),
+        preco
       });
 
       atualizarCarrinho();
