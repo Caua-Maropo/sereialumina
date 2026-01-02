@@ -178,3 +178,77 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+// Seleção dos elementos
+const btnLogin = document.getElementById('btn-login');
+const modalLogin = document.getElementById('modal-login');
+const closeLogin = document.getElementById('close-login');
+
+const btnCart = document.getElementById('btn-cart');
+const modalCart = document.getElementById('modal-cart');
+const closeCart = document.getElementById('close-cart');
+
+const formLogin = document.getElementById('form-login');
+
+const cartList = document.getElementById('cart-list');
+const cartTotal = document.getElementById('cart-total');
+
+let cart = [];
+
+// Abrir modais
+btnLogin.addEventListener('click', e => {
+  e.preventDefault();
+  modalLogin.classList.remove('hidden');
+});
+
+btnCart.addEventListener('click', e => {
+  e.preventDefault();
+  modalCart.classList.remove('hidden');
+  renderCart();
+});
+
+// Fechar modais
+closeLogin.addEventListener('click', () => modalLogin.classList.add('hidden'));
+closeCart.addEventListener('click', () => modalCart.classList.add('hidden'));
+
+// Login (simples, temporário)
+formLogin.addEventListener('submit', e => {
+  e.preventDefault();
+  alert("Login realizado com sucesso!");
+  modalLogin.classList.add('hidden');
+  formLogin.reset();
+});
+
+// Funções do carrinho
+function addToCart(produto, preco) {
+  const existing = cart.find(p => p.name === produto);
+  if(existing){
+    existing.qty++;
+  } else {
+    cart.push({name: produto, price: preco, qty:1});
+  }
+  renderCart();
+}
+
+function renderCart(){
+  cartList.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.textContent = `${item.name} x${item.qty} - R$ ${ (item.price*item.qty).toFixed(2) }`;
+    cartList.appendChild(li);
+  });
+  cartTotal.textContent = total.toFixed(2);
+}
+
+// Botão finalizar compra
+document.getElementById('checkout').addEventListener('click', () => {
+  if(cart.length === 0){
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+  alert("Compra finalizada! Total: R$ " + cartTotal.textContent);
+  cart = [];
+  renderCart();
+  modalCart.classList.add('hidden');
+});
