@@ -50,19 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let quantidade = 1;
 
-    btnMais.addEventListener('click', () => {
-      quantidade++;
-      valor.textContent = quantidade;
-    });
+    btnMais.addEventListener('click', e => {
+  e.stopPropagation(); // 🚫 impede de subir o clique
+  quantidade++;
+  valor.textContent = quantidade;
+});
 
-    btnMenos.addEventListener('click', () => {
-      if (quantidade > 1) {
-        quantidade--;
-        valor.textContent = quantidade;
-      }
-    });
-  });
-
+btnMenos.addEventListener('click', e => {
+  e.stopPropagation();
+  if (quantidade > 1) {
+    quantidade--;
+    valor.textContent = quantidade;
+  }
+});
+    
   /* ================================
      CARRINHO
   ================================ */
