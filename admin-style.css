@@ -1,0 +1,131 @@
+/* ===== Geral ===== */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fefefe;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background-color: #0077b6; /* azul suave */
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header .logo h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.site-header .logo .use {
+  font-weight: 300;
+  font-size: 1rem;
+  margin-right: 10px;
+  opacity: 0.8;
+}
+
+.btn-logout {
+  background-color: #fff;
+  color: #0077b6;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #caf0f8;
+}
+
+/* ===== Container principal ===== */
+.admin-container {
+  padding: 30px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== Cards do painel ===== */
+.admin-card {
+  background-color: #fff;
+  padding: 25px 20px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.admin-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #0077b6;
+  margin-bottom: 15px;
+}
+
+.admin-card p {
+  line-height: 1.5;
+}
+
+/* ===== Pedidos ===== */
+#pedidos-container {
+  margin-top: 15px;
+}
+
+.pedido-item {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+}
+
+.pedido-item:hover {
+  background-color: #e6f0f9;
+}
+
+.pedido-item p {
+  margin: 5px 0;
+}
+
+.pedido-item .status {
+  font-weight: 600;
+  color: #0077b6;
+}
+
+/* Botões de status */
+.pedido-item button {
+  padding: 5px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pedido-item button[data-status="Pago"] {
+  background-color: #caf0f8;
+  color: #0077b6;
+}
+
+.pedido-item button[data-status="Enviado"] {
+  background-color: #ffd6a5;
+  color: #d97706;
+}
+
+.pedido-item button[data-status="Entregue"] {
+  background-color: #caffbf;
+  color: #007f5f;
+}
+
+.pedido-item button:hover {
+  opacity: 0.8;
+}
