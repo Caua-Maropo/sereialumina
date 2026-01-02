@@ -1,3 +1,5 @@
+console.log('🔥 JS principal carregado com sucesso');
+
 import { auth } from './firebase.js';
 import {
   createUserWithEmailAndPassword,
