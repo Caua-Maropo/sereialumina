@@ -1,29 +1,81 @@
-<!-- SEÇÃO DE DESTAQUES/COLEÇÕES -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sereia Lumina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo">
+      <span class="use">Use</span>
+      <h1>Sereia Lumina</h1>
+    </div>
+    <div class="social-icons">
+      <a href="https://wa.me/5581984782598" target="_blank" aria-label="WhatsApp">
+        <img src="imagens/whatsapp.svg" alt="WhatsApp">
+      </a>
+      <a href="https://www.instagram.com/sereialumina" target="_blank" aria-label="Instagram">
+        <img src="imagens/instagram.svg" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero fade-in">
+  <div class="hero-text">
+    <p class="season">Moda verão 2026</p>
+    <h2>A coleção</h2>
+    <p class="subtitle">Tudo sobre moda praia para você!</p>
+  </div>
+</section>
+
+<!-- COLEÇÕES EM DESTAQUE -->
 <section class="colecoes">
   <h2>Coleções em Destaque</h2>
   <div class="colecoes-container">
-    <div class="colecao-card">
+    <div class="colecao-card fade-in">
       <img src="imagens/biquini-banner.jpg" alt="Biquínis">
       <a href="#biquini" class="btn-card">Ver Biquínis</a>
     </div>
-    <div class="colecao-card">
+    <div class="colecao-card fade-in">
       <img src="imagens/maio-banner.jpg" alt="Maiôs">
       <a href="#maio" class="btn-card">Ver Maiôs</a>
     </div>
-    <div class="colecao-card">
+    <div class="colecao-card fade-in">
       <img src="imagens/saida-banner.jpg" alt="Saídas de Praia">
       <a href="#saida" class="btn-card">Ver Saídas</a>
     </div>
   </div>
 </section>
 
+<!-- FILTROS -->
+<div class="filtros-container fade-in">
+  <div class="filtros">
+    <button class="ativo" data-category="todos">Todos</button>
+    <button data-category="biquini">Biquínis</button>
+    <button data-category="maio">Maiôs</button>
+    <button data-category="saida">Saídas</button>
+  </div>
+</div>
+
 <!-- CATÁLOGO -->
 <section id="catalogo" class="catalogo">
   <div class="produtos-container">
-    <!-- PRODUTOS AQUI -->
-    <div class="produto" data-category="biquini">
+    <!-- PRODUTOS -->
+    <div class="produto fade-in" data-category="biquini">
       <div class="card">
-        <div class="card-img"><img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo"><span class="tag">Biquíni</span></div>
+        <div class="card-img">
+          <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
+          <span class="tag">Biquíni</span>
+        </div>
         <div class="card-info">
           <h3>Biquíni Amarelo</h3>
           <p class="descricao">Conforto e elegância para o verão.</p>
@@ -33,9 +85,12 @@
       </div>
     </div>
 
-    <div class="produto" data-category="biquini">
+    <div class="produto fade-in" data-category="biquini">
       <div class="card">
-        <div class="card-img"><img src="imagens/biquini-preto.png" alt="Biquíni Preto"><span class="tag">Biquíni Premium</span></div>
+        <div class="card-img">
+          <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
+          <span class="tag">Biquíni Premium</span>
+        </div>
         <div class="card-info">
           <h3>Biquíni Preto</h3>
           <p class="descricao">Estilo sofisticado para o verão.</p>
@@ -45,9 +100,12 @@
       </div>
     </div>
 
-    <div class="produto" data-category="maio">
+    <div class="produto fade-in" data-category="maio">
       <div class="card">
-        <div class="card-img"><img src="imagens/maio-azul.png" alt="Maiô Azul"><span class="tag">Maiô</span></div>
+        <div class="card-img">
+          <img src="imagens/maio-azul.png" alt="Maiô Azul">
+          <span class="tag">Maiô</span>
+        </div>
         <div class="card-info">
           <h3>Maiô Azul</h3>
           <p class="descricao">Elegância e conforto para praia.</p>
@@ -58,3 +116,34 @@
     </div>
   </div>
 </section>
+
+<!-- CARRINHO -->
+<section class="carrinho-container fade-in">
+  <h2>Meu carrinho</h2>
+  <ul id="lista-carrinho"></ul>
+  <p class="total">total: <strong>R$ <span id="total-carrinho">0,00</span></strong></p>
+  <button id="finalizar-whatsapp">Finalizar no WhatsApp</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="fade-in">© 2025 • Sereia Lumina</footer>
+
+<!-- Firebase e JS -->
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+<script>
+// FADE-IN AO SCROLL
+const elementosFade = document.querySelectorAll('.fade-in');
+
+const mostrarElemento = el => {
+  const topoJanela = window.innerHeight * 0.85;
+  const elementoTopo = el.getBoundingClientRect().top;
+  if (elementoTopo < topoJanela) el.classList.add('aparecer');
+};
+
+window.addEventListener('scroll', () => elementosFade.forEach(el => mostrarElemento(el)));
+window.addEventListener('load', () => elementosFade.forEach(el => mostrarElemento(el)));
+</script>
+
+</body>
+</html>
