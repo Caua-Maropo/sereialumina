@@ -51,12 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================================
-     QUANTIDADE (ISOLADA)
+     QUANTIDADE
   ================================ */
   document.querySelectorAll('.produto').forEach(produto => {
     const btnMais = produto.querySelector('.qtd-mais');
     const btnMenos = produto.querySelector('.qtd-menos');
     const valor = produto.querySelector('.qtd-valor');
+
+    if (!btnMais || !btnMenos || !valor) return;
 
     let quantidade = 1;
 
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================================
-     CARRINHO (GLOBAL)
+     CARRINHO
   ================================ */
   let carrinho = [];
   const listaCarrinho = document.getElementById('lista-carrinho');
@@ -87,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const telefoneWhatsApp = '5581984782598';
 
   function atualizarCarrinho() {
+    if (!listaCarrinho || !totalCarrinho) return;
+
     listaCarrinho.innerHTML = '';
     let total = 0;
 
@@ -117,8 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-carrinho').forEach(botao => {
     botao.addEventListener('click', e => {
       e.preventDefault();
-
       const card = botao.closest('.card');
+      if (!card) return;
+
       const produto = botao.dataset.produto;
       const preco = parseFloat(botao.dataset.preco);
       const tamanhoAtivo = card.querySelector('.tamanho.ativo');
@@ -150,105 +155,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if(botaoFinalizar){
+    botaoFinalizar.addEventListener('click', () => {
+      if (carrinho.length === 0) {
+        alert('Seu carrinho está vazio.');
+        return;
+      }
+
+      let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
+      let total = 0;
+
+      carrinho.forEach(item => {
+        const subtotal = item.preco * item.quantidade;
+        total += subtotal;
+        mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
+      });
+
+      mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+
+      const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    });
+  }
+
   /* ================================
-     FINALIZAR NO WHATSAPP
+     MODAL LOGIN E CARRINHO
   ================================ */
-  botaoFinalizar.addEventListener('click', () => {
-    if (carrinho.length === 0) {
-      alert('Seu carrinho está vazio.');
-      return;
-    }
+  const btnLogin = document.getElementById('btn-login');
+  const modalLogin = document.getElementById('modal-login');
+  const closeLogin = document.getElementById('close-login');
 
-    let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
+  const btnCart = document.getElementById('btn-cart');
+  const modalCart = document.getElementById('modal-cart');
+  const closeCart = document.getElementById('close-cart');
 
-    let total = 0 ;
+  const formLogin = document.getElementById('form-login');
 
-    carrinho.forEach(item => {
-      const subtotal = item.preco * item.quantidade;
-      total += subtotal;
-
-      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
-});
-
-    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
-      
-
-    const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
+  // Abrir modais
+  btnLogin?.addEventListener('click', e => {
+    e.preventDefault();
+    modalLogin?.classList.remove('hidden');
   });
 
-});
-// Seleção dos elementos
-const btnLogin = document.getElementById('btn-login');
-const modalLogin = document.getElementById('modal-login');
-const closeLogin = document.getElementById('close-login');
-
-const btnCart = document.getElementById('btn-cart');
-const modalCart = document.getElementById('modal-cart');
-const closeCart = document.getElementById('close-cart');
-
-const formLogin = document.getElementById('form-login');
-
-const cartList = document.getElementById('cart-list');
-const cartTotal = document.getElementById('cart-total');
-
-let cart = [];
-
-// Abrir modais
-btnLogin.addEventListener('click', e => {
-  e.preventDefault();
-  modalLogin.classList.remove('hidden');
-});
-
-btnCart.addEventListener('click', e => {
-  e.preventDefault();
-  modalCart.classList.remove('hidden');
-  renderCart();
-});
-
-// Fechar modais
-closeLogin.addEventListener('click', () => modalLogin.classList.add('hidden'));
-closeCart.addEventListener('click', () => modalCart.classList.add('hidden'));
-
-// Login (simples, temporário)
-formLogin.addEventListener('submit', e => {
-  e.preventDefault();
-  alert("Login realizado com sucesso!");
-  modalLogin.classList.add('hidden');
-  formLogin.reset();
-});
-
-// Funções do carrinho
-function addToCart(produto, preco) {
-  const existing = cart.find(p => p.name === produto);
-  if(existing){
-    existing.qty++;
-  } else {
-    cart.push({name: produto, price: preco, qty:1});
-  }
-  renderCart();
-}
-
-function renderCart(){
-  cartList.innerHTML = '';
-  let total = 0;
-  cart.forEach(item => {
-    total += item.price * item.qty;
-    const li = document.createElement('li');
-    li.textContent = `${item.name} x${item.qty} - R$ ${ (item.price*item.qty).toFixed(2) }`;
-    cartList.appendChild(li);
+  btnCart?.addEventListener('click', e => {
+    e.preventDefault();
+    modalCart?.classList.remove('hidden');
   });
-  cartTotal.textContent = total.toFixed(2);
-}
 
-// Botão finalizar compra
-document.getElementById('checkout').addEventListener('click', () => {
-  if(cart.length === 0){
-    alert("Seu carrinho está vazio!");
-    return;
-  }
-  alert("Compra finalizada! Total: R$ " + cartTotal.textContent);
-  cart = [];
-  renderCart();
-  modalCart.classList.add('hidden');
+  // Fechar modais
+  closeLogin?.addEventListener('click', () => modalLogin?.classList.add('hidden'));
+  closeCart?.addEventListener('click', () => modalCart?.classList.add('hidden'));
+
+  // Login simples
+  formLogin?.addEventListener('submit', e => {
+    e.preventDefault();
+    alert("Login realizado com sucesso!");
+    modalLogin?.classList.add('hidden');
+    formLogin.reset();
+  });
+
 });
