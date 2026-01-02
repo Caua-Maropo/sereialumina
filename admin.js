@@ -1,1 +1,3 @@
-console.log('admin.js conectado com sucesso');
+import { auth } from './firebase.js';
+
+console.log('Admin conectado:', auth);
