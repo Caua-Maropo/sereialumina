@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Perfil • Sereia Lumina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo">
+      <span class="use">Sereia</span>
+      <h1>Lumina</h1>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="login.html" id="logout">Sair</a>
+  </div>
+</header>
+
+<main class="perfil-container">
+  <h2>Meu Perfil</h2>
+  <section class="pedidos">
+    <h3>Meus Pedidos</h3>
+    <ul id="lista-pedidos">
+      <!-- pedidos do usuário serão carregados aqui -->
+    </ul>
+  </section>
+</main>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="perfil.js"></script>
+</body>
+</html>
