@@ -522,5 +522,139 @@ footer {
   border-bottom: 1px solid #ccc;
 }
 
+/* login html */
+   /* ==============================
+   RESET BÁSICO
+============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #f0f8ff; /* azul clarinho */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ==============================
+   CONTAINER DE LOGIN
+============================== */
+.login-container {
+  background-color: #ffffff; /* branco */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* ==============================
+   LOGO
+============================== */
+.login-container .logo {
+  margin-bottom: 20px;
+}
+
+.login-container .logo h1 {
+  font-family: 'Playfair Display', serif;
+  color: #0077b6; /* azul principal */
+  font-size: 2.2rem;
+}
+
+.login-container .logo span {
+  font-weight: 300;
+  color: #023e8a; /* azul mais escuro */
+}
+
+/* ==============================
+   TÍTULO
+============================== */
+.login-container h2 {
+  color: #023e8a;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* ==============================
+   FORMULÁRIO
+============================== */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-container input:focus {
+  border-color: #0077b6;
+}
+
+.login-container button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0077b6;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: #023e8a;
+}
+
+/* ==============================
+   LINKES E MENSAGENS
+============================== */
+.login-container .erro-login {
+  color: #d00000;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.login-container .signup-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #0077b6;
+}
+
+.login-container .signup-link a {
+  color: #023e8a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-container .signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   RESPONSIVO
+============================== */
+@media screen and (max-width: 450px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+
+  .login-container h2 {
+    font-size: 1.4rem;
   }
 }
