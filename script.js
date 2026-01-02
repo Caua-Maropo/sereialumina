@@ -1,16 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ================================
-     CONFIGURAÇÕES
-  ================================ */
-  const telefoneWhatsApp = '5581984782598';
-  let carrinho = [];
-
-  const listaCarrinho = document.getElementById('lista-carrinho');
-  const totalCarrinhoEl = document.getElementById('total-carrinho');
-  const botaoFinalizar = document.getElementById('finalizar-whatsapp');
-
-  /* ================================
      FILTROS
   ================================ */
   const botoesFiltro = document.querySelectorAll('.filtros button');
@@ -19,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function filtrarProdutos(categoria) {
     produtos.forEach(produto => {
       const mostrar =
-        categoria === 'todos' ||
-        produto.dataset.categoria === categoria;
+        categoria === 'todos' || produto.dataset.categoria === categoria;
 
       produto.classList.toggle('oculto', !mostrar);
     });
@@ -30,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     botao.addEventListener('click', () => {
       botoesFiltro.forEach(b => b.classList.remove('ativo'));
       botao.classList.add('ativo');
+
       filtrarProdutos(botao.dataset.category);
     });
   });
@@ -37,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtrarProdutos('todos');
 
   /* ================================
-     SELEÇÃO DE TAMANHOS
+     TAMANHOS
   ================================ */
   document.querySelectorAll('.tamanhos').forEach(grupo => {
     const botoes = grupo.querySelectorAll('.tamanho');
@@ -51,47 +41,65 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================================
-     ATUALIZAR CARRINHO
+     QUANTIDADE
   ================================ */
+  document.querySelectorAll('.produto').forEach(produto => {
+    const btnMais = produto.querySelector('.qtd-mais');
+    const btnMenos = produto.querySelector('.qtd-menos');
+    const valor = produto.querySelector('.qtd-valor');
+
+    let quantidade = 1;
+
+    btnMais.addEventListener('click', () => {
+      quantidade++;
+      valor.textContent = quantidade;
+    });
+
+    btnMenos.addEventListener('click', () => {
+      if (quantidade > 1) {
+        quantidade--;
+        valor.textContent = quantidade;
+      }
+    });
+  });
+
+  /* ================================
+     CARRINHO
+  ================================ */
+  const carrinho = [];
+  const listaCarrinho = document.getElementById('lista-carrinho');
+  const botaoFinalizar = document.getElementById('finalizar-whatsapp');
+  const telefoneWhatsApp = '5581984782598';
+
   function atualizarCarrinho() {
     listaCarrinho.innerHTML = '';
-    let total = 0;
 
     carrinho.forEach((item, index) => {
-      total += item.preco;
-
       const li = document.createElement('li');
       li.innerHTML = `
-        ${item.produto} — Tam ${item.tamanho}
+        ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}
         <button class="remover" data-index="${index}">×</button>
       `;
-
       listaCarrinho.appendChild(li);
     });
 
-    totalCarrinhoEl.innerHTML = `<strong>Total:</strong> R$ ${total.toFixed(2)}`;
-
-    // remover item
     document.querySelectorAll('.remover').forEach(btn => {
       btn.addEventListener('click', () => {
-        carrinho.splice(btn.dataset.index, 1);
+        const index = btn.dataset.index;
+        carrinho.splice(index, 1);
         atualizarCarrinho();
       });
     });
   }
 
-  /* ================================
-     ADICIONAR AO CARRINHO
-  ================================ */
   document.querySelectorAll('.btn-carrinho').forEach(botao => {
     botao.addEventListener('click', e => {
       e.preventDefault();
 
       const card = botao.closest('.card');
       const produto = botao.dataset.produto;
-      const precoTexto = card.querySelector('.preco').textContent;
-      const preco = parseFloat(precoTexto.replace('R$', '').replace(',', '.'));
       const tamanhoAtivo = card.querySelector('.tamanho.ativo');
+      const qtdValor = card.querySelector('.qtd-valor');
 
       if (!tamanhoAtivo) {
         alert('Selecione um tamanho.');
@@ -101,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       carrinho.push({
         produto,
         tamanho: tamanhoAtivo.textContent,
-        preco
+        quantidade: parseInt(qtdValor.textContent)
       });
 
       atualizarCarrinho();
@@ -114,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         botao.textContent = textoOriginal;
         botao.classList.remove('adicionado');
-      }, 1200);
+      }, 1400);
     });
   });
 
@@ -127,10 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    let mensagem = 'Olá! Gostaria de finalizar a compra com os seguintes itens:\n\n';
+    let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
 
     carrinho.forEach(item => {
-      mensagem += `• ${item.produto} — Tam ${item.tamanho}\n`;
+      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}\n`;
     });
 
     const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
