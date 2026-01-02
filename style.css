@@ -121,6 +121,12 @@ body {
   }
 }
 
+/* VARIÁVEIS DE COR */
+:root {
+  --azul-principal: #002E6B;
+  --verde-whatsapp: #25D366;
+}
+
 /* ================================
    HERO SLIDER
 ================================ */
