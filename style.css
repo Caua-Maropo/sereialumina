@@ -622,3 +622,98 @@ footer {
   border-color: #2ecc71;
   color: #fff;
 }
+/* =====================================
+   MOBILE PREMIUM — AJUSTES FINAIS
+===================================== */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header-container {
+    padding: 16px 18px;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 40vh;
+    padding: 90px 15px 30px;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .hero-text .subtitle {
+    font-size: 1.05rem;
+  }
+
+  /* FILTROS */
+  .filtros {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filtros button {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  /* PRODUTOS */
+  .produtos-container {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 10px;
+  }
+
+  .card {
+    border-radius: 18px;
+  }
+
+  .card-img {
+    height: 240px;
+  }
+
+  .card-info h3 {
+    font-size: 1.35rem;
+  }
+
+  .card-info .preco {
+    font-size: 1.25rem;
+  }
+
+  /* TAMANHOS — ÁREA DE TOQUE */
+  .tamanhos {
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .tamanho {
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  /* BOTÃO ADICIONAR AO CARRINHO */
+  .btn-carrinho {
+    padding: 16px;
+    font-size: 1.05rem;
+    border-radius: 14px;
+  }
+
+  .btn-carrinho:active {
+    transform: scale(0.97);
+  }
+
+  /* CARRINHO STICKY */
+  .carrinho-container {
+    position: sticky;
+    bottom: 16px;
+    margin: 20px;
+    padding: 22px;
+    z-index: 30;
+  }
+
+  .carrinho-container h
