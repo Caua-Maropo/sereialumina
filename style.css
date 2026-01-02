@@ -717,3 +717,39 @@ footer {
   }
 
   .carrinho-container h
+ /* ================================
+   QUANTIDADE
+================================ */
+.quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.quantidade button {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--azul-principal);
+  background: #f3f6fb;
+  color: var(--azul-principal);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.quantidade button:hover {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+.qtd-valor {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #333;
+}
