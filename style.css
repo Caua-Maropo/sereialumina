@@ -753,3 +753,13 @@ footer {
   font-size: 1rem;
   color: #333;
 }
+.pedido-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.pedido-item button {
+  margin-right: 5px;
+  padding: 5px 10px;
+}
