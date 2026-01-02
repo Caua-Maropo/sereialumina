@@ -1,1 +1,1 @@
-console.log('Admin.js carregado');
+console.log('admin.js conectado com sucesso');
