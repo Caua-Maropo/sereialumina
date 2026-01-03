@@ -172,3 +172,26 @@ if (abrirCarrinho) abrirCarrinho.addEventListener("click", (e) => {
 
 if (fecharCarrinho) fecharCarrinho.addEventListener("click", fechar);
 if (overlay) overlay.addEventListener("click", fechar);
+// ================================
+// FILTRO DE CATEGORIAS (INDEX)
+// ================================
+const categorias = document.querySelectorAll(".cat-card");
+const produtos = document.querySelectorAll(".produto");
+
+categorias.forEach((categoria) => {
+  categoria.addEventListener("click", () => {
+    const filtro = categoria.dataset.category;
+
+    // destaque visual
+    categorias.forEach((c) => c.classList.remove("ativo"));
+    categoria.classList.add("ativo");
+
+    produtos.forEach((produto) => {
+      if (produto.dataset.category === filtro) {
+        produto.style.display = "block";
+      } else {
+        produto.style.display = "none";
+      }
+    });
+  });
+});
