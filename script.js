@@ -186,6 +186,15 @@ categorias.forEach((categoria) => {
     categorias.forEach((c) => c.classList.remove("ativo"));
     categoria.classList.add("ativo");
 
+    // 🔹 MOSTRAR TODOS
+    if (filtro === "todos") {
+      produtos.forEach((produto) => {
+        produto.style.display = "block";
+      });
+      return;
+    }
+
+    // 🔹 FILTRO NORMAL
     produtos.forEach((produto) => {
       if (produto.dataset.category === filtro) {
         produto.style.display = "block";
@@ -195,3 +204,4 @@ categorias.forEach((categoria) => {
     });
   });
 });
+
