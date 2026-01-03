@@ -44,10 +44,12 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       quantidade: 1
     });
 
-    document.addEventListener("DOMContentLoaded", atualizarCarrinho);
+    atualizarCarrinho(); // ✅ AQUI ESTÁ A CHAVE
 
     botao.textContent = "✓ Adicionado";
-    setTimeout(() => (botao.textContent = "Adicionar ao carrinho"), 1200);
+    setTimeout(() => {
+      botao.textContent = "Adicionar ao carrinho";
+    }, 1200);
   });
 });
 
@@ -79,4 +81,5 @@ if (botaoFinalizar) {
   });
 }
 
+// Atualiza ao abrir a página do carrinho
 atualizarCarrinho();
