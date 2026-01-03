@@ -1,4 +1,9 @@
-console.log("🔥 JS principal carregado");
+import { db } from "./firebase.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // ================================
 // CARRINHO
