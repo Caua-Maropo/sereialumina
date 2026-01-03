@@ -12,19 +12,21 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
    HEADER ORGANIZADO ESTILO BIQUINELL
 ================================ */
 .clean-header {
-  background: #fff;
-  padding: 10px 40px;
-  box-shadow: 0px 1px 6px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  padding: 12px 48px;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .clean-header .header-container {
+  max-width: 1300px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 25px;
+  gap: 32px;
 }
 
 /* LOGO */
@@ -35,17 +37,71 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 .clean-header .logo .use {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 3px;
-  color: var(--azul-principal);
   text-transform: uppercase;
+  color: var(--azul-principal);
 }
 
 .clean-header .logo h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   color: var(--azul-principal);
   margin-top: -4px;
+}
+
+/* BUSCA */
+.search-area {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 30px 0 0 30px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.search-area input:focus {
+  border-color: var(--azul-principal);
+}
+
+.search-area button {
+  padding: 0 18px;
+  border: 1px solid var(--azul-principal);
+  background: var(--azul-principal);
+  color: #fff;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+
+/* ÍCONES */
+.header-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 1.4rem;
+}
+
+.header-icons a {
+  color: var(--azul-principal);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.header-icons a:hover {
+  transform: scale(1.15);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .search-area {
+    display: none;
+  }
 }
 
 /* PESQUISA */
