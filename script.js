@@ -43,8 +43,6 @@ function atualizarCarrinho() {
       carrinho.splice(btn.dataset.index, 1);
       atualizarCarrinho();
     });
-  });
-}
 
 // Adicionar ao carrinho
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
@@ -77,8 +75,7 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       botao.classList.remove("adicionado");
     }, 1400);
   });
-});
-
+  
 // Finalizar no WhatsApp
 if (botaoFinalizar) {
   botaoFinalizar.addEventListener('click', () => {
@@ -101,8 +98,6 @@ if (botaoFinalizar) {
     const url = `https://wa.me/5581982959208?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
   });
-}
-
 
 // ================================
 // FILTROS
@@ -120,8 +115,6 @@ botoesFiltro.forEach((btn) => {
       p.style.display =
         categoria === "todos" || p.dataset.category === categoria ? "flex" : "none";
     });
-  });
-});
 async function salvarPedido(pedido) {
   try {
     await addDoc(collection(db, "pedidos"), {
