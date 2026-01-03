@@ -44,7 +44,7 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       quantidade: 1
     });
 
-    atualizarCarrinho();
+    document.addEventListener("DOMContentLoaded", atualizarCarrinho);
 
     botao.textContent = "✓ Adicionado";
     setTimeout(() => (botao.textContent = "Adicionar ao carrinho"), 1200);
