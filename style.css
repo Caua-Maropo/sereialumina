@@ -447,22 +447,36 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   border-radius: 12px;
 }
 
+/* LOGIN / CADASTRO BONITO */
+.auth-container {
+  max-width: 380px;
+  margin: 60px auto;
+  padding: 30px 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.1);
+}
+
 .auth-tabs {
   display: flex;
+  gap: 10px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .auth-tabs button {
   flex: 1;
-  padding: 12px;
-  background: #f2f2f2;
+  padding: 12px 0;
+  background-color: #f3f3f3;
   border: none;
-  cursor: pointer;
   font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s ease;
 }
 
 .auth-tabs button.ativo {
-  background: #000;
+  background-color: var(--azul-principal);
   color: #fff;
 }
 
@@ -472,8 +486,30 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   gap: 12px;
 }
 
-.hidden {
-  display: none;
+.auth-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s;
 }
 
+.auth-form input:focus {
+  border-color: var(--azul-principal);
+  outline: none;
+}
+
+.auth-form button {
+  padding: 12px;
+  background-color: var(--azul-principal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-form button:hover {
+  background-color: var(--azul-hover);
 }
