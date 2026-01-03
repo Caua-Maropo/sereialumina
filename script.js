@@ -145,3 +145,30 @@ if (botaoFinalizar) {
 // ================================
 atualizarCarrinho();
 atualizarBadge();
+// ================================
+// CARRINHO LATERAL (NÍVEL 3)
+// ================================
+const abrirCarrinho = document.getElementById("abrir-carrinho");
+const fecharCarrinho = document.getElementById("fechar-carrinho");
+const carrinhoLateral = document.getElementById("carrinho-lateral");
+const overlay = document.getElementById("overlay-carrinho");
+
+function abrir() {
+  carrinhoLateral.classList.add("ativo");
+  overlay.classList.add("ativo");
+  document.body.style.overflow = "hidden"
+}
+
+function fechar() {
+  carrinhoLateral.classList.remove("ativo");
+  overlay.classList.remove("ativo");
+  document.body.style.overflow = "";
+}
+
+if (abrirCarrinho) abrirCarrinho.addEventListener("click", (e) => {
+  e.preventDefault();
+  abrir();
+});
+
+if (fecharCarrinho) fecharCarrinho.addEventListener("click", fechar);
+if (overlay) overlay.addEventListener("click", fechar);
