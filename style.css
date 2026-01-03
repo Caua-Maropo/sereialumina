@@ -305,3 +305,39 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   font-size: 1rem;
   cursor: pointer;
 }
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.item-carrinho span {
+  font-weight: 500;
+}
+
+.item-carrinho small {
+  display: block;
+  color: #777;
+  font-size: 0.8rem;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.remover {
+  background: none;
+  border: none;
+  color: #c0392b;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.remover:hover {
+  transform: scale(1.2);
+}
