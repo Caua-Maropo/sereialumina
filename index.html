@@ -41,14 +41,12 @@
       <a href="#"><i class="fa-regular fa-heart"></i></a>
 
       <!-- carrinho -->
-      <a href="carrinho.html" class="icon-bag">
+      <a href="#" class="icon-bag" id="abrir-carrinho">
   <i class="fa-solid fa-bag-shopping"></i>
-  <span class="badge-carrinho" id="badge-carrinho">0</span>
+  <span id="badge-carrinho">0</span>
 </a>
 
 </div>
-
-
   </div>
 </header>
 
@@ -103,6 +101,30 @@
     <p>© 2025 • Sereia Lumina</p>
     <p>Contato: WhatsApp (xx) xxxx-xxxx</p>
   </footer>
+
+  <!-- OVERLAY -->
+<div id="overlay-carrinho"></div>
+
+<!-- CARRINHO LATERAL -->
+<aside id="carrinho-lateral">
+  <header class="carrinho-header">
+    <h3>Meu Carrinho</h3>
+    <button id="fechar-carrinho">✕</button>
+  </header>
+
+  <ul id="lista-carrinho"></ul>
+
+  <div class="carrinho-footer">
+    <div class="carrinho-total">
+      <span>Total</span>
+      <strong>R$ <span id="total-carrinho">0,00</span></strong>
+    </div>
+
+    <button id="finalizar-whatsapp">
+      Finalizar no WhatsApp
+    </button>
+  </div>
+</aside>
 
   <script src="script.js"></script>
 </body>
