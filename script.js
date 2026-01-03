@@ -8,13 +8,12 @@ import {
 // ================================
 // CARRINHO
 // ================================
-let carrinho = [];
-const listaCarrinho = document.getElementById("lista-carrinho");
-const totalCarrinho = document.getElementById("total-carrinho");
-const botaoFinalizar = document.getElementById("finalizar-whatsapp");
-const telefoneWhatsApp = "5581982959208";
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-// Atualiza carrinho
+const listaCarrinho = document.getElementById('lista-carrinho');
+const totalCarrinho = document.getElementById('total-carrinho');
+const botaoFinalizar = document.getElementById('finalizar-whatsapp');
+
 function atualizarCarrinho() {
   if (!listaCarrinho || !totalCarrinho) return;
 
@@ -25,79 +24,72 @@ function atualizarCarrinho() {
     const subtotal = item.preco * item.quantidade;
     total += subtotal;
 
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.innerHTML = `
-      ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}
-      <br>
-      R$ ${subtotal.toFixed(2).replace('.', ',')}
-      <button class="remover" data-index="${index}">×</button>
+      <span>
+        ${item.produto} <br>
+        Tam ${item.tamanho} — Qtde ${item.quantidade}
+      </span>
+      <strong>R$ ${subtotal.toFixed(2).replace('.', ',')}</strong>
     `;
+
     listaCarrinho.appendChild(li);
   });
 
   totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-  document.querySelectorAll(".remover").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      carrinho.splice(btn.dataset.index, 1);
-      atualizarCarrinho();
-    });
+/* BOTÃO ADICIONAR */
+document.querySelectorAll('.btn-carrinho').forEach(botao => {
+  botao.addEventListener('click', () => {
+    const card = botao.closest('.card');
 
-// Adicionar ao carrinho
-document.querySelectorAll(".btn-carrinho").forEach((botao) => {
-  botao.addEventListener("click", () => {
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
+    const tamanho = card.querySelector('.tamanho.ativo')?.textContent;
+    const quantidade = parseInt(card.querySelector('.qtd-valor')?.textContent || 1);
 
-    console.log({
-  produto,
-  preco,
-  tamanho: tamanhoAtivo?.textContent,
-  quantidade: qtdValor?.textContent
-});
-
- carrinho.push({
-  produto,
-  preco,
-  tamanho: tamanhoAtivo.textContent,
-  quantidade: parseInt(qtdValor.textContent)
-});
-
-
-    // Feedback visual
-    const textoOriginal = botao.textContent;
-    botao.textContent = "✓ Adicionado";
-    botao.classList.add("adicionado");
-
-    setTimeout(() => {
-      botao.textContent = textoOriginal;
-      botao.classList.remove("adicionado");
-    }, 1400);
-  });
-  
-// Finalizar no WhatsApp
-if (botaoFinalizar) {
-  botaoFinalizar.addEventListener('click', () => {
-    if (carrinho.length === 0) {
-      alert('Seu carrinho está vazio.');
+    if (!tamanho) {
+      alert('Selecione um tamanho');
       return;
     }
 
-    let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
+    carrinho.push({ produto, preco, tamanho, quantidade });
+    atualizarCarrinho();
+
+    botao.textContent = '✓ Adicionado';
+    setTimeout(() => botao.textContent = 'Adicionar ao carrinho', 1200);
+  });
+});
+
+/* FINALIZAR */
+if (botaoFinalizar) {
+  botaoFinalizar.addEventListener('click', () => {
+    if (carrinho.length === 0) {
+      alert('Carrinho vazio');
+      return;
+    }
+
+    let mensagem = 'Olá! Meu pedido:\n\n';
     let total = 0;
 
     carrinho.forEach(item => {
-      const subtotal = item.preco * item.quantidade;
-      total += subtotal;
-      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
+      const sub = item.preco * item.quantidade;
+      total += sub;
+      mensagem += `• ${item.produto} (${item.tamanho}) x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
     });
 
     mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
 
-    const url = `https://wa.me/5581982959208?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
+    window.open(
+      `https://wa.me/5581984782598?text=${encodeURIComponent(mensagem)}`,
+      '_blank'
+    );
   });
+}
+
+atualizarCarrinho();
 
 // ================================
 // FILTROS
