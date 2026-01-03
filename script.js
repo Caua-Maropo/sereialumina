@@ -89,7 +89,6 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
     setTimeout(() => {
       botao.textContent = "Adicionar ao carrinho";
     }, 1200);
-  });
 });
 
 // ================================
