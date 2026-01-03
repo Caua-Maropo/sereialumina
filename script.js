@@ -10,6 +10,10 @@ const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
 
 function atualizarCarrinho() {
+  // 🔥 SEMPRE salva
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  // Só renderiza se existir carrinho.html
   if (!listaCarrinho || !totalCarrinho) return;
 
   listaCarrinho.innerHTML = "";
@@ -28,7 +32,6 @@ function atualizarCarrinho() {
   });
 
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
 
 // ================================
