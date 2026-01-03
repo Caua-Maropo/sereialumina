@@ -7,17 +7,30 @@
 </head>
 <body>
 
-  <main class="login-container">
-    <h2>Entrar</h2>
+<div class="auth-container">
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Senha">
+  <div class="auth-tabs">
+    <button id="tab-login" class="ativo">Entrar</button>
+    <button id="tab-cadastro">Cadastrar-se</button>
+  </div>
 
-    <button id="btn-login">Entrar</button>
+  <!-- LOGIN -->
+  <form id="form-login" class="auth-form">
+    <input type="email" id="login-email" placeholder="Email" required>
+    <input type="password" id="login-senha" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
 
-    <p id="login-msg"></p>
-  </main>
+  <!-- CADASTRO -->
+  <form id="form-cadastro" class="auth-form hidden">
+    <input type="text" id="cad-nome" placeholder="Nome completo" required>
+    <input type="email" id="cad-email" placeholder="Email" required>
+    <input type="password" id="cad-senha" placeholder="Senha" required>
+    <button type="submit">Criar conta</button>
+  </form>
 
-  <script type="module" src="login.js"></script>
+</div>
+
+  <script src="login.js"></script>
 </body>
 </html>
