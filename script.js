@@ -48,7 +48,10 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       quantidade: 1
     });
 
-    atualizarCarrinho(); // ✅ AQUI ESTÁ A CHAVE
+    function atualizarCarrinho() {
+  if (!listaCarrinho || !totalCarrinho) return;
+  ...
+}
 
     botao.textContent = "✓ Adicionado";
     setTimeout(() => {
