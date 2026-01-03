@@ -8,12 +8,125 @@
 body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 
 /* HEADER */
-.site-header { padding:20px 40px; display:flex; justify-content:space-between; align-items:center; background:#fff; position:sticky; top:0; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
-.logo h1 { font-family:'Playfair Display', serif; color:var(--azul-principal); font-size:1.8rem; }
-.logo .use { font-size:0.8rem; letter-spacing:2px; color:var(--azul-principal); }
-.search-bar input { padding:6px 10px; border-radius:8px; border:1px solid #ccc; }
-.search-bar button { padding:6px 10px; margin-left:5px; border:none; background:var(--azul-principal); color:#fff; border-radius:6px; cursor:pointer; }
-.header-icons a { margin-left:15px; font-size:1.3rem; color:var(--azul-principal); text-decoration:none; }
+/* ================================
+   HEADER ORGANIZADO ESTILO BIQUINELL
+================================ */
+.clean-header {
+  background: #fff;
+  padding: 10px 40px;
+  box-shadow: 0px 1px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.clean-header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* LOGO */
+.clean-header .logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.clean-header .logo .use {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--azul-principal);
+  text-transform: uppercase;
+}
+
+.clean-header .logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--azul-principal);
+  margin-top: -4px;
+}
+
+/* PESQUISA */
+.search-area {
+  flex: 1;
+  display: flex;
+  max-width: 500px;
+  align-items: center;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 24px 0 0 24px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.search-area input:focus {
+  border-color: var(--azul-principal);
+}
+
+.search-area button {
+  padding: 8px 14px;
+  border: 1px solid var(--azul-principal);
+  background: var(--azul-principal);
+  color: white;
+  border-radius: 0 24px 24px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-area button:hover {
+  background: var(--azul-hover);
+}
+
+/* ÍCONES */
+.header-icons {
+  display: flex;
+  gap: 18px;
+  font-size: 1.3rem;
+}
+
+.header-icons a {
+  color: var(--azul-principal);
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.header-icons a:hover {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  .search-area {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clean-header {
+    padding: 8px 20px;
+  }
+
+  .search-area {
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .header-icons {
+    gap: 12px;
+    font-size: 1.1rem;
+  }
+
+  .clean-header .logo h1 {
+    font-size: 1.5rem;
+  }
+}
 
 /* HERO */
 .hero { background:linear-gradient(to bottom, var(--azul-principal), #01408f); color:#fff; text-align:center; padding:100px 20px; }
