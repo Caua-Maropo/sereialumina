@@ -9,45 +9,78 @@ const listaCarrinho = document.getElementById("lista-carrinho");
 const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
 
+// ================================
+// ATUALIZAR CARRINHO
+// ================================
 function atualizarCarrinho() {
-  // 🔥 SEMPRE salva o carrinho
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  // Se não estiver na página do carrinho, só salva
-  if (!listaCarrinho || !totalCarrinho) return;
+  if (!listaCarrinho || !totalCarrinho) {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    return;
+  }
 
   listaCarrinho.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach((item) => {
+  carrinho.forEach((item, index) => {
     const subtotal = item.preco * item.quantidade;
     total += subtotal;
 
     const li = document.createElement("li");
+    li.classList.add("item-carrinho");
+
     li.innerHTML = `
-      <span>${item.produto} — ${item.tamanho} (x${item.quantidade})</span>
-      <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
+      <div>
+        <span>${item.produto} — ${item.tamanho}</span>
+        <small>Qtd: ${item.quantidade}</small>
+      </div>
+
+      <div class="acoes">
+        <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
+        <button class="remover" data-index="${index}">✕</button>
+      </div>
     `;
+
     listaCarrinho.appendChild(li);
   });
 
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  // ================================
+  // REMOVER ITEM
+  // ================================
+  document.querySelectorAll(".remover").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      const index = botao.dataset.index;
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    });
+  });
 }
 
 // ================================
-// BOTÕES ADICIONAR AO CARRINHO
+// BOTÕES "ADICIONAR AO CARRINHO"
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
+    const tamanho = "Único";
 
-    carrinho.push({
-      produto,
-      preco,
-      tamanho: "Único",
-      quantidade: 1
-    });
+    const itemExistente = carrinho.find(
+      (item) => item.produto === produto && item.tamanho === tamanho
+    );
+
+    if (itemExistente) {
+      itemExistente.quantidade++;
+    } else {
+      carrinho.push({
+        produto,
+        preco,
+        tamanho,
+        quantidade: 1
+      });
+    }
 
     atualizarCarrinho();
 
@@ -86,5 +119,7 @@ if (botaoFinalizar) {
   });
 }
 
-// Atualiza automaticamente ao abrir carrinho.html
+// ================================
+// ATUALIZA AO ABRIR A PÁGINA
+// ================================
 atualizarCarrinho();
