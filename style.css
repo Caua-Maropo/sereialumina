@@ -439,6 +439,8 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   background: #0aa;
   color: #fff;
   transform: translateY(-2px);
+}
+
   .auth-container {
   max-width: 380px;
   margin: 60px auto;
