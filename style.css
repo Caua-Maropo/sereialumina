@@ -447,82 +447,10 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   border-radius: 12px;
 }
 
-/* LOGIN / CADASTRO BONITO */
-.auth-container {
-  max-width: 380px;
-  margin: 60px auto;
-  padding: 30px 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 8px 25px rgba(0,0,0,0.1);
-}
-
-.auth-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  justify-content: center;
-}
-
-.auth-tabs button {
-  flex: 1;
-  padding: 12px 0;
-  background-color: #f3f3f3;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-.auth-tabs button.ativo {
-  background-color: var(--azul-principal);
-  color: #fff;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.auth-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border 0.2s;
-}
-
-.auth-form input:focus {
-  border-color: var(--azul-principal);
-  outline: none;
-}
-
-.auth-form button {
-  padding: 12px;
-  background-color: var(--azul-principal);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.auth-form button:hover {
-  background-color: var(--azul-hover);
-}
 /* ============================= */
 /* LOGIN / CADASTRO – SEREIA LUMINA */
 /* ============================= */
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #eaf6ff, #ffffff);
-}
-
-/* Container central */
 .auth-container {
   max-width: 420px;
   margin: 80px auto;
@@ -533,7 +461,6 @@ body {
   animation: fadeUp 0.6s ease;
 }
 
-/* Animação suave */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -545,7 +472,6 @@ body {
   }
 }
 
-/* Abas */
 .auth-tabs {
   display: flex;
   gap: 8px;
@@ -559,18 +485,15 @@ body {
   background: #f2f4f7;
   border-radius: 10px;
   font-weight: 500;
-  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: 0.25s;
 }
 
 .auth-tabs button.ativo {
-  background: #1d6fe0;
+  background: var(--azul-principal);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(29, 111, 224, 0.35);
 }
 
-/* Formulário */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -578,39 +501,26 @@ body {
 }
 
 .auth-form input {
-  padding: 14px 14px;
+  padding: 14px;
   border-radius: 10px;
   border: 1px solid #d0d7de;
-  font-size: 0.95rem;
-  transition: border 0.25s ease, box-shadow 0.25s ease;
 }
 
 .auth-form input:focus {
   outline: none;
-  border-color: #1d6fe0;
-  box-shadow: 0 0 0 3px rgba(29, 111, 224, 0.15);
+  border-color: var(--azul-principal);
 }
 
-/* Botão */
 .auth-form button {
-  margin-top: 6px;
   padding: 14px;
   border-radius: 12px;
   border: none;
-  background: #1d6fe0;
+  background: var(--azul-principal);
   color: #fff;
-  font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.auth-form button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(29, 111, 224, 0.35);
-}
-
-/* Esconder cadastro/login */
 .hidden {
   display: none;
 }
