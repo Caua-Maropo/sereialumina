@@ -10,10 +10,10 @@ const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
 
 function atualizarCarrinho() {
-  // 🔥 SEMPRE salva
+  // 🔥 SEMPRE salva o carrinho
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-  // Só renderiza se existir carrinho.html
+  // Se não estiver na página do carrinho, só salva
   if (!listaCarrinho || !totalCarrinho) return;
 
   listaCarrinho.innerHTML = "";
@@ -39,8 +39,6 @@ function atualizarCarrinho() {
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
-    console.log("Clique no botão detectado");
-
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
 
@@ -51,7 +49,6 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       quantidade: 1
     });
 
-    // 🔥 ISSO É O QUE FALTAVA
     atualizarCarrinho();
 
     botao.textContent = "✓ Adicionado";
