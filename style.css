@@ -439,4 +439,41 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   background: #0aa;
   color: #fff;
   transform: translateY(-2px);
+  .auth-container {
+  max-width: 380px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 12px;
+  background: #f2f2f2;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.auth-tabs button.ativo {
+  background: #000;
+  color: #fff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
 }
