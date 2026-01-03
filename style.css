@@ -217,3 +217,41 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   .produtos-grid { padding:0 20px; }
   .categorias { flex-direction:column; gap:15px; }
 }
+ /* Login */
+.login-container {
+  max-width: 360px;
+  margin: 100px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 25px;
+  color: var(--azul-principal);
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: var(--azul-principal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#login-msg {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
