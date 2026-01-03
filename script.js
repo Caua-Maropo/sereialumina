@@ -204,19 +204,6 @@ categorias.forEach((categoria) => {
     });
   });
 });
-const tabLogin = document.getElementById("tab-login");
-const tabCadastro = document.getElementById("tab-cadastro");
-
-const formLogin = document.getElementById("form-login");
-const formCadastro = document.getElementById("form-cadastro");
-
-tabLogin.addEventListener("click", () => {
-  tabLogin.classList.add("ativo");
-  tabCadastro.classList.remove("ativo");
-
-  formLogin.classList.remove("hidden");
-  formCadastro.classList.add("hidden");
-});
 
 tabCadastro.addEventListener("click", () => {
   tabCadastro.classList.add("ativo");
