@@ -37,7 +37,7 @@ function atualizarCarrinho() {
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
     console.log("Clique no botão detectado");
-    
+
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
 
@@ -48,10 +48,8 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
       quantidade: 1
     });
 
-    function atualizarCarrinho() {
-  if (!listaCarrinho || !totalCarrinho) return;
-  ...
-}
+    // 🔥 ISSO É O QUE FALTAVA
+    atualizarCarrinho();
 
     botao.textContent = "✓ Adicionado";
     setTimeout(() => {
@@ -88,5 +86,5 @@ if (botaoFinalizar) {
   });
 }
 
-// Atualiza ao abrir a página do carrinho
+// Atualiza automaticamente ao abrir carrinho.html
 atualizarCarrinho();
