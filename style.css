@@ -341,3 +341,18 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 .remover:hover {
   transform: scale(1.2);
 }
+.icon-bag {
+  position: relative;
+}
+
+.badge-carrinho {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #0a3a5a;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 500;
+}
