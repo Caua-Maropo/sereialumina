@@ -12,11 +12,13 @@ let carrinho = [];
 const listaCarrinho = document.getElementById("lista-carrinho");
 const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
-const telefoneWhatsApp = "5581984782598";
+const telefoneWhatsApp = "5581982959208";
 
 // Atualiza carrinho
 function atualizarCarrinho() {
-  listaCarrinho.innerHTML = "";
+  if (!listaCarrinho || !totalCarrinho) return;
+
+  listaCarrinho.innerHTML = '';
   let total = 0;
 
   carrinho.forEach((item, index) => {
@@ -25,14 +27,16 @@ function atualizarCarrinho() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.produto} — Qtde ${item.quantidade}
-      <br>R$ ${subtotal.toFixed(2).replace(".", ",")}
+      ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade}
+      <br>
+      R$ ${subtotal.toFixed(2).replace('.', ',')}
       <button class="remover" data-index="${index}">×</button>
     `;
     listaCarrinho.appendChild(li);
   });
 
-  totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
+  totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
+}
 
   document.querySelectorAll(".remover").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -76,33 +80,29 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
 });
 
 // Finalizar no WhatsApp
-botaoFinalizar.addEventListener("click", () => {
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio.");
-    return;
-  }
+if (botaoFinalizar) {
+  botaoFinalizar.addEventListener('click', () => {
+    if (carrinho.length === 0) {
+      alert('Seu carrinho está vazio.');
+      return;
+    }
 
-  const pedido = {
-    itens: carrinho,
-    total: carrinho.reduce((soma, item) =>
-      soma + item.preco * item.quantidade, 0
-    ),
-  };
-  
-  let mensagem = "Olá! Gostaria de finalizar meu pedido:\n\n";
-  let total = 0;
+    let mensagem = 'Olá! Gostaria de finalizar meu pedido:\n\n';
+    let total = 0;
 
-  carrinho.forEach((item) => {
-    const subtotal = item.preco * item.quantidade;
-    total += subtotal;
-    mensagem += `• ${item.produto} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
+    carrinho.forEach(item => {
+      const subtotal = item.preco * item.quantidade;
+      total += subtotal;
+      mensagem += `• ${item.produto} — Tam ${item.tamanho} — Qtde ${item.quantidade} — R$ ${subtotal.toFixed(2)}\n`;
+    });
+
+    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+
+    const url = `https://wa.me/5581982959208?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
   });
+}
 
-  mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
-
-  const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, "_blank");
-});
 
 // ================================
 // FILTROS
