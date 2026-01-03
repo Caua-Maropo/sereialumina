@@ -1,3 +1,5 @@
+console.log("script.js carregado");
+
 // ================================
 // CARRINHO (LocalStorage)
 // ================================
