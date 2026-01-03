@@ -255,3 +255,53 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   margin-top: 12px;
   font-size: 0.9rem;
 }
+ /* carrinho */
+.carrinho-container {
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.carrinho-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--azul-principal);
+}
+
+#lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+  background: #f3f6fb;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrinho-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+#finalizar-whatsapp {
+  width: 100%;
+  padding: 12px;
+  background: #25d366;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
