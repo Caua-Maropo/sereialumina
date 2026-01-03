@@ -70,6 +70,13 @@ botaoFinalizar.addEventListener("click", () => {
     return;
   }
 
+  const pedido = {
+    itens: carrinho,
+    total: carrinho.reduce((soma, item) =>
+      soma + item.preco * item.quantidade, 0
+    ),
+  };
+  
   let mensagem = "Olá! Gostaria de finalizar meu pedido:\n\n";
   let total = 0;
 
@@ -103,3 +110,16 @@ botoesFiltro.forEach((btn) => {
     });
   });
 });
+async function salvarPedido(pedido) {
+  try {
+    await addDoc(collection(db, "pedidos"), {
+      ...pedido,
+      status: "Recebido",
+      criadoEm: serverTimestamp()
+    });
+    console.log("Pedido salvo com sucesso!");
+  } catch (error) {
+    console.error("Erro ao salvar pedido:", error);
+  }
+}
+
