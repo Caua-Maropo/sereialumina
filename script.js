@@ -80,9 +80,10 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
         tamanho,
         quantidade: 1
       });
-    }
 
-    atualizarCarrinho();
+      atualizarCarrinho();
+      atualizarBadge();
+      mostrarToast();
 
     botao.textContent = "✓ Adicionado";
     setTimeout(() => {
@@ -90,6 +91,35 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
     }, 1200);
   });
 });
+
+// ================================
+// BADGE DO CARRINHO (NÍVEL 2)
+// ================================
+function atualizarBadge() {
+  const badge = document.getElementById("badge-carrinho");
+  if (!badge) return;
+
+  const totalItens = carrinho.reduce((soma, item) => {
+    return soma + item.quantidade;
+  }, 0);
+
+  badge.textContent = totalItens;
+}
+
+// ================================
+// TOAST (MENSAGEM BONITA)
+// ================================
+function mostrarToast() {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
 
 // ================================
 // FINALIZAR NO WHATSAPP
@@ -123,3 +153,5 @@ if (botaoFinalizar) {
 // ATUALIZA AO ABRIR A PÁGINA
 // ================================
 atualizarCarrinho();
+atualizarCarrinho();
+atualizarBadge();
