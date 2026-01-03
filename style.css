@@ -430,3 +430,13 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   border-radius: 8px;
   cursor: pointer;
 }
+.cat-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cat-card.ativo {
+  background: #0aa;
+  color: #fff;
+  transform: translateY(-2px);
+}
