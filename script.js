@@ -36,6 +36,8 @@ function atualizarCarrinho() {
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
+    console.log("Clique no botão detectado");
+    
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
 
