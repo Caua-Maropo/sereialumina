@@ -33,7 +33,6 @@ function atualizarCarrinho() {
         <span>${item.produto} — ${item.tamanho}</span>
         <small>Qtd: ${item.quantidade}</small>
       </div>
-
       <div class="acoes">
         <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
         <button class="remover" data-index="${index}">✕</button>
@@ -46,20 +45,18 @@ function atualizarCarrinho() {
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-  // ================================
-  // REMOVER ITEM
-  // ================================
   document.querySelectorAll(".remover").forEach((botao) => {
     botao.addEventListener("click", () => {
       const index = botao.dataset.index;
       carrinho.splice(index, 1);
       atualizarCarrinho();
+      atualizarBadge();
     });
   });
 }
 
 // ================================
-// BOTÕES "ADICIONAR AO CARRINHO"
+// BOTÕES ADICIONAR AO CARRINHO
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
@@ -80,48 +77,43 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
         tamanho,
         quantidade: 1
       });
+    }
 
-      atualizarCarrinho();
-      atualizarBadge();
-      mostrarToast();
+    atualizarCarrinho();
+    atualizarBadge();
+    mostrarToast();
 
     botao.textContent = "✓ Adicionado";
     setTimeout(() => {
       botao.textContent = "Adicionar ao carrinho";
     }, 1200);
+  });
 });
 
 // ================================
-// BADGE DO CARRINHO (NÍVEL 2)
+// BADGE DO CARRINHO
 // ================================
 function atualizarBadge() {
   const badge = document.getElementById("badge-carrinho");
   if (!badge) return;
 
-  const totalItens = carrinho.reduce((soma, item) => {
-    return soma + item.quantidade;
-  }, 0);
-
+  const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
   badge.textContent = totalItens;
 }
 
 // ================================
-// TOAST (MENSAGEM BONITA)
+// TOAST
 // ================================
 function mostrarToast() {
   const toast = document.getElementById("toast");
   if (!toast) return;
 
   toast.classList.add("show");
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2000);
+  setTimeout(() => toast.classList.remove("show"), 2000);
 }
 
-
 // ================================
-// FINALIZAR NO WHATSAPP
+// FINALIZAR WHATSAPP
 // ================================
 if (botaoFinalizar) {
   botaoFinalizar.addEventListener("click", () => {
@@ -149,8 +141,7 @@ if (botaoFinalizar) {
 }
 
 // ================================
-// ATUALIZA AO ABRIR A PÁGINA
+// INIT
 // ================================
-atualizarCarrinho();
 atualizarCarrinho();
 atualizarBadge();
