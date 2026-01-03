@@ -1,7 +1,8 @@
+import { app } from "./firebase.js";
 import { getAuth, onAuthStateChanged, signOut } 
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const auth = getAuth();
+const auth = getAuth(app);
 
 const userArea = document.getElementById("user-area");
 const userEmail = document.getElementById("user-email");
