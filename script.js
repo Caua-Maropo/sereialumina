@@ -48,8 +48,20 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
     const produto = botao.dataset.produto;
     const preco = parseFloat(botao.dataset.preco);
 
-    carrinho.push({ produto, quantidade: 1, preco });
-    atualizarCarrinho();
+    console.log({
+  produto,
+  preco,
+  tamanho: tamanhoAtivo?.textContent,
+  quantidade: qtdValor?.textContent
+});
+
+ carrinho.push({
+  produto,
+  preco,
+  tamanho: tamanhoAtivo.textContent,
+  quantidade: parseInt(qtdValor.textContent)
+});
+
 
     // Feedback visual
     const textoOriginal = botao.textContent;
