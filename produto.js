@@ -80,3 +80,43 @@ produto.cores.forEach((cor, index) => {
 
   coresContainer.appendChild(div);
 });
+// ================================
+// ADICIONAR AO CARRINHO (PRODUTO)
+// ================================
+
+const btnAdd = document.getElementById("btn-add-produto");
+
+// Carregar carrinho existente
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+btnAdd.addEventListener("click", () => {
+
+  const itemExistente = carrinho.find(
+    item =>
+      item.produto === produto.nome &&
+      item.tamanho === corSelecionada
+  );
+
+  if (itemExistente) {
+    itemExistente.quantidade++;
+  } else {
+    carrinho.push({
+      produto: produto.nome,
+      preco: produto.preco,
+      tamanho: corSelecionada,
+      quantidade: 1
+    });
+  }
+
+  // Salvar
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  // Feedback visual
+  btnAdd.textContent = "✓ Adicionado ao carrinho";
+  btnAdd.disabled = true;
+
+  setTimeout(() => {
+    btnAdd.textContent = "Adicionar ao carrinho";
+    btnAdd.disabled = false;
+  }, 1500);
+});
