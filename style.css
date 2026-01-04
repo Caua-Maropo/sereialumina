@@ -616,3 +616,37 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
     grid-template-columns: 1fr;
   }
 }
+/* =======================
+  PRODUTO – ESTILO PREMIUM
+======================= */
+
+.produto-beneficios {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: .85rem;
+  color: #555;
+}
+
+.cores {
+  display: flex;
+  gap: 10px;
+}
+
+.cor-item {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.cor-item.ativa {
+  border-color: #000;
+}
+
+/* Botão com mais presença */
+.btn-comprar {
+  font-size: 1.05rem;
+  letter-spacing: .5px;
+}
