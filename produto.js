@@ -84,22 +84,41 @@ produto.cores.forEach((cor, index) => {
 // ADICIONAR AO CARRINHO (PRODUTO)
 // ================================
 
-const btnAdd = document.getElementById("btn-add-produto");
+// ================================
+// ADICIONAR AO CARRINHO (PRODUTO)
+// ================================
 
-if (btnAdd) {
-  btnAdd.addEventListener("click", () => {
-    // aqui futuramente vamos integrar com o carrinho global
-    btnAdd.textContent = "✓ Adicionado ao carrinho";
-    btnAdd.style.background = "#27ae60";
-    btnAdd.disabled = true;
+const btnAddProduto = document.getElementById("btn-add-produto");
 
-    setTimeout(() => {
-      btnAdd.textContent = "Adicionar ao carrinho";
-      btnAdd.style.background = "";
-      btnAdd.disabled = false;
-    }, 2000);
-  });
-}
+// Recupera carrinho existente
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+btnAddProduto.addEventListener("click", () => {
+  const itemExistente = carrinho.find(
+    (item) =>
+      item.produto === produto.nome &&
+      item.cor === corSelecionada
+  );
+
+  if (itemExistente) {
+    itemExistente.quantidade++;
+  } else {
+    carrinho.push({
+      produto: produto.nome,
+      preco: produto.preco,
+      cor: corSelecionada,
+      quantidade: 1
+    });
+  }
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  // Feedback visual
+  btnAddProduto.textContent = "✓ Adicionado";
+  setTimeout(() => {
+    btnAddProduto.textContent = "Adicionar ao carrinho";
+  }, 1200);
+});
 
 // Carregar carrinho existente
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
