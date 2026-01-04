@@ -1,22 +1,35 @@
-const produtos = {
-  "biquini-amarelo": {
+const produtos = [
+  {
+    id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
     preco: 59.90,
     imagem: "imagens/biquini-amarelo.png",
-    descricao: "Biquíni confeccionado em tecido premium, confortável, com ótimo ajuste ao corpo.",
+    descricao: "Biquíni confortável, tecido premium e secagem rápida.",
+    cores: ["Amarelo", "Preto", "Branco"],
     peso: "180g",
-    cores: ["Amarelo", "Preto", "Branco"]
+    categoria: "biquini"
   },
-
-  "biquini-preto": {
+  {
+    id: "biquini-preto",
     nome: "Biquíni Preto",
     preco: 79.90,
     imagem: "imagens/biquini-preto.png",
-    descricao: "Modelo clássico, elegante e perfeito para o verão.",
+    descricao: "Modelo elegante e moderno, perfeito para o verão.",
+    cores: ["Preto", "Vermelho"],
     peso: "190g",
-    cores: ["Preto", "Vermelho"]
+    categoria: "biquini"
+  },
+  {
+    id: "maio-azul",
+    nome: "Maiô Azul",
+    preco: 89.90,
+    imagem: "imagens/maio-azul.png",
+    descricao: "Maiô com proteção UV e modelagem confortável.",
+    cores: ["Azul", "Preto"],
+    peso: "220g",
+    categoria: "maio"
   }
-};
+];
 
 // Lê o ID
 const params = new URLSearchParams(window.location.search);
