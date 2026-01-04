@@ -15,9 +15,8 @@
 <body>
 
  <!-- HEADER -->
-  <header class="site-header clean-header">
+<header class="site-header clean-header">
   <div class="header-container">
-    
 
     <!-- Logo -->
     <a href="index.html" class="logo">
@@ -27,23 +26,32 @@
 
     <!-- Busca -->
     <div class="search-area">
-      <input
-        type="text"
-        placeholder="Pesquisar produtos"
-        aria-label="Pesquisar produtos"
-      >
-      <button aria-label="Pesquisar">🔍</button>
+      <input type="text" placeholder="Pesquisar produtos">
+      <button>🔍</button>
     </div>
-    
- <!-- Ícones -->
-   <div class="header-icons">
-  <a href="login.html"><i class="fa-regular fa-user"></i></a>
-  <a href="#"><i class="fa-regular fa-heart"></i></a>
 
-  <a href="#" id="abrir-carrinho" class="icon-bag">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <span class="badge-carrinho" id="badge-carrinho">0</span>
-  </a>
+    <!-- Ícones -->
+    <div class="header-icons">
+
+      <!-- Login -->
+      <a href="login.html" title="Login">
+        <i class="fa-regular fa-user"></i>
+      </a>
+
+      <!-- Favoritos -->
+      <a href="#" title="Favoritos">
+        <i class="fa-regular fa-heart"></i>
+      </a>
+
+      <!-- Carrinho -->
+      <a href="#" id="abrir-carrinho" class="icon-bag" title="Carrinho">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge-carrinho" id="badge-carrinho">0</span>
+      </a>
+
+    </div>
+  </div>
+</header>
 
   <!-- USUÁRIO LOGADO -->
   <div class="user-area" id="user-area" style="display:none;">
