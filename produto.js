@@ -34,20 +34,22 @@ const produtos = [
 // Lê o ID
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const produto = produtos[id];
+
+const produto = produtos.find(p => p.id === id);
 
 if (!produto) {
   document.body.innerHTML = "<h2>Produto não encontrado</h2>";
+  throw new Error("Produto inválido");
 }
 
-// Preenche
 document.getElementById("produto-nome").textContent = produto.nome;
 document.getElementById("produto-preco").textContent =
   `R$ ${produto.preco.toFixed(2).replace(".", ",")}`;
-
-document.getElementById("produto-imagem").src = produto.imagem;
 document.getElementById("produto-descricao").textContent = produto.descricao;
 document.getElementById("produto-peso").textContent = produto.peso;
+
+document.getElementById("produto-img").src = produto.imagem;
+
 
 // Cores
 const coresContainer = document.getElementById("produto-cores");
