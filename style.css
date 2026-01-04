@@ -526,3 +526,19 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 .hidden {
   display: none;
 }
+.produto-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 60px;
+}
+
+.produto-imagem img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.produto-info h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
