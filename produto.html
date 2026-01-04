@@ -22,28 +22,33 @@
 <main class="produto-page">
   <div class="produto-container">
 
+    <!-- IMAGEM -->
     <div class="produto-imagem">
-      <img id="produto-img" src="" alt="">
+      <img id="produto-imagem" src="" alt="Produto">
     </div>
 
+    <!-- INFO -->
     <div class="produto-info">
       <h1 id="produto-nome"></h1>
-      <p class="produto-peco">R$ <span id="produto-preco"></span></p>
 
-      <p class="produto-descricao" id="produto-descricao"></p>
+      <p class="produto-preco">
+        R$ <span id="produto-preco"></span>
+      </p>
 
-     <div class="produto-detalhes">
+      <p id="produto-descricao" class="produto-descricao"></p>
+
+      <div class="produto-detalhes">
         <p><strong>Peso:</strong> <span id="produto-peso"></span></p>
-        <p><strong>Cores:</strong> <span id="produto-cores"></span></p>
       </div>
-      
-      <button class="btn-add-produto" class="btn-produto">">
+
+      <button id="btn-add-produto" class="btn-produto">
         Adicionar ao carrinho
       </button>
     </div>
 
   </div>
 </main>
+
 
 <script src="produtos.js"></script>
 <script src="produto.js"></script>
