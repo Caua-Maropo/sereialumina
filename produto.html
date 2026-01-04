@@ -87,8 +87,34 @@
   </div>
 </main>
 
-<!-- SCRIPT (APENAS UMA VEZ) -->
-<script src="produto.js"></script>
+  <!-- OVERLAY -->
+<div id="overlay-carrinho"></div>
 
+<!-- CARRINHO LATERAL -->
+<aside id="carrinho-lateral">
+  <header class="carrinho-header">
+    <h3>Meu Carrinho</h3>
+    <button id="fechar-carrinho">✕</button>
+  </header>
+
+  <ul id="lista-carrinho"></ul>
+
+  <div class="carrinho-footer">
+    <div class="carrinho-total">
+      <span>Total</span>
+      <strong>R$ <span id="total-carrinho">0,00</span></strong>
+    </div>
+
+    <button id="finalizar-whatsapp">
+      Finalizar no WhatsApp
+    </button>
+  </div>
+</aside>
+
+
+<!-- SCRIPT (APENAS UMA VEZ) -->
+<script src="script.js"></script>
+<scrip src="produto.js"></scrip>
+  
 </body>
 </html>
