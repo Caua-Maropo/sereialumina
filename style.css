@@ -651,19 +651,19 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   color: #555;
 }
 
-.produto-cores {
+.cores-opcoes {
   display: flex;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin: 12px 0 20px;
 }
 
 .cor-item {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .cor-item:hover {
@@ -671,9 +671,10 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 .cor-item.ativa {
-  border-color: #1e88e5;
-  box-shadow: 0 0 0 4px rgba(30,136,229,0.2);
+  border-color: #002E6B;
+  box-shadow: 0 0 0 2px rgba(0,46,107,0.25);
 }
+
 
 /* Botão com mais presença */
 .btn-comprar {
