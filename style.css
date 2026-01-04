@@ -531,12 +531,7 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 ======================= */
 
 .produto-page {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  padding: 60px 20px;
 }
 
 /* GALERIA */
@@ -552,23 +547,23 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 .produto-info h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  color: var(--azul-principal);
+  margin-bottom: 12px;
 }
 
 .produto-preco {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
 .produto-descricao {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 30px;
-  color: #444;
+  margin-bottom: 20px;
 }
+
 
 /* OPÇÕES */
 .produto-opcao {
@@ -581,6 +576,10 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   margin-bottom: 6px;
   font-weight: 500;
 }
+.produto-detalhes p {
+  margin-bottom: 6px;
+  color: #555;
+}
 
 .produto-opcao select,
 .produto-opcao span {
@@ -590,29 +589,41 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   border: 1px solid #ddd;
   font-size: 1rem;
 }
-
-/* BOTÃO */
-.btn-comprar {
-  margin-top: 30px;
+.produto-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.produto-imagem img {
   width: 100%;
-  padding: 16px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  background: #000;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+/* BOTÃO */
+.btn-produto {
+  margin-top: 30px;
+  padding: 14px;
+  width: 100%;
+  background: var(--azul-principal);
   color: #fff;
-  transition: .3s;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.btn-comprar:hover {
-  opacity: .85;
+.btn-produto:hover {
+  background: var(--azul-hover);
+  transform: translateY(-2px);
 }
 
-/* RESPONSIVO */
-@media (max-width: 900px) {
-  .produto-page {
+/* Responsivo */
+@media (max-width: 768px) {
+  .produto-container {
     grid-template-columns: 1fr;
   }
 }
