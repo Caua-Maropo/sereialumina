@@ -37,10 +37,32 @@ document.getElementById("produto-descricao").textContent = produto.descricao;
 document.getElementById("produto-peso").textContent = produto.peso;
 
 // Cores
-const select = document.getElementById("produto-cores");
-produto.cores.forEach(cor => {
-  const opt = document.createElement("option");
-  opt.value = cor;
-  opt.textContent = cor;
-  select.appendChild(opt);
+const coresContainer = document.getElementById("produto-cores");
+
+let corSelecionada = produto.cores[0];
+
+produto.cores.forEach((cor, index) => {
+  const div = document.createElement("div");
+  div.classList.add("cor-item");
+
+  div.style.background =
+    cor.toLowerCase() === "amarelo" ? "#f5d300" :
+    cor.toLowerCase() === "preto" ? "#000" :
+    cor.toLowerCase() === "branco" ? "#fff" :
+    cor.toLowerCase() === "vermelho" ? "#c00" :
+    "#ccc";
+
+  if (index === 0) div.classList.add("ativa");
+
+  div.addEventListener("click", () => {
+    document
+      .querySelectorAll(".cor-item")
+      .forEach(c => c.classList.remove("ativa"));
+
+    div.classList.add("ativa");
+    corSelecionada = cor;
+  });
+
+  coresContainer.appendChild(div);
 });
+
