@@ -15,7 +15,7 @@ const produtos = [
     preco: 79.90,
     imagem: "imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    cores: ["Preto", "Vermelho", "azul"],
+    cores: ["Preto", "Vermelho", "Azul"],
     peso: "190g",
     categoria: "biquini"
   },
@@ -31,7 +31,7 @@ const produtos = [
   }
 ];
 
-// Lê o ID
+// 🔎 Lê o ID da URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
@@ -42,16 +42,15 @@ if (!produto) {
   throw new Error("Produto inválido");
 }
 
+// 📦 Preenche os dados
 document.getElementById("produto-nome").textContent = produto.nome;
 document.getElementById("produto-preco").textContent =
-  `R$ ${produto.preco.toFixed(2).replace(".", ",")}`;
+  produto.preco.toFixed(2).replace(".", ",");
 document.getElementById("produto-descricao").textContent = produto.descricao;
 document.getElementById("produto-peso").textContent = produto.peso;
+document.getElementById("produto-imagem").src = produto.imagem;
 
-document.getElementById("produto-img").src = produto.imagem;
-
-
-// Cores
+// 🎨 Cores
 const coresContainer = document.getElementById("produto-cores");
 
 let corSelecionada = produto.cores[0];
@@ -65,6 +64,7 @@ produto.cores.forEach((cor, index) => {
     cor.toLowerCase() === "preto" ? "#000" :
     cor.toLowerCase() === "branco" ? "#fff" :
     cor.toLowerCase() === "vermelho" ? "#c00" :
+    cor.toLowerCase() === "azul" ? "#0055cc" :
     "#ccc";
 
   if (index === 0) div.classList.add("ativa");
@@ -80,4 +80,3 @@ produto.cores.forEach((cor, index) => {
 
   coresContainer.appendChild(div);
 });
-
