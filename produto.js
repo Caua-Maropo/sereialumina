@@ -15,7 +15,7 @@ const produtos = [
     preco: 79.90,
     imagem: "imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    cores: ["Preto", "Vermelho"],
+    cores: ["Preto", "Vermelho", "azul"],
     peso: "190g",
     categoria: "biquini"
   },
