@@ -23,12 +23,14 @@ const auth = getAuth(app);
 // ==========================
 // ABAS LOGIN / CADASTRO
 // ==========================
+// TABS
 const tabLogin = document.getElementById("tab-login");
 const tabCadastro = document.getElementById("tab-cadastro");
+
 const formLogin = document.getElementById("form-login");
 const formCadastro = document.getElementById("form-cadastro");
 
-if (tabLogin && tabCadastro && formLogin && formCadastro) {
+if (tabLogin && tabCadastro) {
   tabLogin.addEventListener("click", () => {
     tabLogin.classList.add("ativo");
     tabCadastro.classList.remove("ativo");
