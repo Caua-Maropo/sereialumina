@@ -204,13 +204,3 @@ categorias.forEach((categoria) => {
     });
   });
 });
-
-tabCadastro.addEventListener("click", () => {
-  tabCadastro.classList.add("ativo");
-  tabLogin.classList.remove("ativo");
-
-  formCadastro.classList.remove("hidden");
-  formLogin.classList.add("hidden");
-});
-
-
