@@ -10,11 +10,44 @@
 </head>
 <body>
 
-<header class="site-header produto-header">
-  <a href="index.html" class="logo">
-    <span class="use">Use</span>
-    <h1>Sereia Lumina</h1>
+  <!-- HEADER -->
+  <header class="site-header clean-header">
+  <div class="header-container">
+    
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <span class="use">Use</span>
+      <h1>Sereia Lumina</h1>
+    </a>
+
+    <!-- Busca -->
+    <div class="search-area">
+      <input
+        type="text"
+        placeholder="Pesquisar produtos"
+        aria-label="Pesquisar produtos"
+      >
+      <button aria-label="Pesquisar">🔍</button>
+    </div>
+    
+ <!-- Ícones -->
+   <div class="header-icons">
+  <a href="login.html"><i class="fa-regular fa-user"></i></a>
+  <a href="#"><i class="fa-regular fa-heart"></i></a>
+
+  <a href="#" id="abrir-carrinho" class="icon-bag">
+    <i class="fa-solid fa-bag-shopping"></i>
+    <span class="badge-carrinho" id="badge-carrinho">0</span>
   </a>
+
+  <!-- USUÁRIO LOGADO -->
+  <div class="user-area" id="user-area" style="display:none;">
+    <span id="user-email"></span>
+    <button id="logout-btn">Sair</button>
+  </div>
+</div>
+
 </header>
 
 <main class="produto-page">
