@@ -686,57 +686,64 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 
 .produto-page {
   padding: 60px 20px;
+  background: #f9fafc;
 }
 
 .produto-container {
   max-width: 1100px;
   margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+  gap: 50px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
+/* imgagem */
 .produto-imagem img {
   width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  border-radius: 18px;
+  object-fit: cover;
 }
 
 .produto-info h1 {
+  font-family: 'Playfair Display', serif;
   font-size: 2.3rem;
   color: var(--azul-principal);
   margin-bottom: 10px;
 }
 
 .produto-preco {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
 
 .produto-descricao {
-  font-size: 1rem;
-  line-height: 1.6;
   color: #555;
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
 .produto-detalhes p {
-  margin-bottom: 6px;
-  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
 }
 
+/* BOTÃO */
 .btn-produto {
-  margin-top: 30px;
-  padding: 14px;
+  margin-top: 25px;
+  padding: 16px;
   width: 100%;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
   background: var(--azul-principal);
   color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.05rem;
-  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -746,8 +753,9 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 /* RESPONSIVO */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .produto-container {
     grid-template-columns: 1fr;
+    padding: 25px;
   }
 }
