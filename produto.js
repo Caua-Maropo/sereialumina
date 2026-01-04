@@ -80,18 +80,12 @@ produto.cores.forEach((cor, index) => {
 
   coresContainer.appendChild(div);
 });
-// ================================
-// ADICIONAR AO CARRINHO (PRODUTO)
-// ================================
 
 // ================================
 // ADICIONAR AO CARRINHO (PRODUTO)
 // ================================
 
 const btnAddProduto = document.getElementById("btn-add-produto");
-
-// Recupera carrinho existente
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 btnAddProduto.addEventListener("click", () => {
   const itemExistente = carrinho.find(
