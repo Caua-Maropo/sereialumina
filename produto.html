@@ -2,105 +2,51 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Produto • Sereia Lumina</title>
-
+  <title>Produto | Sereia Lumina</title>
   <link rel="stylesheet" href="style.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header clean-header">
+<header class="site-header clean-header">
   <div class="header-container">
-    
-
-    <!-- Logo -->
     <a href="index.html" class="logo">
       <span class="use">Use</span>
       <h1>Sereia Lumina</h1>
     </a>
-
-    <!-- Busca -->
-    <div class="search-area">
-      <input
-        type="text"
-        placeholder="Pesquisar produtos"
-        aria-label="Pesquisar produtos"
-      >
-      <button aria-label="Pesquisar">🔍</button>
-    </div>
-    
- <!-- Ícones -->
-   <div class="header-icons">
-  <a href="login.html"><i class="fa-regular fa-user"></i></a>
-  <a href="#"><i class="fa-regular fa-heart"></i></a>
-
-  <a href="#" id="abrir-carrinho" class="icon-bag">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <span class="badge-carrinho" id="badge-carrinho">0</span>
-  </a>
-
-  <!-- USUÁRIO LOGADO -->
-  <div class="user-area" id="user-area" style="display:none;">
-    <span id="user-email"></span>
-    <button id="logout-btn">Sair</button>
   </div>
-</div>
-
 </header>
 
 <main class="produto-page">
+  <div class="produto-container">
 
-  <!-- GALERIA -->
-  <section class="produto-galeria">
-    <img id="produto-imagem" src="" alt="">
-  </section>
+    <div class="produto-imagem">
+      <img id="produto-img" alt="">
+    </div>
 
-  <!-- INFORMAÇÕES -->
-  <section class="produto-info">
+    <div class="produto-info">
+      <h2 id="produto-nome"></h2>
 
-    <h1 id="produto-nome"></h1>
+      <p class="produto-preco" id="produto-preco"></p>
 
-    <p class="produto-preco" id="produto-preco"></p>
+      <p class="produto-descricao" id="produto-descricao"></p>
 
-    <p class="produto-descricao" id="produto-descricao"></p>
+      <ul class="produto-detalhes">
+        <li><strong>Peso:</strong> <span id="produto-peso"></span></li>
+      </ul>
 
-    <!-- OPÇÕES -->
-   <section class="produto-info">
+      <button class="btn-carrinho">
+        Adicionar ao carrinho
+      </button>
+    </div>
 
-  <h1 id="produto-nome"></h1>
-
-  <p class="produto-preco" id="produto-preco"></p>
-
-  <div class="produto-beneficios">
-    <span>🚚 Frete rápido</span>
-    <span>🔄 Troca fácil</span>
-    <span>🔒 Compra segura</span>
   </div>
-
-  <p class="produto-descricao" id="produto-descricao"></p>
-
-  <!-- CORES -->
-  <div class="produto-opcao">
-    <label>Cor</label>
-    <div class="cores" id="produto-cores"></div>
-  </div>
-
-  <!-- PESO -->
-  <div class="produto-opcao">
-    <label>Peso</label>
-    <span id="produto-peso"></span>
-  </div>
-
-  <button class="btn-comprar" id="btn-comprar">
-    Adicionar ao carrinho
-  </button>
-
-</section>
-
 </main>
 
+<script src="js/produtos.js"></script>
 <script src="js/produto.js"></script>
+
 </body>
 </html>
