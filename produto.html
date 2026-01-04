@@ -3,36 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Produto • Sereia Lumina</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="site-header">
-  <a href="index.html" class="logo">Sereia Lumina</a>
+<header class="site-header produto-header">
+  <a href="index.html" class="logo">
+    <span class="use">Use</span>
+    <h1>Sereia Lumina</h1>
+  </a>
 </header>
 
 <main class="produto-page">
 
-  <div class="produto-imagem">
+  <!-- GALERIA -->
+  <section class="produto-galeria">
     <img id="produto-imagem" src="" alt="">
-  </div>
+  </section>
 
-  <div class="produto-info">
+  <!-- INFORMAÇÕES -->
+  <section class="produto-info">
+
     <h1 id="produto-nome"></h1>
+
     <p class="produto-preco" id="produto-preco"></p>
 
-    <div class="produto-opcoes">
-      <label>Cores</label>
+    <p class="produto-descricao" id="produto-descricao"></p>
+
+    <!-- OPÇÕES -->
+    <div class="produto-opcao">
+      <label for="produto-cores">Cor</label>
       <select id="produto-cores"></select>
     </div>
 
-    <div class="produto-detalhes">
-      <p id="produto-descricao"></p>
-      <p><strong>Peso:</strong> <span id="produto-peso"></span></p>
+    <div class="produto-opcao">
+      <label>Peso</label>
+      <span id="produto-peso"></span>
     </div>
 
-    <button id="btn-comprar">Adicionar ao carrinho</button>
-  </div>
+    <button class="btn-comprar" id="btn-comprar">
+      Adicionar ao carrinho
+    </button>
+
+  </section>
 
 </main>
 
