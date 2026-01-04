@@ -86,6 +86,21 @@ produto.cores.forEach((cor, index) => {
 
 const btnAdd = document.getElementById("btn-add-produto");
 
+if (btnAdd) {
+  btnAdd.addEventListener("click", () => {
+    // aqui futuramente vamos integrar com o carrinho global
+    btnAdd.textContent = "✓ Adicionado ao carrinho";
+    btnAdd.style.background = "#27ae60";
+    btnAdd.disabled = true;
+
+    setTimeout(() => {
+      btnAdd.textContent = "Adicionar ao carrinho";
+      btnAdd.style.background = "";
+      btnAdd.disabled = false;
+    }, 2000);
+  });
+}
+
 // Carregar carrinho existente
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
