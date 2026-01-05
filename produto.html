@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <title>Produto | Sereia Lumina</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
   <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- ICONES -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  
 </head>
 
 <body>
 
- <!-- HEADER -->
+<!-- HEADER -->
 <header class="site-header clean-header">
   <div class="header-container">
 
@@ -36,17 +37,14 @@
     <!-- Ícones -->
     <div class="header-icons">
 
-      <!-- Login -->
       <a href="login.html" title="Login">
         <i class="fa-regular fa-user"></i>
       </a>
 
-      <!-- Favoritos -->
       <a href="#" title="Favoritos">
         <i class="fa-regular fa-heart"></i>
       </a>
 
-      <!-- Carrinho -->
       <a href="#" id="abrir-carrinho" class="icon-bag" title="Carrinho">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="badge-carrinho" id="badge-carrinho">0</span>
@@ -56,15 +54,7 @@
   </div>
 </header>
 
-  <!-- USUÁRIO LOGADO -->
-  <div class="user-area" id="user-area" style="display:none;">
-    <span id="user-email"></span>
-    <button id="logout-btn">Sair</button>
-  </div>
-</div>
-
-</header>
-  
+<!-- ÁREA DO PRODUTO -->
 <main class="produto-page">
   <div class="produto-container">
 
@@ -87,26 +77,25 @@
         <p><strong>Peso:</strong> <span id="produto-peso"></span></p>
       </div>
 
-   <!-- CORES -->
-<div class="produto-bloco">
-  <h4>Cor</h4>
-  <div id="produto-cores" class="produto-cores"></div>
-</div>
+      <!-- CORES -->
+      <div class="produto-bloco">
+        <h4>Cor</h4>
+        <div id="produto-cores" class="produto-cores"></div>
+      </div>
 
-<!-- TAMANHOS -->
-<div class="produto-bloco">
-  <h4>Tamanho</h4>
-  <div id="produto-tamanhos" class="produto-tamanhos"></div>
-  <p id="estoque-info" class="estoque-info">Selecione um tamanho</p>
-</div>
+      <!-- TAMANHOS -->
+      <div class="produto-bloco">
+        <h4>Tamanho</h4>
+        <div id="produto-tamanhos" class="produto-tamanhos"></div>
+        <p id="estoque-info" class="estoque-info">
+          Selecione um tamanho
+        </p>
+      </div>
 
-<p id="estoque-info" class="estoque-info"></p>
+      <div class="produto-detalhes">
+        <p><strong>Categoria:</strong> Moda Praia</p>
+      </div>
 
-      <!-- DETALHES -->
-  <div class="produto-detalhes">
-    <p><strong>Categoria:</strong> Moda Praia</p>
-  </div>
-      
       <button id="btn-add-produto" class="btn-produto">
         Adicionar ao carrinho
       </button>
@@ -115,15 +104,13 @@
   </div>
 </main>
 
-  <section class="produtos-relacionados">
+<!-- RELACIONADOS -->
+<section class="produtos-relacionados">
   <h2>Você também pode gostar</h2>
-
-  <div class="produtos-grid">
-    <!-- pode reutilizar os cards do index -->
-  </div>
+  <div class="produtos-grid"></div>
 </section>
 
-  <!-- OVERLAY -->
+<!-- OVERLAY -->
 <div id="overlay-carrinho"></div>
 
 <!-- CARRINHO LATERAL -->
@@ -147,10 +134,9 @@
   </div>
 </aside>
 
+<!-- SCRIPTS -->
+<script src="script.js"></script>
+<script src="produto.js"></script>
 
-<!-- SCRIPT (APENAS UMA VEZ) -->
-<script type="module" src="script.js"></script>
-<script type="module" src="produto.js"></script>
-  
 </body>
 </html>
