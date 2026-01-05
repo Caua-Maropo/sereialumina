@@ -758,3 +758,26 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
     grid-template-columns: 1fr;
   }
 }
+.produto-tamanhos button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.produto-tamanhos button.ativo {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+.produto-tamanhos button.indisponivel {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.estoque-info {
+  margin: 10px 0 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
