@@ -1,4 +1,4 @@
-const produtos = [
+constconst produtos = [
   {
     id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
@@ -11,18 +11,17 @@ const produtos = [
       Preto: { P: 2, M: 0, G: 4 }
     }
   },
-
   {
     id: "biquini-preto",
     nome: "Biquíni Preto",
     preco: 79.90,
     imagem: "imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g"
-    cores: [
-       Preto: { P: 5, M: 10, G 3 },
-       Vermelho: { P: 0, M: 70, G: 1 }, 
-       Azul: { P: 1, M: 5, : 0 } 
+    peso: "200g",
+    cores: {
+      Preto: { P: 5, M: 10, G: 3 },
+      Vermelho: { P: 0, M: 7, G: 1 },
+      Azul: { P: 1, M: 5, G: 0 }
     }
   },
   {
@@ -38,6 +37,7 @@ const produtos = [
     }
   }
 ];
+
 
 // 🔎 Lê o ID da URL
 const params = new URLSearchParams(window.location.search);
@@ -60,30 +60,32 @@ document.getElementById("produto-imagem").src = produto.imagem;
 
 // 🎨 Cores
 const coresContainer = document.getElementById("produto-cores");
+const cores = Object.keys(produto.cores);
 
-let corSelecionada = produto.cores[0];
+let corSelecionada = cores[0];
 
-produto.cores.forEach((cor, index) => {
+cores.forEach((cor, index) => {
   const div = document.createElement("div");
   div.classList.add("cor-item");
 
+  const corLower = cor.toLowerCase();
   div.style.background =
-    cor.toLowerCase() === "amarelo" ? "#f5d300" :
-    cor.toLowerCase() === "preto" ? "#000" :
-    cor.toLowerCase() === "branco" ? "#fff" :
-    cor.toLowerCase() === "vermelho" ? "#c00" :
-    cor.toLowerCase() === "azul" ? "#0055cc" :
+    corLower === "amarelo" ? "#f5d300" :
+    corLower === "preto" ? "#000" :
+    corLower === "branco" ? "#fff" :
+    corLower === "vermelho" ? "#c00" :
+    corLower === "azul" ? "#0055cc" :
     "#ccc";
 
   if (index === 0) div.classList.add("ativa");
 
   div.addEventListener("click", () => {
-    document
-      .querySelectorAll(".cor-item")
+    document.querySelectorAll(".cor-item")
       .forEach(c => c.classList.remove("ativa"));
 
     div.classList.add("ativa");
     corSelecionada = cor;
+    atualizarTamanhos(cor);
   });
 
   coresContainer.appendChild(div);
@@ -94,26 +96,38 @@ produto.cores.forEach((cor, index) => {
 // ================================
 
 const btnAddProduto = document.getElementById("btn-add-produto");
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 btnAddProduto.addEventListener("click", () => {
-  const itemExistente = carrinho.find(
-    (item) =>
-      item.produto === produto.nome &&
-      item.cor === corSelecionada
-  );
 
-  if (itemExistente) {
-    itemExistente.quantidade++;
-  } else {
-    carrinho.push({
-      produto: produto.nome,
-      preco: produto.preco,
-      cor: corSelecionada,
-      quantidade: 1
-    });
+  if (!tamanhoSelecionado) {
+    alert("Selecione um tamanho");
+    return;
   }
 
+  const estoque = produto.cores[corSelecionada][tamanhoSelecionado];
+
+  if (estoque <= 0) {
+    alert("Produto fora de estoque");
+    return;
+  }
+
+  carrinho.push({
+    id: produto.id,
+    nome: produto.nome,
+    preco: produto.preco,
+    cor: corSelecionada,
+    tamanho: tamanhoSelecionado,
+    quantidade: 1
+  });
+
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  btnAddProduto.textContent = "✓ Adicionado";
+  setTimeout(() => {
+    btnAddProduto.textContent = "Adicionar ao carrinho";
+  }, 1200);
+});
 
   // Feedback visual
   btnAddProduto.textContent = "✓ Adicionado";
@@ -156,3 +170,42 @@ btnAdd.addEventListener("click", () => {
     btnAdd.disabled = false;
   }, 1500);
 });
+const tamanhosContainer = document.getElementById("produto-tamanhos");
+const estoqueInfo = document.getElementById("estoque-info");
+
+let tamanhoSelecionado = null;
+
+// Criar botões de tamanho
+function atualizarTamanhos(cor) {
+  tamanhosContainer.innerHTML = "";
+  tamanhoSelecionado = null;
+  estoqueInfo.textContent = "Selecione um tamanho";
+
+  const tamanhos = produto.cores[cor];
+
+  Object.keys(tamanhos).forEach(tamanho => {
+    const btn = document.createElement("button");
+    btn.textContent = tamanho;
+
+    if (tamanhos[tamanho] === 0) {
+      btn.disabled = true;
+      btn.classList.add("indisponivel");
+    }
+
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#produto-tamanhos button")
+        .forEach(b => b.classList.remove("ativo"));
+
+      btn.classList.add("ativo");
+      tamanhoSelecionado = tamanho;
+
+      const qtd = tamanhos[tamanho];
+      estoqueInfo.textContent =
+        qtd > 0
+          ? `Em estoque: ${qtd} unidade(s)`
+          : "Fora de estoque";
+    });
+
+    tamanhosContainer.appendChild(btn);
+  });
+}
