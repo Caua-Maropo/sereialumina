@@ -5,19 +5,25 @@ const produtos = [
     preco: 59.90,
     imagem: "imagens/biquini-amarelo.png",
     descricao: "Biquíni confortável, tecido premium e secagem rápida.",
-    cores: ["Amarelo", "Preto", "Branco"],
     peso: "180g",
-    categoria: "biquini"
+    cores: {
+      Amarelo: { P: 3, M: 5, G: 0 },
+      Preto: { P: 2, M: 0, G: 4 }
+    }
   },
+
   {
     id: "biquini-preto",
     nome: "Biquíni Preto",
     preco: 79.90,
     imagem: "imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    cores: ["Preto", "Vermelho", "Azul"],
-    peso: "190g",
-    categoria: "biquini"
+    peso: "200g"
+    cores: [
+       Preto: { P: 5, M: 10, G 3 },
+       Vermelho: { P: 0, M: 70, G: 1 }, 
+       Azul: { P: 1, M: 5, : 0 } 
+    }
   },
   {
     id: "maio-azul",
@@ -25,9 +31,11 @@ const produtos = [
     preco: 89.90,
     imagem: "imagens/maio-azul.png",
     descricao: "Maiô com proteção UV e modelagem confortável.",
-    cores: ["Azul", "Preto"],
     peso: "220g",
-    categoria: "maio"
+    cores: {
+      Azul: { P: 1, M: 2, G: 2 },
+      Preto: { P: 0, M: 1, G: 1 }
+    }
   }
 ];
 
