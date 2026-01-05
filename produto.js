@@ -145,7 +145,6 @@ btnAddProduto.addEventListener("click", () => {
   setTimeout(() => {
     btnAddProduto.textContent = "Adicionar ao carrinho";
   }, 1200);
-});
 
 // Carregar carrinho existente
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
