@@ -62,9 +62,10 @@ document.getElementById("produto-imagem").src = produto.imagem;
 const coresContainer = document.getElementById("produto-cores");
 const cores = Object.keys(produto.cores);
 
-let corSelecionada = cores[0];
+let corSelecionada = Object.keys(produto.cores)[0];
 
 cores.forEach((cor, index) => {
+
   const div = document.createElement("div");
   div.classList.add("cor-item");
 
@@ -96,10 +97,8 @@ cores.forEach((cor, index) => {
 // ================================
 
 const btnAddProduto = document.getElementById("btn-add-produto");
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 btnAddProduto.addEventListener("click", () => {
-
   if (!tamanhoSelecionado) {
     alert("Selecione um tamanho");
     return;
@@ -112,14 +111,26 @@ btnAddProduto.addEventListener("click", () => {
     return;
   }
 
-  carrinho.push({
-    id: produto.id,
-    nome: produto.nome,
-    preco: produto.preco,
-    cor: corSelecionada,
-    tamanho: tamanhoSelecionado,
-    quantidade: 1
-  });
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  const itemExistente = carrinho.find(
+    item =>
+      item.produto === produto.nome &&
+      item.cor === corSelecionada &&
+      item.tamanho === tamanhoSelecionado
+  );
+
+  if (itemExistente) {
+    itemExistente.quantidade++;
+  } else {
+    carrinho.push({
+      produto: produto.nome,
+      preco: produto.preco,
+      cor: corSelecionada,
+      tamanho: tamanhoSelecionado,
+      quantidade: 1
+    });
+  }
 
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
