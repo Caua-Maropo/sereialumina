@@ -781,3 +781,26 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   font-size: 0.9rem;
   color: #555;
 }
+.produtos-relacionados {
+  margin-top: 60px;
+}
+
+.produtos-relacionados h2 {
+  margin-bottom: 20px;
+}
+
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.produto-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.produto-card img {
+  width: 100%;
+  border-radius: 8px;
+}
