@@ -5,6 +5,7 @@ const produtos = [
   {
     id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
+    categoria: "biquini",
     preco: 59.9,
     imagem: "imagens/biquini-amarelo.png",
     descricao: "Biquíni confortável, tecido premium e secagem rápida.",
@@ -17,6 +18,7 @@ const produtos = [
   {
     id: "biquini-preto",
     nome: "Biquíni Preto",
+    categoria: "biquini",
     preco: 79.9,
     imagem: "imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
@@ -30,6 +32,7 @@ const produtos = [
   {
     id: "maio-azul",
     nome: "Maiô Azul",
+    categoria: "biquini",
     preco: 89.9,
     imagem: "imagens/maio-azul.png",
     descricao: "Maiô com proteção UV e modelagem confortável.",
@@ -200,11 +203,11 @@ btnAddProduto.addEventListener("click", () => {
 // ================================
 const containerRelacionados = document.getElementById("lista-relacionados");
 
-if (containerRelacionados && produtoAtual) {
+if (containerRelacionados && produto) {
   const relacionados = produtos.filter(
     (p) =>
-      p.categoria === produtoAtual.categoria &&
-      p.id !== produtoAtual.id
+      p.categoria === produto.categoria &&
+      p.id !== produto.id
   );
 
   containerRelacionados.innerHTML = "";
