@@ -30,7 +30,7 @@ function atualizarCarrinho() {
 
     li.innerHTML = `
       <div>
-        <span>${item.produto} — ${item.tamanho}</span>
+        <span>${item.produto} — ${item.tamanho || "Único"}</span>
         <small>Qtd: ${item.quantidade}</small>
       </div>
       <div class="acoes">
@@ -56,7 +56,7 @@ function atualizarCarrinho() {
 }
 
 // ================================
-// BOTÕES ADICIONAR AO CARRINHO
+// BOTÕES "ADICIONAR AO CARRINHO" (INDEX)
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
@@ -97,7 +97,11 @@ function atualizarBadge() {
   const badge = document.getElementById("badge-carrinho");
   if (!badge) return;
 
-  const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+  const totalItens = carrinho.reduce(
+    (soma, item) => soma + item.quantidade,
+    0
+  );
+
   badge.textContent = totalItens;
 }
 
@@ -145,8 +149,9 @@ if (botaoFinalizar) {
 // ================================
 atualizarCarrinho();
 atualizarBadge();
+
 // ================================
-// CARRINHO LATERAL (NÍVEL 3)
+// CARRINHO LATERAL
 // ================================
 const abrirCarrinho = document.getElementById("abrir-carrinho");
 const fecharCarrinho = document.getElementById("fechar-carrinho");
@@ -154,53 +159,52 @@ const carrinhoLateral = document.getElementById("carrinho-lateral");
 const overlay = document.getElementById("overlay-carrinho");
 
 function abrir() {
+  if (!carrinhoLateral || !overlay) return;
   carrinhoLateral.classList.add("ativo");
   overlay.classList.add("ativo");
-  document.body.style.overflow = "hidden"
+  document.body.style.overflow = "hidden";
 }
 
 function fechar() {
+  if (!carrinhoLateral || !overlay) return;
   carrinhoLateral.classList.remove("ativo");
   overlay.classList.remove("ativo");
   document.body.style.overflow = "";
 }
 
-if (abrirCarrinho) abrirCarrinho.addEventListener("click", (e) => {
-  e.preventDefault();
-  abrir();
-});
+if (abrirCarrinho) {
+  abrirCarrinho.addEventListener("click", (e) => {
+    e.preventDefault();
+    abrir();
+  });
+}
 
 if (fecharCarrinho) fecharCarrinho.addEventListener("click", fechar);
 if (overlay) overlay.addEventListener("click", fechar);
+
 // ================================
 // FILTRO DE CATEGORIAS (INDEX)
 // ================================
 const categorias = document.querySelectorAll(".cat-card");
-const produtos = document.querySelectorAll(".produto");
+const produtosCards = document.querySelectorAll(".produto"); // 🔥 RENOMEADO
 
 categorias.forEach((categoria) => {
   categoria.addEventListener("click", () => {
     const filtro = categoria.dataset.category;
 
-    // destaque visual
     categorias.forEach((c) => c.classList.remove("ativo"));
     categoria.classList.add("ativo");
 
-    // 🔹 MOSTRAR TODOS
     if (filtro === "todos") {
-      produtos.forEach((produto) => {
+      produtosCards.forEach((produto) => {
         produto.style.display = "block";
       });
       return;
     }
 
-    // 🔹 FILTRO NORMAL
-    produtos.forEach((produto) => {
-      if (produto.dataset.category === filtro) {
-        produto.style.display = "block";
-      } else {
-        produto.style.display = "none";
-      }
+    produtosCards.forEach((produto) => {
+      produto.style.display =
+        produto.dataset.category === filtro ? "block" : "none";
     });
   });
 });
