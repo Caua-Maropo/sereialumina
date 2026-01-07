@@ -257,18 +257,25 @@ function atualizarFavoritoUI() {
 }
 
 // clique no botão
-if (btnFavorito) {
-  btnFavorito.addEventListener("click", () => {
-    if (produtoEhFavorito(produto.id)) {
-      favoritos = favoritos.filter(id => id !== produto.id);
-    } else {
-      favoritos.push(produto.id);
-    }
+const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-    atualizarFavoritoUI();
-  });
-}
+  btnFavorito.addEventListener("click", () => {
+  if (!usuarioLogado) {
+    alert("Faça login para favoritar produtos 💙");
+    window.location.href = "login.html";
+    return;
+  }
+
+  if (favoritos.includes(produto.id)) {
+    favoritos = favoritos.filter(id => id !== produto.id);
+  } else {
+    favoritos.push(produto.id);
+  }
+
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  atualizarFavoritoUI();
+  atualizarBadgeFavoritos();
+});
 
 // inicializa
 atualizarFavoritoUI();
