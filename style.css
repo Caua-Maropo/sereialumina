@@ -824,3 +824,17 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 .btn-favorito:hover i {
   transform: scale(1.1);
 }
+.icon-heart {
+  position: relative;
+}
+
+#badge-favoritos {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: crimson;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
