@@ -231,3 +231,44 @@ if (containerRelacionados && produto) {
       "<p>Nenhum produto relacionado encontrado.</p>";
   }
 }
+// ================================
+//           FAVORITOS :)
+// ================================
+const btnFavorito = document.getElementById("btn-favorito");
+
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+// verifica se já é favorito
+function produtoEhFavorito(id) {
+  return favoritos.includes(id);
+}
+
+// atualiza visual
+function atualizarFavoritoUI() {
+  if (!btnFavorito) return;
+
+  if (produtoEhFavorito(produto.id)) {
+    btnFavorito.classList.add("ativo");
+    btnFavorito.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+  } else {
+    btnFavorito.classList.remove("ativo");
+    btnFavorito.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+  }
+}
+
+// clique no botão
+if (btnFavorito) {
+  btnFavorito.addEventListener("click", () => {
+    if (produtoEhFavorito(produto.id)) {
+      favoritos = favoritos.filter(id => id !== produto.id);
+    } else {
+      favoritos.push(produto.id);
+    }
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    atualizarFavoritoUI();
+  });
+}
+
+// inicializa
+atualizarFavoritoUI();
