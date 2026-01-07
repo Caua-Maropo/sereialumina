@@ -804,3 +804,23 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   width: 100%;
   border-radius: 8px;
 }
+.btn-favorito {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+  margin-left: 10px;
+}
+
+.btn-favorito.ativo i {
+  color: crimson;
+}
+
+.btn-favorito i {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-favorito:hover i {
+  transform: scale(1.1);
+}
