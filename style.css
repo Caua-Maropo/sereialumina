@@ -807,14 +807,14 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 .btn-favorito {
   background: none;
   border: none;
-  font-size: 22px;
   cursor: pointer;
-  color: #444;
-  margin-left: 10px;
+  font-size: 1.2rem;
+  color: #999;
+  transition: 0.2s;
 }
 
-.btn-favorito.ativo i {
-  animation: pop 0.3s ease;
+.btn-favorito.ativo {
+  color: #e63976;
 }
 
 @keyframes pop {
