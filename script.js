@@ -201,10 +201,19 @@ categorias.forEach((categoria) => {
       });
       return;
     }
-
+    
     produtosCards.forEach((produto) => {
       produto.style.display =
         produto.dataset.category === filtro ? "block" : "none";
     });
   });
 });
+function atualizarBadgeFavoritos() {
+  const badge = document.getElementById("badge-favoritos");
+  if (!badge) return;
+
+  const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  badge.textContent = favoritos.length;
+}
+
+atualizarBadgeFavoritos();
