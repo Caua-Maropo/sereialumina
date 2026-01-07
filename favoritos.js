@@ -3,6 +3,13 @@ console.log("favoritos.js carregado");
 // ================================
 // FAVORITOS (LocalStorage)
 // ================================
+
+const btnFavoritoProduto = document.getElementById("btn-favorito-produto");
+
+function usuarioEstaLogado() {
+  return localStorage.getItem("usuarioLogado");
+}
+
 function getFavoritos() {
   return JSON.parse(localStorage.getItem("favoritos")) || [];
 }
@@ -13,7 +20,6 @@ function salvarFavoritos(lista) {
 
 function alternarFavorito(idProduto) {
   let favoritos = getFavoritos();
-
   const index = favoritos.indexOf(idProduto);
 
   if (index >= 0) {
@@ -23,6 +29,26 @@ function alternarFavorito(idProduto) {
   }
 
   salvarFavoritos(favoritos);
+}
+
+if (btnFavoritoProduto) {
+
+  // Estado inicial
+  if (getFavoritos().includes(produto.id)) {
+    btnFavoritoProduto.classList.add("ativo");
+  }
+
+  btnFavoritoProduto.addEventListener("click", () => {
+
+    if (!usuarioEstaLogado()) {
+      alert("Você precisa estar logado para favoritar ❤️");
+      window.location.href = "login.html";
+      return;
+    }
+
+    alternarFavorito(produto.id);
+    btnFavoritoProduto.classList.toggle("ativo");
+  });
 }
 
 // ================================
