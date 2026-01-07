@@ -279,3 +279,42 @@ const usuarioLogado = localStorage.getItem("usuarioLogado");
 
 // inicializa
 atualizarFavoritoUI();
+
+// ================================
+// FAVORITOS (PRODUTO)
+// ================================
+const btnFavoritoProduto = document.getElementById("btn-favorito-produto");
+
+if (btnFavoritoProduto) {
+  function getFavoritos() {
+    return JSON.parse(localStorage.getItem("favoritos")) || [];
+  }
+
+  function salvarFavoritos(lista) {
+    localStorage.setItem("favoritos", JSON.stringify(lista));
+  }
+
+  function alternarFavorito(idProduto) {
+    let favoritos = getFavoritos();
+
+    const index = favoritos.indexOf(idProduto);
+
+    if (index >= 0) {
+      favoritos.splice(index, 1);
+    } else {
+      favoritos.push(idProduto);
+    }
+
+    salvarFavoritos(favoritos);
+  }
+
+  // estado inicial
+  if (getFavoritos().includes(produto.id)) {
+    btnFavoritoProduto.classList.add("ativo");
+  }
+
+  btnFavoritoProduto.addEventListener("click", () => {
+    alternarFavorito(produto.id);
+    btnFavoritoProduto.classList.toggle("ativo");
+  });
+}
