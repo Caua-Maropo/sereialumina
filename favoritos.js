@@ -1,25 +1,45 @@
-const favoritosContainer = document.getElementById("lista-favoritos");
+console.log("favoritos.js carregado");
 
-const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-
-if (favoritos.length === 0) {
-  favoritosContainer.innerHTML = "<p>Nenhum produto favoritado 💔</p>";
+// ================================
+// FAVORITOS (LocalStorage)
+// ================================
+function getFavoritos() {
+  return JSON.parse(localStorage.getItem("favoritos")) || [];
 }
 
-favoritos.forEach(id => {
-  const produto = produtos.find(p => p.id === id);
-  if (!produto) return;
+function salvarFavoritos(lista) {
+  localStorage.setItem("favoritos", JSON.stringify(lista));
+}
 
-  const card = document.createElement("div");
-  card.classList.add("produto");
+function alternarFavorito(idProduto) {
+  let favoritos = getFavoritos();
 
-  card.innerHTML = `
-    <img src="${produto.imagem}">
-    <h3>${produto.nome}</h3>
-    <p>R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
-    <a href="produto.html?id=${produto.id}">Ver produto</a>
-  `;
+  const index = favoritos.indexOf(idProduto);
 
-  favoritosContainer.appendChild(card);
+  if (index >= 0) {
+    favoritos.splice(index, 1);
+  } else {
+    favoritos.push(idProduto);
+  }
+
+  salvarFavoritos(favoritos);
+}
+
+// ================================
+// INIT FAVORITOS (INDEX)
+// ================================
+document.querySelectorAll(".btn-favorito").forEach(botao => {
+  const id = botao.dataset.id;
+
+  if (!id) return;
+
+  // estado inicial
+  if (getFavoritos().includes(id)) {
+    botao.classList.add("ativo");
+  }
+
+  botao.addEventListener("click", () => {
+    alternarFavorito(id);
+    botao.classList.toggle("ativo");
+  });
 });
