@@ -1,15 +1,15 @@
 console.log("favoritos.js carregado");
 
 // ================================
-// FAVORITOS (LocalStorage)
+// LOGIN
 // ================================
-
-const btnFavoritoProduto = document.getElementById("btn-favorito-produto");
-
 function usuarioEstaLogado() {
   return localStorage.getItem("usuarioLogado");
 }
 
+// ================================
+// FAVORITOS (LocalStorage)
+// ================================
 function getFavoritos() {
   return JSON.parse(localStorage.getItem("favoritos")) || [];
 }
@@ -20,10 +20,9 @@ function salvarFavoritos(lista) {
 
 function alternarFavorito(idProduto) {
   let favoritos = getFavoritos();
-  const index = favoritos.indexOf(idProduto);
 
-  if (index >= 0) {
-    favoritos.splice(index, 1);
+  if (favoritos.includes(idProduto)) {
+    favoritos = favoritos.filter(id => id !== idProduto);
   } else {
     favoritos.push(idProduto);
   }
@@ -31,40 +30,53 @@ function alternarFavorito(idProduto) {
   salvarFavoritos(favoritos);
 }
 
-if (btnFavoritoProduto) {
+// ================================
+// FAVORITO NO PRODUTO.HTML
+// ================================
+const btnFavoritoProduto = document.getElementById("btn-favorito-produto");
 
-  // Estado inicial
-  if (getFavoritos().includes(produto.id)) {
+if (btnFavoritoProduto) {
+  const id = btnFavoritoProduto.dataset.id;
+
+  if (getFavoritos().includes(id)) {
     btnFavoritoProduto.classList.add("ativo");
   }
 
   btnFavoritoProduto.addEventListener("click", () => {
 
     if (!usuarioEstaLogado()) {
-      alert("Você precisa estar logado para favoritar ❤️");
+      sessionStorage.setItem("redirectAposLogin", window.location.href);
+      alert("Faça login para favoritar ❤️");
       window.location.href = "login.html";
       return;
     }
 
-    alternarFavorito(produto.id);
+    alternarFavorito(id);
     btnFavoritoProduto.classList.toggle("ativo");
   });
 }
 
 // ================================
-// INIT FAVORITOS (INDEX)
+// FAVORITOS NO INDEX
 // ================================
 document.querySelectorAll(".btn-favorito").forEach(botao => {
   const id = botao.dataset.id;
 
   if (!id) return;
 
-  // estado inicial
   if (getFavoritos().includes(id)) {
     botao.classList.add("ativo");
   }
 
   botao.addEventListener("click", () => {
+
+    if (!usuarioEstaLogado()) {
+      sessionStorage.setItem("redirectAposLogin", window.location.href);
+      alert("Faça login para favoritar ❤️");
+      window.location.href = "login.html";
+      return;
+    }
+
     alternarFavorito(id);
     botao.classList.toggle("ativo");
   });
