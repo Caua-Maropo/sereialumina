@@ -34,7 +34,7 @@ const produtos = [
     nome: "Maiô Azul",
     categoria: "biquini",
     preco: 89.9,
-    imagem: "imagens/maio-azul.png",
+    imagem: "imagens/biquini-azul.png",
     descricao: "Maiô com proteção UV e modelagem confortável.",
     peso: "220g",
     cores: {
