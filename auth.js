@@ -1,5 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBp_mqQKIps49q48ilqIsvvKle3I2Rjgag",
@@ -14,15 +18,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // ================================
-// ESTADO DE LOGIN (GLOBAL)
+// ESTADO DE LOGIN
 // ================================
 onAuthStateChanged(auth, (user) => {
+
+  const userArea = document.getElementById("user-area");
+  const userEmail = document.getElementById("user-email");
+  const logoutBtn = document.getElementById("logout-btn");
+
   if (user) {
     localStorage.setItem("usuarioLogado", user.email);
-
-    const userArea = document.getElementById("user-area");
-    const userEmail = document.getElementById("user-email");
-    const logoutBtn = document.getElementById("logout-btn");
 
     if (userArea && userEmail) {
       userArea.style.display = "flex";
@@ -39,5 +44,6 @@ onAuthStateChanged(auth, (user) => {
 
   } else {
     localStorage.removeItem("usuarioLogado");
+    if (userArea) userArea.style.display = "none";
   }
 });
