@@ -82,6 +82,13 @@ Object.keys(produtoAtual.cores).forEach((cor, i) => {
   div.className = `cor-item ${i === 0 ? "ativa" : ""}`;
   div.title = cor;
 
+  div.style.backgroundColor =
+  cor.toLowerCase() === "amarelo" ? "#f5d300" :
+  cor.toLowerCase() === "preto" ? "#000" :
+  cor.toLowerCase() === "azul" ? "#0055cc" :
+  cor.toLowerCase() === "vermelho" ? "#c00" :
+  "#ccc";
+
   div.addEventListener("click", () => {
     document.querySelectorAll(".cor-item").forEach(c => c.classList.remove("ativa"));
     div.classList.add("ativa");
