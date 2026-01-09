@@ -579,10 +579,11 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   font-weight: 500;
 }
 
-.produto-detalhes p {
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #666;
+.produto-detalhe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
 }
 
 .produto-opcao select,
@@ -607,7 +608,8 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 
 .produto-imagem img {
   width: 100%;
-  border-radius: 14px;
+  height: 100%;
+  border-radius: 16px;
   object-fit: cover;
 }
 /* BOTÃO */
@@ -658,11 +660,12 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 .cor-item {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid transparent;
+  border-radius: 50%;
+  border: 2px solid #ccc;
   transition: all 0.2s ease;
 }
 
@@ -671,7 +674,8 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 .cor-item.ativa {
-  border-color: var(--azul-principal);
+  border-color: #003366;
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
 }
 
 
@@ -698,8 +702,9 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
 }
 
 /* imgagem */
-.produto-imagem img {
+.produto-imagem {
   width: 100%;
+  height: 100%;
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
@@ -728,7 +733,7 @@ body { font-family:'Montserrat', sans-serif; background:var(--fundo-claro); }
   margin-bottom: 8px;
 }
 
-.produto-cores div {
+.produto-cores {
   display: flex;
   gap: 10px;
   margin: 10px 0 20px;
