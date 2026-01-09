@@ -1,5 +1,18 @@
 console.log("produto.js carregado");
 
+const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+const iconLogin = document.getElementById("icon-login");
+
+if (iconLogin) {
+  if (usuarioLogado) {
+    iconLogin.innerHTML = `<i class="fa-solid fa-user-check"></i>`;
+    iconLogin.title = `Olá, ${usuarioLogado.nome}`;
+  } else {
+    iconLogin.innerHTML = `<i class="fa-regular fa-user"></i>`;
+  }
+}
+
 // ================================
 // PRODUTOS (FONTE ÚNICA)
 // ================================
@@ -140,6 +153,16 @@ btnCarrinho?.addEventListener("click", () => {
 
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
+  const itemExistente = carrinho.find(
+  i =>
+    i.id === produtoAtual.id &&
+    i.cor === corSelecionada &&
+    i.tamanho === tamanhoSelecionado
+);
+
+if (itemExistente) {
+  itemExistente.qtd++;
+} else {
   carrinho.push({
     id: produtoAtual.id,
     nome: produtoAtual.nome,
@@ -148,12 +171,18 @@ btnCarrinho?.addEventListener("click", () => {
     preco: produtoAtual.preco,
     qtd: 1
   });
+}
 
+  
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
   btnCarrinho.textContent = "✓ Adicionado";
   setTimeout(() => btnCarrinho.textContent = "Adicionar ao carrinho", 1200);
 });
+
+if (typeof atualizarBadge === "function") {
+  atualizarBadge();
+}
 
 // ================================
 // FAVORITOS (ÚNICO SISTEMA)
@@ -193,3 +222,8 @@ btnFavorito?.addEventListener("click", () => {
 });
 
 atualizarFavorito();
+
+if (typeof atualizarBadgeFavoritos === "function") {
+  atualizarBadgeFavoritos();
+}
+
