@@ -1,6 +1,6 @@
 console.log("produto.js carregado");
 
-const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+const usuarioLogado = localStorage.getItem("usuarioLogado");
 
 const iconLogin = document.getElementById("icon-login");
 
