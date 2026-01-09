@@ -5,6 +5,7 @@ console.log("script.js carregado");
 // ================================
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
+// Elementos (podem ou não existir)
 const listaCarrinho = document.getElementById("lista-carrinho");
 const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
@@ -13,10 +14,11 @@ const botaoFinalizar = document.getElementById("finalizar-whatsapp");
 // ATUALIZAR CARRINHO
 // ================================
 function atualizarCarrinho() {
-  if (!listaCarrinho || !totalCarrinho) {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    return;
-  }
+  // Sempre salva no localStorage
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  // Se não estiver na página com carrinho lateral
+  if (!listaCarrinho || !totalCarrinho) return;
 
   listaCarrinho.innerHTML = "";
   let total = 0;
@@ -35,7 +37,7 @@ function atualizarCarrinho() {
       </div>
       <div class="acoes">
         <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
-        <button class="remover" data-index="${index}">✕</button>
+        <button class="btn-remover" data-index="${index}">✕</button>
       </div>
     `;
 
@@ -43,26 +45,28 @@ function atualizarCarrinho() {
   });
 
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-  document.querySelectorAll(".remover").forEach((botao) => {
-    botao.addEventListener("click", () => {
-      const index = botao.dataset.index;
+  // Remover item
+  document.querySelectorAll(".btn-remover").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = Number(btn.dataset.index);
       carrinho.splice(index, 1);
       atualizarCarrinho();
-      atualizarBadge();
+      atualizarBadgeCarrinho();
     });
   });
 }
 
 // ================================
-// BOTÕES "ADICIONAR AO CARRINHO" (INDEX)
+// ADICIONAR AO CARRINHO (INDEX)
 // ================================
 document.querySelectorAll(".btn-carrinho").forEach((botao) => {
   botao.addEventListener("click", () => {
     const produto = botao.dataset.produto;
-    const preco = parseFloat(botao.dataset.preco);
+    const preco = Number(botao.dataset.preco);
     const tamanho = "Único";
+
+    if (!produto || isNaN(preco)) return;
 
     const itemExistente = carrinho.find(
       (item) => item.produto === produto && item.tamanho === tamanho
@@ -80,12 +84,13 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
     }
 
     atualizarCarrinho();
-    atualizarBadge();
+    atualizarBadgeCarrinho();
     mostrarToast();
 
+    const textoOriginal = botao.textContent;
     botao.textContent = "✓ Adicionado";
     setTimeout(() => {
-      botao.textContent = "Adicionar ao carrinho";
+      botao.textContent = textoOriginal;
     }, 1200);
   });
 });
@@ -93,7 +98,7 @@ document.querySelectorAll(".btn-carrinho").forEach((botao) => {
 // ================================
 // BADGE DO CARRINHO
 // ================================
-function atualizarBadge() {
+function atualizarBadgeCarrinho() {
   const badge = document.getElementById("badge-carrinho");
   if (!badge) return;
 
@@ -126,29 +131,23 @@ if (botaoFinalizar) {
       return;
     }
 
-    let msg = "Olá! Meu pedido:\n\n";
+    let mensagem = "Olá! Meu pedido:\n\n";
     let total = 0;
 
     carrinho.forEach((item) => {
       const sub = item.preco * item.quantidade;
       total += sub;
-      msg += `• ${item.produto} x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
+      mensagem += `• ${item.produto} (${item.tamanho || "Único"}) x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
     });
 
-    msg += `\nTotal: R$ ${total.toFixed(2)}`;
+    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
 
     window.open(
-      `https://wa.me/5581984782598?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/5581984782598?text=${encodeURIComponent(mensagem)}`,
       "_blank"
     );
   });
 }
-
-// ================================
-// INIT
-// ================================
-atualizarCarrinho();
-atualizarBadge();
 
 // ================================
 // CARRINHO LATERAL
@@ -158,14 +157,14 @@ const fecharCarrinho = document.getElementById("fechar-carrinho");
 const carrinhoLateral = document.getElementById("carrinho-lateral");
 const overlay = document.getElementById("overlay-carrinho");
 
-function abrir() {
+function abrirCarrinhoLateral() {
   if (!carrinhoLateral || !overlay) return;
   carrinhoLateral.classList.add("ativo");
   overlay.classList.add("ativo");
   document.body.style.overflow = "hidden";
 }
 
-function fechar() {
+function fecharCarrinhoLateral() {
   if (!carrinhoLateral || !overlay) return;
   carrinhoLateral.classList.remove("ativo");
   overlay.classList.remove("ativo");
@@ -175,18 +174,18 @@ function fechar() {
 if (abrirCarrinho) {
   abrirCarrinho.addEventListener("click", (e) => {
     e.preventDefault();
-    abrir();
+    abrirCarrinhoLateral();
   });
 }
 
-if (fecharCarrinho) fecharCarrinho.addEventListener("click", fechar);
-if (overlay) overlay.addEventListener("click", fechar);
+if (fecharCarrinho) fecharCarrinho.addEventListener("click", fecharCarrinhoLateral);
+if (overlay) overlay.addEventListener("click", fecharCarrinhoLateral);
 
 // ================================
 // FILTRO DE CATEGORIAS (INDEX)
 // ================================
 const categorias = document.querySelectorAll(".cat-card");
-const produtosCards = document.querySelectorAll(".produto"); // 🔥 RENOMEADO
+const produtosCards = document.querySelectorAll(".produto");
 
 categorias.forEach((categoria) => {
   categoria.addEventListener("click", () => {
@@ -195,19 +194,19 @@ categorias.forEach((categoria) => {
     categorias.forEach((c) => c.classList.remove("ativo"));
     categoria.classList.add("ativo");
 
-    if (filtro === "todos") {
-      produtosCards.forEach((produto) => {
-        produto.style.display = "block";
-      });
-      return;
-    }
-    
     produtosCards.forEach((produto) => {
-      produto.style.display =
-        produto.dataset.category === filtro ? "block" : "none";
+      if (filtro === "todos" || produto.dataset.category === filtro) {
+        produto.style.display = "block";
+      } else {
+        produto.style.display = "none";
+      }
     });
   });
 });
+
+// ================================
+// BADGE FAVORITOS
+// ================================
 function atualizarBadgeFavoritos() {
   const badge = document.getElementById("badge-favoritos");
   if (!badge) return;
@@ -216,4 +215,9 @@ function atualizarBadgeFavoritos() {
   badge.textContent = favoritos.length;
 }
 
+// ================================
+// INIT
+// ================================
+atualizarCarrinho();
+atualizarBadgeCarrinho();
 atualizarBadgeFavoritos();
