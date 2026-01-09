@@ -164,12 +164,11 @@ if (itemExistente) {
   itemExistente.qtd++;
 } else {
   carrinho.push({
-    id: produtoAtual.id,
     nome: produtoAtual.nome,
+    preco: produtoAtual.preco,
     cor: corSelecionada,
     tamanho: tamanhoSelecionado,
-    preco: produtoAtual.preco,
-    qtd: 1
+    quantidade: 1
   });
 }
 
