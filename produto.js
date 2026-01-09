@@ -1,7 +1,9 @@
+console.log("produto.js carregado");
+
 // ================================
-// LISTA DE PRODUTOS
+// PRODUTOS (FONTE ÚNICA)
 // ================================
-const produtos = [
+const PRODUTOS = [
   {
     id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
@@ -25,296 +27,162 @@ const produtos = [
     peso: "200g",
     cores: {
       Preto: { P: 5, M: 10, G: 3 },
-      Vermelho: { P: 0, M: 7, G: 1 },
-      Azul: { P: 1, M: 5, G: 0 }
-    }
-  },
-  {
-    id: "maio-azul",
-    nome: "Maiô Azul",
-    categoria: "biquini",
-    preco: 89.9,
-    imagem: "imagens/biquini-azul.png",
-    descricao: "Maiô com proteção UV e modelagem confortável.",
-    peso: "220g",
-    cores: {
-      Azul: { P: 1, M: 2, G: 2 },
-      Preto: { P: 0, M: 1, G: 1 }
+      Vermelho: { P: 0, M: 7, G: 1 }
     }
   }
 ];
 
 // ================================
-// BUSCAR PRODUTO PELO ID DA URL
+// PRODUTO ATUAL (URL)
 // ================================
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const produtoAtual = PRODUTOS.find(p => p.id === params.get("id"));
 
-const produto = produtos.find(p => p.id === id);
-
-if (!produto) {
+if (!produtoAtual) {
   document.body.innerHTML = "<h2>Produto não encontrado</h2>";
   throw new Error("Produto inválido");
 }
 
 // ================================
-// ELEMENTOS DA PÁGINA
+// ELEMENTOS
 // ================================
-const nomeEl = document.getElementById("produto-nome");
-const precoEl = document.getElementById("produto-preco");
-const descricaoEl = document.getElementById("produto-descricao");
-const pesoEl = document.getElementById("produto-peso");
-const imagemEl = document.getElementById("produto-imagem");
-const coresContainer = document.getElementById("produto-cores");
-const tamanhosContainer = document.getElementById("produto-tamanhos");
-const estoqueInfo = document.getElementById("estoque-info");
-const btnAddProduto = document.getElementById("btn-add-produto");
+const $ = id => document.getElementById(id);
+
+const elNome = $("produto-nome");
+const elPreco = $("produto-preco");
+const elDescricao = $("produto-descricao");
+const elPeso = $("produto-peso");
+const elImagem = $("produto-imagem");
+const elCores = $("produto-cores");
+const elTamanhos = $("produto-tamanhos");
+const elEstoque = $("estoque-info");
+const btnCarrinho = $("btn-add-produto");
+const btnFavorito = $("btn-favorito");
 
 // ================================
-// PREENCHER DADOS DO PRODUTO
+// RENDER PRODUTO
 // ================================
-nomeEl.textContent = produto.nome;
-precoEl.textContent = produto.preco.toFixed(2).replace(".", ",");
-descricaoEl.textContent = produto.descricao;
-pesoEl.textContent = produto.peso;
-imagemEl.src = produto.imagem;
+elNome.textContent = produtoAtual.nome;
+elPreco.textContent = `R$ ${produtoAtual.preco.toFixed(2).replace(".", ",")}`;
+elDescricao.textContent = produtoAtual.descricao;
+elPeso.textContent = produtoAtual.peso;
+elImagem.src = produtoAtual.imagem;
 
 // ================================
-// CONTROLE DE SELEÇÃO
+// VARIÁVEIS DE CONTROLE
 // ================================
-let corSelecionada = Object.keys(produto.cores)[0];
+let corSelecionada = Object.keys(produtoAtual.cores)[0];
 let tamanhoSelecionado = null;
 
 // ================================
 // CORES
 // ================================
-Object.keys(produto.cores).forEach((cor, index) => {
+Object.keys(produtoAtual.cores).forEach((cor, i) => {
   const div = document.createElement("div");
-  div.classList.add("cor-item");
-
-  const corLower = cor.toLowerCase();
-  div.style.background =
-    corLower === "amarelo" ? "#f5d300" :
-    corLower === "preto" ? "#000" :
-    corLower === "branco" ? "#fff" :
-    corLower === "vermelho" ? "#c00" :
-    corLower === "azul" ? "#0055cc" :
-    "#ccc";
-
-  if (index === 0) div.classList.add("ativa");
+  div.className = `cor-item ${i === 0 ? "ativa" : ""}`;
+  div.title = cor;
 
   div.addEventListener("click", () => {
-    document.querySelectorAll(".cor-item")
-      .forEach(c => c.classList.remove("ativa"));
-
+    document.querySelectorAll(".cor-item").forEach(c => c.classList.remove("ativa"));
     div.classList.add("ativa");
     corSelecionada = cor;
-    atualizarTamanhos(cor);
+    renderTamanhos();
   });
 
-  coresContainer.appendChild(div);
+  elCores.appendChild(div);
 });
 
 // ================================
-// TAMANHOS E ESTOQUE
+// TAMANHOS
 // ================================
-function atualizarTamanhos(cor) {
-  tamanhosContainer.innerHTML = "";
+function renderTamanhos() {
+  elTamanhos.innerHTML = "";
   tamanhoSelecionado = null;
-  estoqueInfo.textContent = "Selecione um tamanho";
+  elEstoque.textContent = "Selecione um tamanho";
 
-  const tamanhos = produto.cores[cor];
+  const estoque = produtoAtual.cores[corSelecionada];
 
-  Object.keys(tamanhos).forEach(tamanho => {
+  Object.keys(estoque).forEach(tam => {
     const btn = document.createElement("button");
-    btn.textContent = tamanho;
+    btn.textContent = tam;
 
-    if (tamanhos[tamanho] === 0) {
-      btn.disabled = true;
-      btn.classList.add("indisponivel");
-    }
+    if (estoque[tam] === 0) btn.disabled = true;
 
-    btn.addEventListener("click", () => {
+    btn.onclick = () => {
       document.querySelectorAll("#produto-tamanhos button")
         .forEach(b => b.classList.remove("ativo"));
-
       btn.classList.add("ativo");
-      tamanhoSelecionado = tamanho;
+      tamanhoSelecionado = tam;
+      elEstoque.textContent = `Em estoque: ${estoque[tam]}`;
+    };
 
-      estoqueInfo.textContent =
-        tamanhos[tamanho] > 0
-          ? `Em estoque: ${tamanhos[tamanho]} unidade(s)`
-          : "Fora de estoque";
-    });
-
-    tamanhosContainer.appendChild(btn);
+    elTamanhos.appendChild(btn);
   });
 }
 
-// Inicializa tamanhos da primeira cor
-atualizarTamanhos(corSelecionada);
+renderTamanhos();
 
 // ================================
-// ADICIONAR AO CARRINHO
+// CARRINHO
 // ================================
-btnAddProduto.addEventListener("click", () => {
+btnCarrinho?.addEventListener("click", () => {
   if (!tamanhoSelecionado) {
     alert("Selecione um tamanho");
     return;
   }
 
-  const estoque = produto.cores[corSelecionada][tamanhoSelecionado];
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-  if (estoque <= 0) {
-    alert("Produto fora de estoque");
-    return;
-  }
-
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-  const itemExistente = carrinho.find(
-    item =>
-      item.produto === produto.nome &&
-      item.cor === corSelecionada &&
-      item.tamanho === tamanhoSelecionado
-  );
-
-  if (itemExistente) {
-    itemExistente.quantidade++;
-  } else {
-    carrinho.push({
-      produto: produto.nome,
-      preco: produto.preco,
-      cor: corSelecionada,
-      tamanho: tamanhoSelecionado,
-      quantidade: 1
-    });
-  }
+  carrinho.push({
+    id: produtoAtual.id,
+    nome: produtoAtual.nome,
+    cor: corSelecionada,
+    tamanho: tamanhoSelecionado,
+    preco: produtoAtual.preco,
+    qtd: 1
+  });
 
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-  btnAddProduto.textContent = "✓ Adicionado";
-  setTimeout(() => {
-    btnAddProduto.textContent = "Adicionar ao carrinho";
-  }, 1200);
+  btnCarrinho.textContent = "✓ Adicionado";
+  setTimeout(() => btnCarrinho.textContent = "Adicionar ao carrinho", 1200);
 });
+
 // ================================
-// PRODUTOS RELACIONADOS 
+// FAVORITOS (ÚNICO SISTEMA)
 // ================================
-const containerRelacionados = document.getElementById("lista-relacionados");
-
-if (containerRelacionados && produto) {
-  const relacionados = produtos.filter(
-    (p) =>
-      p.categoria === produto.categoria &&
-      p.id !== produto.id
-  );
-
-  containerRelacionados.innerHTML = "";
-
-  relacionados.forEach((p) => {
-    const card = document.createElement("a");
-    card.href = `produto.html?id=${p.id}`;
-    card.classList.add("produto-card");
-
-    card.innerHTML = `
-      <img src="${p.imagem}" alt="${p.nome}">
-      <h3>${p.nome}</h3>
-      <p class="preco">R$ ${p.preco.toFixed(2).replace(".", ",")}</p>
-    `;
-
-    containerRelacionados.appendChild(card);
-  });
-
-  if (relacionados.length === 0) {
-    containerRelacionados.innerHTML =
-      "<p>Nenhum produto relacionado encontrado.</p>";
-  }
-}
-// ================================
-//           FAVORITOS :)
-// ================================
-const btnFavorito = document.getElementById("btn-favorito");
-
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
-// verifica se já é favorito
-function produtoEhFavorito(id) {
-  return favoritos.includes(id);
+function getFavoritos() {
+  return JSON.parse(localStorage.getItem("favoritos")) || [];
 }
 
-// atualiza visual
-function atualizarFavoritoUI() {
+function setFavoritos(lista) {
+  localStorage.setItem("favoritos", JSON.stringify(lista));
+}
+
+function atualizarFavorito() {
   if (!btnFavorito) return;
-
-  if (produtoEhFavorito(produto.id)) {
-    btnFavorito.classList.add("ativo");
-    btnFavorito.innerHTML = `<i class="fa-solid fa-heart"></i>`;
-  } else {
-    btnFavorito.classList.remove("ativo");
-    btnFavorito.innerHTML = `<i class="fa-regular fa-heart"></i>`;
-  }
+  btnFavorito.classList.toggle(
+    "ativo",
+    getFavoritos().includes(produtoAtual.id)
+  );
 }
 
-// clique no botão
-const usuarioLogado = localStorage.getItem("usuarioLogado");
-
-  btnFavorito.addEventListener("click", () => {
-  if (!usuarioLogado) {
-    alert("Faça login para favoritar produtos 💙");
-    window.location.href = "login.html";
+btnFavorito?.addEventListener("click", () => {
+  if (!localStorage.getItem("usuarioLogado")) {
+    alert("Faça login para favoritar 💙");
+    localStorage.setItem("redirectPosLogin", location.href);
+    location.href = "login.html";
     return;
   }
 
-  if (favoritos.includes(produto.id)) {
-    favoritos = favoritos.filter(id => id !== produto.id);
-  } else {
-    favoritos.push(produto.id);
-  }
+  let favoritos = getFavoritos();
 
-  localStorage.setItem("favoritos", JSON.stringify(favoritos));
-  atualizarFavoritoUI();
-  atualizarBadgeFavoritos();
+  favoritos.includes(produtoAtual.id)
+    ? favoritos = favoritos.filter(id => id !== produtoAtual.id)
+    : favoritos.push(produtoAtual.id);
+
+  setFavoritos(favoritos);
+  atualizarFavorito();
 });
 
-// inicializa
-atualizarFavoritoUI();
-
-// ================================
-// FAVORITOS (PRODUTO)
-// ================================
-const btnFavoritoProduto = document.getElementById("btn-favorito-produto");
-
-if (btnFavoritoProduto) {
-  function getFavoritos() {
-    return JSON.parse(localStorage.getItem("favoritos")) || [];
-  }
-
-  function salvarFavoritos(lista) {
-    localStorage.setItem("favoritos", JSON.stringify(lista));
-  }
-
-  function alternarFavorito(idProduto) {
-    let favoritos = getFavoritos();
-
-    const index = favoritos.indexOf(idProduto);
-
-    if (index >= 0) {
-      favoritos.splice(index, 1);
-    } else {
-      favoritos.push(idProduto);
-    }
-
-    salvarFavoritos(favoritos);
-  }
-
-  // estado inicial
-  if (getFavoritos().includes(produto.id)) {
-    btnFavoritoProduto.classList.add("ativo");
-  }
-
-  btnFavoritoProduto.addEventListener("click", () => {
-    alternarFavorito(produto.id);
-    btnFavoritoProduto.classList.toggle("ativo");
-  });
-}
+atualizarFavorito();
