@@ -75,7 +75,10 @@ formLogin.addEventListener("submit", async (e) => {
     await signInWithEmailAndPassword(auth, email, senha);
 
     // 🔐 SALVA LOGIN
-    localStorage.setItem("usuarioLogado", email);
+    localStorage.setItem("usuarioLogado", JSON.stringify({
+      email: email,
+      nome: nome,
+    }));
 
     // 🔁 REDIRECIONA PARA ONDE ESTAVA
     const redirect = sessionStorage.getItem("redirectAposLogin");
