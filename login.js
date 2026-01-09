@@ -81,10 +81,15 @@ formLogin.addEventListener("submit", async (e) => {
     }));
 
     // 🔁 REDIRECIONA PARA ONDE ESTAVA
-    const redirect = sessionStorage.getItem("redirectAposLogin");
-    window.location.href = redirect || "index.html";
+    const redirect = localStorage.getItem("redirectPosLogin");
 
-  } catch (error) {
+if (redirect) {
+  localStorage.removeItem("redirectPosLogin");
+  window.location.href = redirect;
+} else {
+  window.location.href = "index.html";
+}
+   catch (error) {
     alert(traduzirErro(error.code));
   }
 });
