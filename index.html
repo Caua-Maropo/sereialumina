@@ -3,149 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Sereia Lumina</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header clean-header">
+<header class="site-header clean-header">
   <div class="header-container">
-    
 
-    <!-- Logo -->
     <a href="index.html" class="logo">
       <span class="use">Use</span>
       <h1>Sereia Lumina</h1>
     </a>
 
-    <!-- Busca -->
     <div class="search-area">
-      <input
-        type="text"
-        placeholder="Pesquisar produtos"
-        aria-label="Pesquisar produtos"
-      >
-      <button aria-label="Pesquisar">🔍</button>
+      <input type="text" placeholder="Pesquisar produtos">
+      <button>🔍</button>
     </div>
-    
- <!-- Ícones -->
-   <div class="header-icons">
-  <a href="login.html"><i class="fa-regular fa-user"></i></a>
- 
-     <a href="favoritos.html" class="icon-heart">
+
+    <div class="header-icons">
+      <a href="login.html"><i class="fa-regular fa-user"></i></a>
+
+      <a href="favoritos.html" class="icon-heart">
         <i class="fa-regular fa-heart"></i>
-        <span id="badge-favoritos" class="badge">0</span> 
+        <span id="badge-favoritos" class="badge">0</span>
       </a>
 
-  <a href="#" id="abrir-carrinho" class="icon-bag">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <span class="badge-carrinho" id="badge-carrinho">0</span>
-  </a>
+      <a href="#" id="abrir-carrinho" class="icon-bag">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="badge-carrinho" class="badge">0</span>
+      </a>
 
-  <!-- USUÁRIO LOGADO -->
-  <div class="user-area" id="user-area" style="display:none;">
-    <span id="user-email"></span>
-    <button id="logout-btn">Sair</button>
+      <div class="user-area" id="user-area" style="display:none;">
+        <span id="user-email"></span>
+        <button id="logout-btn">Sair</button>
+      </div>
+    </div>
+
   </div>
-</div>
-
 </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <p class="season">Moda Verão 2026</p>
-      <h2>Coleções em Destaque</h2>
-      <a href="#produtos" class="btn-hero">Ver Produtos</a>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-text">
+    <p class="season">Moda Verão 2026</p>
+    <h2>Coleções em Destaque</h2>
+    <a href="#produtos" class="btn-hero">Ver Produtos</a>
+  </div>
+</section>
 
-  <!-- CATEGORIAS -->
-  <section class="categorias">
-    <div class="cat-card" data-category="biquini">Biquínis</div>
-    <div class="cat-card" data-category="maio">Maiôs</div>
-    <div class="cat-card" data-category="saida">Saídas de Praia</div>
-    <div class="cat-card" data-category="todos">Todos</div>
-  </section>
+<section class="categorias">
+  <div class="cat-card" data-category="biquini">Biquínis</div>
+  <div class="cat-card" data-category="maio">Maiôs</div>
+  <div class="cat-card" data-category="saida">Saídas de Praia</div>
+  <div class="cat-card" data-category="todos">Todos</div>
+</section>
 
-  <!-- PRODUTOS -->
-<div class="produto" data-category="biquini">
-  <a href="produto.html?id=biquini-amarelo" class="produto-link">
-    <div class="card">
+<section id="produtos" class="lista-produtos">
+
+  <!-- PRODUTO -->
+  <div class="card-produto" data-category="biquini">
+    <a href="produto.html?id=biquini-amarelo">
       <img src="imagens/biquini-amarelo.png" alt="Biquíni Amarelo">
       <h3>Biquíni Amarelo</h3>
       <p class="preco">R$ 59,90</p>
-      <span class="ver-produto"> Ver produto</span>
-    </div>
-  </a>
+    </a>
 
-  <button 
-  class="btn-favorito"
-  data-id="biquini-amarelo"
-  title="Favoritar"
->
-  <i class="fa-regular fa-heart"></i>
-</button>
+    <button class="btn-favorito" data-id="biquini-amarelo">
+      <i class="fa-regular fa-heart"></i>
+    </button>
 
-  <button 
-    class="btn-carrinho"
-    data-produto="Biquíni Amarelo"
-    data-preco="59.90"
-  >
-    Adicionar ao carrinho
-  </button>
-</div>
+    <button class="btn-carrinho" data-produto="Biquíni Amarelo" data-preco="59.90">
+      Adicionar ao carrinho
+    </button>
+  </div>
 
+  <div class="card-produto" data-category="biquini">
+    <a href="produto.html?id=biquini-preto">
+      <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
+      <h3>Biquíni Preto</h3>
+      <p class="preco">R$ 79,90</p>
+    </a>
 
-    <div class="produto" data-category="biquini">
-      <a href="produto.html?id=biquini-preto" class="produto-link"
-        <div class="card">
-        <img src="imagens/biquini-preto.png" alt="Biquíni Preto">
-        <h3>Biquíni Preto</h3>
-        <span class="ver-produto"> Ver produto</span>
-        <p class="preco">R$ 79,90</p>
-        
-        <button 
-          class="btn-carrinho" 
-          data-produto="Biquíni Preto" 
-          data-preco="79.90"
-          >
-          Adicionar ao carrinho
-        </button>
-      </div>
+    <button class="btn-carrinho" data-produto="Biquíni Preto" data-preco="79.90">
+      Adicionar ao carrinho
+    </button>
+  </div>
 
-    <div class="produto" data-category="maio">
-      <a href="produto.html?id=maio-azul" class="produto-link"
-      <div class="card">
-        <img src="imagens/maio-azul.png" alt="Maiô Azul">
-        <h3>Maiô Azul</h3>
-        <span class="ver-produto"> Ver produto</span>
-        <p class="preco">R$ 89,90</p>
-       
-        <button 
-          class="btn-carrinho" 
-          data-produto="Maiô Azul" 
-          data-preco="89.90"
-          >
-          Adicionar ao carrinho
-        </button>
-      </div>
-  </section>
+  <div class="card-produto" data-category="maio">
+    <a href="produto.html?id=maio-azul">
+      <img src="imagens/maio-azul.png" alt="Maiô Azul">
+      <h3>Maiô Azul</h3>
+      <p class="preco">R$ 89,90</p>
+    </a>
 
-  <!-- RODAPÉ -->
-  <footer class="site-footer">
-    <p>© 2025 • Sereia Lumina</p>
-    <p>Contato: WhatsApp (81) 9 8295-9208</p>
-  </footer>
+    <button class="btn-carrinho" data-produto="Maiô Azul" data-preco="89.90">
+      Adicionar ao carrinho
+    </button>
+  </div>
 
-  <!-- OVERLAY -->
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 • Sereia Lumina</p>
+  <p>Contato: WhatsApp (81) 9 8295-9208</p>
+</footer>
+
 <div id="overlay-carrinho"></div>
 
-<!-- CARRINHO LATERAL -->
 <aside id="carrinho-lateral">
   <header class="carrinho-header">
     <h3>Meu Carrinho</h3>
@@ -155,19 +127,14 @@
   <ul id="lista-carrinho"></ul>
 
   <div class="carrinho-footer">
-    <div class="carrinho-total">
-      <span>Total</span>
-      <strong>R$ <span id="total-carrinho">0,00</span></strong>
-    </div>
-
-    <button id="finalizar-whatsapp">
-      Finalizar no WhatsApp
-    </button>
+    <span>Total: R$ <strong id="total-carrinho">0,00</strong></span>
+    <button id="finalizar-whatsapp">Finalizar no WhatsApp</button>
   </div>
 </aside>
 
-  <script type="module" src="auth.js"></script>
-  <script src="script.js"></script>
-  <script src="favoritos.js"></script>
+<script type="module" src="auth.js"></script>
+<script src="script.js"></script>
+<script src="favoritos.js"></script>
+
 </body>
 </html>
