@@ -1,111 +1,63 @@
-console.log("auth.js carregado");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { 
+  getAuth, 
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-/* =========================
-   UTILITÁRIOS
-========================= */
+// 🔹 CONFIG FIREBASE
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_DOMINIO",
+  projectId: "SEU_PROJECT_ID",
+};
 
-function getUsuario() {
-  return JSON.parse(localStorage.getItem("usuarioLogado"));
-}
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-function setUsuario(usuario) {
-  localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-}
-
-function logout() {
-  localStorage.removeItem("usuarioLogado");
-  window.location.href = "index.html";
-}
-
-/* =========================
-   HEADER (todas as páginas)
-========================= */
-
-const userArea = document.getElementById("user-area");
-const userEmail = document.getElementById("user-email");
-const logoutBtn = document.getElementById("logout-btn");
-const iconLogin = document.querySelector(".fa-user");
-
-const usuario = getUsuario();
-
-if (usuario && userArea) {
-  userArea.style.display = "flex";
-  userEmail.textContent = usuario.email;
-  if (iconLogin) iconLogin.style.display = "none";
-}
-
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", logout);
-}
-
-/* =========================
-   PROTEGER PÁGINAS
-========================= */
-
-function protegerPagina() {
-  if (!getUsuario()) {
-    localStorage.setItem("redirectPosLogin", window.location.href);
-    window.location.href = "login.html";
-  }
-}
-
-/* =========================
-   LOGIN / CADASTRO
-========================= */
-
+// 🔹 ELEMENTOS
 const loginForm = document.getElementById("login-form");
-const cadastroForm = document.getElementById("cadastro-form");
+const emailInput = document.getElementById("email");
+const senhaInput = document.getElementById("senha");
+const logoutBtn = document.getElementById("logout-btn");
 
+// 🔹 LOGIN
 if (loginForm) {
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const email = loginForm.email.value;
-    const senha = loginForm.senha.value;
+    const email = emailInput.value;
+    const senha = senhaInput.value;
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuario = usuarios.find(
-      (u) => u.email === email && u.senha === senha
-    );
-
-    if (!usuario) {
-      alert("E-mail ou senha inválidos");
-      return;
-    }
-
-    setUsuario(usuario);
-
-    const redirect =
-      localStorage.getItem("redirectPosLogin") || "index.html";
-    localStorage.removeItem("redirectPosLogin");
-    window.location.href = redirect;
+    signInWithEmailAndPassword(auth, email, senha)
+      .then(() => {
+        // 🔥 REDIRECIONA AQUI
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        alert("Email ou senha inválidos");
+        console.error(error);
+      });
   });
 }
 
-if (cadastroForm) {
-  cadastroForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+// 🔹 CONTROLE DE SESSÃO
+onAuthStateChanged(auth, (user) => {
+  if (!user && !window.location.pathname.includes("login.html")) {
+    window.location.href = "login.html";
+  }
 
-    const nome = cadastroForm.nome.value;
-    const email = cadastroForm.email.value;
-    const senha = cadastroForm.senha.value;
+  if (user && window.location.pathname.includes("login.html")) {
+    window.location.href = "index.html";
+  }
+});
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    if (usuarios.some((u) => u.email === email)) {
-      alert("Este e-mail já está cadastrado");
-      return;
-    }
-
-    const novoUsuario = { nome, email, senha };
-    usuarios.push(novoUsuario);
-
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    setUsuario(novoUsuario);
-
-    const redirect =
-      localStorage.getItem("redirectPosLogin") || "index.html";
-    localStorage.removeItem("redirectPosLogin");
-    window.location.href = redirect;
+// 🔹 LOGOUT
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
   });
 }
