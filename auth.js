@@ -1,11 +1,41 @@
 console.log("AUTH.JS CARREGOU");
 
+function salvarPaginaAtual() {
+  const paginaAtual = window.location.pathname;
+  if (!paginaAtual.includes("login-html")) {
+    sessionStorage.setItem("redirectAfterLogin", paginaAtual = window.location.search);
+  }
+}
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
+ onAuthStateChanged(auth, (user) => {
+  const pagina = window.location.pathname;
+
+  const paginasProtegidas = ["produto.html", "favoritos.html"];
+
+  const paginaProtegida = paginasProtegidas.some(p =>
+    pagina.includes(p)
+  );
+
+  if (!user && paginaProtegida) {
+    salvarPaginaAtual();
+    window.location.href = "login.html";
+    return;
+  }
+
+  if (user && userArea && userEmail) {
+    userArea.style.display = "flex";
+    userEmail.textContent = user.email;
+  }
+
+  if (!user && userArea) {
+    userArea.style.display = "none";
+  }
+});
   signOut
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
@@ -46,7 +76,9 @@ if (loginForm) {
         loginSenha.value
       );
 
-      window.location.href = "index.html";
+    const destino = sessionStorage.getItem("redirectAfterLogin") || "index.html";
+    sessionStorage.removeItem("redirectAfterLogin");
+    window.location.href = destino;
     } catch (err) {
       alert("Email ou senha inválidos");
       console.error(err);
