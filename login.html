@@ -7,7 +7,42 @@
 </head>
 <body>
 
-<div class="auth-container">
+  <header class="site-header clean-header">
+  <div class="header-container">
+
+    <a href="index.html" class="logo">
+      <span class="use">Use</span>
+      <h1>Sereia Lumina</h1>
+    </a>
+
+    <div class="search-area">
+      <input type="text" placeholder="Pesquisar produtos">
+      <button>🔍</button>
+    </div>
+
+    <div class="header-icons">
+      <a href="login.html"><i class="fa-regular fa-user"></i></a>
+
+      <a href="favoritos.html" class="icon-heart">
+        <i class="fa-regular fa-heart"></i>
+        <span id="badge-favoritos" class="badge">0</span>
+      </a>
+
+      <a href="#" id="abrir-carrinho" class="icon-bag">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="badge-carrinho" class="badge">0</span>
+      </a>
+
+      <div class="user-area" id="user-area" style="display:none;">
+        <span id="user-email"></span>
+        <button id="logout-btn">Sair</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  <div class="auth-container">
 
   <div class="auth-tabs">
     <button id="tab-login" class="ativo">Entrar</button>
