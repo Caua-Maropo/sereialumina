@@ -89,10 +89,6 @@ if (redirect) {
 } else {
   window.location.href = "index.html";
 }
-   catch (error) {
-    alert(traduzirErro(error.code));
-  }
-});
 
 // ==========================
 // ERROS AMIGÁVEIS
