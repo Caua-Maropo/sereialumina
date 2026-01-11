@@ -12,31 +12,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
- onAuthStateChanged(auth, (user) => {
-  const pagina = window.location.pathname;
-
-  const paginasProtegidas = ["produto.html", "favoritos.html"];
-
-  const paginaProtegida = paginasProtegidas.some(p =>
-    pagina.includes(p)
-  );
-
-  if (!user && paginaProtegida) {
-    salvarPaginaAtual();
-    window.location.href = "login.html";
-    return;
-  }
-
-  if (user && userArea && userEmail) {
-    userArea.style.display = "flex";
-    userEmail.textContent = user.email;
-  }
-
-  if (!user && userArea) {
-    userArea.style.display = "none";
-  }
-});
-  signOut
+  onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // 🔹 FIREBASE CONFIG
