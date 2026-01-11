@@ -1,8 +1,8 @@
 console.log("AUTH.JS CARREGOU");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { 
-  getAuth, 
+import {
+  getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
@@ -18,50 +18,54 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔹 ELEMENTOS
+// 🔹 ELEMENTOS (PODEM OU NÃO EXISTIR)
 const loginForm = document.getElementById("login-form");
 const emailInput = document.getElementById("email");
 const senhaInput = document.getElementById("senha");
 const logoutBtn = document.getElementById("logout-btn");
+const userArea = document.getElementById("user-area");
+const userEmail = document.getElementById("user-email");
 
-// 🔹 LOGIN
+// 🔹 LOGIN (SÓ NA TELA DE LOGIN)
 if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = emailInput.value;
-    const senha = senhaInput.value;
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        emailInput.value,
+        senhaInput.value
+      );
 
-    signInWithEmailAndPassword(auth, email, senha)
-     
-      .then(() => {
-  alert("LOGIN OK");
-  window.location.href = "index.html";
-})
-
-      .catch((error) => {
-        alert("Email ou senha inválidos");
-        console.error(error);
-      });
+      window.location.href = "index.html";
+    } catch (error) {
+      alert("Email ou senha inválidos");
+      console.error(error);
+    }
   });
 }
 
-// 🔹 CONTROLE DE SESSÃO
+// 🔹 CONTROLE DE SESSÃO (SEM REDIRECIONAMENTO AGRESSIVO)
 onAuthStateChanged(auth, (user) => {
-  if (!user && !window.location.pathname.includes("login.html")) {
-    window.location.href = "login.html";
-  }
-
-  if (user && window.location.pathname.includes("login.html")) {
-    window.location.href = "index.html";
+  if (user) {
+    // Usuário logado
+    if (userArea && userEmail) {
+      userArea.style.display = "flex";
+      userEmail.textContent = user.email;
+    }
+  } else {
+    // Usuário deslogado
+    if (userArea) {
+      userArea.style.display = "none";
+    }
   }
 });
 
 // 🔹 LOGOUT
 if (logoutBtn) {
-  logoutBtn.addEventListener("click", () => {
-    signOut(auth).then(() => {
-      window.location.href = "login.html";
-    });
+  logoutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "login.html";
   });
 }
