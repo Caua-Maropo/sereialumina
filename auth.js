@@ -8,9 +8,9 @@ import {
 
 // 🔹 CONFIG FIREBASE
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMINIO",
-  projectId: "SEU_PROJECT_ID",
+  apiKey: "AIzaSyBp_mqQKIps49q48ilqIsvvKle3I2Rjgag",
+  authDomain: "seria-lumina.firebaseapp.com",
+  projectId: "seria-lumina",
 };
 
 const app = initializeApp(firebaseConfig);
