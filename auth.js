@@ -1,3 +1,5 @@
+console.log("AUTH.JS CARREGOU");
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { 
   getAuth, 
@@ -31,10 +33,12 @@ if (loginForm) {
     const senha = senhaInput.value;
 
     signInWithEmailAndPassword(auth, email, senha)
+     
       .then(() => {
-        // 🔥 REDIRECIONA AQUI
-        window.location.href = "index.html";
-      })
+  alert("LOGIN OK");
+  window.location.href = "index.html";
+})
+
       .catch((error) => {
         alert("Email ou senha inválidos");
         console.error(error);
