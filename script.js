@@ -1,23 +1,45 @@
 console.log("script.js carregado");
 
 // ================================
-// CARRINHO (LocalStorage)
+// FIREBASE AUTH
 // ================================
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Elementos (podem ou não existir)
+const auth = getAuth();
+
+// ================================
+// VARIÁVEIS
+// ================================
+let carrinho = [];
+let usuarioAtual = null;
+
+// Elementos
 const listaCarrinho = document.getElementById("lista-carrinho");
 const totalCarrinho = document.getElementById("total-carrinho");
 const botaoFinalizar = document.getElementById("finalizar-whatsapp");
 
 // ================================
-// ATUALIZAR CARRINHO
+// STORAGE POR USUÁRIO
+// ================================
+function getCarrinho(uid) {
+  return JSON.parse(localStorage.getItem(`carrinho_${uid}`)) || [];
+}
+
+function salvarCarrinho(uid, dados) {
+  localStorage.setItem(`carrinho_${uid}`, JSON.stringify(dados));
+}
+
+// ================================
+// ATUALIZAR CARRINHO (UI)
 // ================================
 function atualizarCarrinho() {
-  // Sempre salva no localStorage
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  if (!usuarioAtual) return;
 
-  // Se não estiver na página com carrinho lateral
+  salvarCarrinho(usuarioAtual.uid, carrinho);
+
   if (!listaCarrinho || !totalCarrinho) return;
 
   listaCarrinho.innerHTML = "";
@@ -32,7 +54,7 @@ function atualizarCarrinho() {
 
     li.innerHTML = `
       <div>
-        <span>${item.produto} — ${item.tamanho || "Único"}</span>
+        <span>${item.produto} — ${item.tamanho}</span>
         <small>Qtd: ${item.quantidade}</small>
       </div>
       <div class="acoes">
@@ -46,11 +68,9 @@ function atualizarCarrinho() {
 
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
 
-  // Remover item
-  document.querySelectorAll(".btn-remover").forEach((btn) => {
+  document.querySelectorAll(".btn-remover").forEach(btn => {
     btn.addEventListener("click", () => {
-      const index = Number(btn.dataset.index);
-      carrinho.splice(index, 1);
+      carrinho.splice(btn.dataset.index, 1);
       atualizarCarrinho();
       atualizarBadgeCarrinho();
     });
@@ -58,45 +78,7 @@ function atualizarCarrinho() {
 }
 
 // ================================
-// ADICIONAR AO CARRINHO (INDEX)
-// ================================
-document.querySelectorAll(".btn-carrinho").forEach((botao) => {
-  botao.addEventListener("click", () => {
-    const produto = botao.dataset.produto;
-    const preco = Number(botao.dataset.preco);
-    const tamanho = "Único";
-
-    if (!produto || isNaN(preco)) return;
-
-    const itemExistente = carrinho.find(
-      (item) => item.produto === produto && item.tamanho === tamanho
-    );
-
-    if (itemExistente) {
-      itemExistente.quantidade++;
-    } else {
-      carrinho.push({
-        produto,
-        preco,
-        tamanho,
-        quantidade: 1
-      });
-    }
-
-    atualizarCarrinho();
-    atualizarBadgeCarrinho();
-    mostrarToast();
-
-    const textoOriginal = botao.textContent;
-    botao.textContent = "✓ Adicionado";
-    setTimeout(() => {
-      botao.textContent = textoOriginal;
-    }, 1200);
-  });
-});
-
-// ================================
-// BADGE DO CARRINHO
+// BADGE CARRINHO
 // ================================
 function atualizarBadgeCarrinho() {
   const badge = document.getElementById("badge-carrinho");
@@ -108,6 +90,47 @@ function atualizarBadgeCarrinho() {
   );
 
   badge.textContent = totalItens;
+}
+
+// ================================
+// ADICIONAR AO CARRINHO
+// ================================
+function ativarBotoesCarrinho() {
+  document.querySelectorAll(".btn-carrinho").forEach(botao => {
+    botao.addEventListener("click", () => {
+      if (!usuarioAtual) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      const produto = botao.dataset.produto;
+      const preco = Number(botao.dataset.preco);
+      const tamanho = "Único";
+
+      const existente = carrinho.find(
+        item => item.produto === produto && item.tamanho === tamanho
+      );
+
+      if (existente) {
+        existente.quantidade++;
+      } else {
+        carrinho.push({
+          produto,
+          preco,
+          tamanho,
+          quantidade: 1
+        });
+      }
+
+      atualizarCarrinho();
+      atualizarBadgeCarrinho();
+      mostrarToast();
+
+      const texto = botao.textContent;
+      botao.textContent = "✓ Adicionado";
+      setTimeout(() => botao.textContent = texto, 1200);
+    });
+  });
 }
 
 // ================================
@@ -134,10 +157,10 @@ if (botaoFinalizar) {
     let mensagem = "Olá! Meu pedido:\n\n";
     let total = 0;
 
-    carrinho.forEach((item) => {
+    carrinho.forEach(item => {
       const sub = item.preco * item.quantidade;
       total += sub;
-      mensagem += `• ${item.produto} (${item.tamanho || "Único"}) x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
+      mensagem += `• ${item.produto} (${item.tamanho}) x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
     });
 
     mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
@@ -158,66 +181,60 @@ const carrinhoLateral = document.getElementById("carrinho-lateral");
 const overlay = document.getElementById("overlay-carrinho");
 
 function abrirCarrinhoLateral() {
-  if (!carrinhoLateral || !overlay) return;
-  carrinhoLateral.classList.add("ativo");
-  overlay.classList.add("ativo");
+  carrinhoLateral?.classList.add("ativo");
+  overlay?.classList.add("ativo");
   document.body.style.overflow = "hidden";
 }
 
 function fecharCarrinhoLateral() {
-  if (!carrinhoLateral || !overlay) return;
-  carrinhoLateral.classList.remove("ativo");
-  overlay.classList.remove("ativo");
+  carrinhoLateral?.classList.remove("ativo");
+  overlay?.classList.remove("ativo");
   document.body.style.overflow = "";
 }
 
-if (abrirCarrinho) {
-  abrirCarrinho.addEventListener("click", (e) => {
-    e.preventDefault();
-    abrirCarrinhoLateral();
-  });
-}
+abrirCarrinho?.addEventListener("click", e => {
+  e.preventDefault();
+  abrirCarrinhoLateral();
+});
 
-if (fecharCarrinho) fecharCarrinho.addEventListener("click", fecharCarrinhoLateral);
-if (overlay) overlay.addEventListener("click", fecharCarrinhoLateral);
+fecharCarrinho?.addEventListener("click", fecharCarrinhoLateral);
+overlay?.addEventListener("click", fecharCarrinhoLateral);
 
 // ================================
-// FILTRO DE CATEGORIAS (INDEX)
+// FILTRO DE CATEGORIAS
 // ================================
 const categorias = document.querySelectorAll(".cat-card");
-const produtosCards = document.querySelectorAll(".produto");
+const produtos = document.querySelectorAll(".produto, .card-produto");
 
-categorias.forEach((categoria) => {
-  categoria.addEventListener("click", () => {
-    const filtro = categoria.dataset.category;
+categorias.forEach(cat => {
+  cat.addEventListener("click", () => {
+    const filtro = cat.dataset.category;
 
-    categorias.forEach((c) => c.classList.remove("ativo"));
-    categoria.classList.add("ativo");
+    categorias.forEach(c => c.classList.remove("ativo"));
+    cat.classList.add("ativo");
 
-    produtosCards.forEach((produto) => {
-      if (filtro === "todos" || produto.dataset.category === filtro) {
-        produto.style.display = "block";
-      } else {
-        produto.style.display = "none";
-      }
+    produtos.forEach(prod => {
+      prod.style.display =
+        filtro === "todos" || prod.dataset.category === filtro
+          ? "block"
+          : "none";
     });
   });
 });
 
 // ================================
-// BADGE FAVORITOS
+// AUTH → INICIALIZA CARRINHO
 // ================================
-function atualizarBadgeFavoritos() {
-  const badge = document.getElementById("badge-favoritos");
-  if (!badge) return;
-
-  const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  badge.textContent = favoritos.length;
-}
-
-// ================================
-// INIT
-// ================================
-atualizarCarrinho();
-atualizarBadgeCarrinho();
-atualizarBadgeFavoritos();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    usuarioAtual = user;
+    carrinho = getCarrinho(user.uid);
+    atualizarCarrinho();
+    atualizarBadgeCarrinho();
+    ativarBotoesCarrinho();
+  } else {
+    carrinho = [];
+    atualizarCarrinho();
+    atualizarBadgeCarrinho();
+  }
+});
