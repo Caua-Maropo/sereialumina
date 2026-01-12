@@ -176,13 +176,11 @@ body {
 /* =========================
    LISTA DE PRODUTOS
 ========================= */
-.lista-produtos {
-  max-width: 1300px;
-  margin: auto;
-  padding: 40px 20px;
+.grid-produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 32px;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 1rem;
 }
 
 /* CARD */
