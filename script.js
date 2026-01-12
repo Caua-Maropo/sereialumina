@@ -98,10 +98,10 @@ function atualizarBadgeCarrinho() {
 function ativarBotoesCarrinho() {
   document.querySelectorAll(".btn-carrinho").forEach(botao => {
     botao.addEventListener("click", () => {
-      if (!usuarioAtual) {
-        window.location.href = "login.html";
-        return;
-      }
+    //  if (!usuarioAtual) {
+      //  window.location.href = "login.html";
+        // return;
+      // }
 
       const produto = botao.dataset.produto;
       const preco = Number(botao.dataset.preco);
@@ -213,7 +213,7 @@ categorias.forEach(cat => {
     categorias.forEach(c => c.classList.remove("ativo"));
     cat.classList.add("ativo");
 
-    produtos.forEach(prod => {
+    produtosCards.forEach(prod => {
       prod.style.display =
         filtro === "todos" || prod.dataset.category === filtro
           ? "block"
