@@ -22,7 +22,7 @@ const PRODUTOS = [
     nome: "Biquíni Amarelo",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/biquini-amarelo.png",
+    imagem: "../assets/imagens/biquini-amarelo.png",
     descricao: "Biquíni confortável, tecido premium e secagem rápida.",
     peso: "180g",
     cores: {
@@ -35,7 +35,7 @@ const PRODUTOS = [
     nome: "Biquíni Preto",
     categoria: "biquini",
     preco: 79.9,
-    imagem: "assets/imagens/biquini-preto.png",
+    imagem: "../assets/imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
@@ -48,7 +48,7 @@ const PRODUTOS = [
     nome: "Maiô Azul",
     categoria: "maio",
     preco: 89.9,
-    imagem: "assets/imagens/biquini-azul.png",
+    imagem: "../assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
@@ -60,7 +60,7 @@ const PRODUTOS = [
     nome: "Mulher Amarelo",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-amarelo.jfif",
+    imagem: "../assets/imagens/mulher-biquini-amarelo.jfif",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
