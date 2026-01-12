@@ -1,7 +1,9 @@
 console.log("produto.js carregado");
 
-const usuarioLogado = localStorage.getItem("usuarioLogado");
-
+// ================================
+// USUÁRIO / ÍCONE LOGIN
+// ================================
+const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 const iconLogin = document.getElementById("icon-login");
 
 if (iconLogin) {
@@ -14,121 +16,25 @@ if (iconLogin) {
 }
 
 // ================================
-// PRODUTOS (FONTE ÚNICA)
-// ================================
-PRODUTOS.push = ({
-    id: "biquini-amarelo",
-    nome: "Biquíni Amarelo",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/biquini-amarelo.png",
-    descricao: "Biquíni confortável, tecido premium e secagem rápida.",
-    peso: "180g",
-    cores: {
-      Amarelo: { P: 3, M: 5, G: 0 },
-      Preto: { P: 2, M: 0, G: 4 }
-    }
-  },
-  {
-    id: "biquini-preto",
-    nome: "Biquíni Preto",
-    categoria: "biquini",
-    preco: 79.9,
-    imagem: "../assets/imagens/biquini-preto.png",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Preto: { P: 5, M: 10, G: 3 },
-      Vermelho: { P: 0, M: 7, G: 1 }
-    }
-  },
-  {
-    id: "maio-azul",
-    nome: "Maiô Azul",
-    categoria: "maio",
-    preco: 89.9,
-    imagem: "../assets/imagens/biquini-azul.png",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Azul: { P: 5, M: 10, G: 3 }
-    }
-  },
-  {
-    id: "mulher-amarelo",
-    nome: "Mulher Amarelo",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-amarelo.jfif",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Amarelo: { P: 5, M: 10, G: 3 }
-    }
-  },
-  {
-    id: "mulher-branco",
-    nome: "Mulher Branco",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-branco.jfif",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Branco: { P: 5, M: 10, G: 3 }
-    }
-  },
-  {
-    id: "mulher-pintado",
-    nome: "Mulher Pintado",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-pintado.jfif",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Estampado: { P: 5, M: 10, G: 3 }
-    }
-  },
-  {
-    id: "mulher-preto",
-    nome: "Mulher Preto",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-preto.jfif",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Preto: { P: 5, M: 10, G: 3 }
-    }
-  },
-  {
-    id: "mulher-vermelho",
-    nome: "Mulher Vermelho",
-    categoria: "biquini",
-    preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-vermelho.jfif",
-    descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Vermelho: { P: 5, M: 9, G: 3 }
-    }
-  }
-);
-
-// ================================
 // PRODUTO ATUAL (URL)
 // ================================
 const params = new URLSearchParams(window.location.search);
-const produtoAtual = PRODUTOS.find(p => p.id === params.get("id"));
+const produtoId = params.get("id");
+
+if (!produtoId || typeof PRODUTOS === "undefined") {
+  document.body.innerHTML = "<h2>Produto inválido</h2>";
+  throw new Error("PRODUTOS não carregado ou ID ausente");
+}
+
+const produtoAtual = PRODUTOS.find(p => p.id === produtoId);
 
 if (!produtoAtual) {
   document.body.innerHTML = "<h2>Produto não encontrado</h2>";
-  throw new Error("Produto inválido");
+  throw new Error("Produto não encontrado");
 }
 
 // ================================
-// ELEMENTOS
+// ATALHO DOM
 // ================================
 const $ = id => document.getElementById(id);
 
@@ -151,6 +57,7 @@ elPreco.textContent = `R$ ${produtoAtual.preco.toFixed(2).replace(".", ",")}`;
 elDescricao.textContent = produtoAtual.descricao;
 elPeso.textContent = produtoAtual.peso;
 elImagem.src = produtoAtual.imagem;
+elImagem.alt = produtoAtual.nome;
 
 // ================================
 // VARIÁVEIS DE CONTROLE
@@ -161,20 +68,25 @@ let tamanhoSelecionado = null;
 // ================================
 // CORES
 // ================================
-Object.keys(produtoAtual.cores).forEach((cor, i) => {
+elCores.innerHTML = "";
+
+Object.keys(produtoAtual.cores).forEach((cor, index) => {
   const div = document.createElement("div");
-  div.className = `cor-item ${i === 0 ? "ativa" : ""}`;
+  div.className = `cor-item ${index === 0 ? "ativa" : ""}`;
   div.title = cor;
 
   div.style.backgroundColor =
-  cor.toLowerCase() === "amarelo" ? "#f5d300" :
-  cor.toLowerCase() === "preto" ? "#000" :
-  cor.toLowerCase() === "azul" ? "#0055cc" :
-  cor.toLowerCase() === "vermelho" ? "#c00" :
-  "#ccc";
+    cor.toLowerCase() === "amarelo" ? "#f5d300" :
+    cor.toLowerCase() === "preto" ? "#000" :
+    cor.toLowerCase() === "azul" ? "#0055cc" :
+    cor.toLowerCase() === "vermelho" ? "#c00" :
+    cor.toLowerCase() === "branco" ? "#fff" :
+    "#ccc";
 
   div.addEventListener("click", () => {
-    document.querySelectorAll(".cor-item").forEach(c => c.classList.remove("ativa"));
+    document.querySelectorAll(".cor-item").forEach(c =>
+      c.classList.remove("ativa")
+    );
     div.classList.add("ativa");
     corSelecionada = cor;
     renderTamanhos();
@@ -199,13 +111,15 @@ function renderTamanhos() {
 
     if (estoque[tam] === 0) btn.disabled = true;
 
-    btn.onclick = () => {
-      document.querySelectorAll("#produto-tamanhos button")
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll("#produto-tamanhos button")
         .forEach(b => b.classList.remove("ativo"));
+
       btn.classList.add("ativo");
       tamanhoSelecionado = tam;
       elEstoque.textContent = `Em estoque: ${estoque[tam]}`;
-    };
+    });
 
     elTamanhos.appendChild(btn);
   });
@@ -224,38 +138,40 @@ btnCarrinho?.addEventListener("click", () => {
 
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-  const itemExistente = carrinho.find(
-  i =>
-    i.id === produtoAtual.id &&
-    i.cor === corSelecionada &&
-    i.tamanho === tamanhoSelecionado
-);
+  const existente = carrinho.find(
+    i =>
+      i.id === produtoAtual.id &&
+      i.cor === corSelecionada &&
+      i.tamanho === tamanhoSelecionado
+  );
 
-if (itemExistente) {
-  itemExistente.qtd++;
-} else {
-  carrinho.push({
-    nome: produtoAtual.nome,
-    preco: produtoAtual.preco,
-    cor: corSelecionada,
-    tamanho: tamanhoSelecionado,
-    quantidade: 1
-  });
-}
+  if (existente) {
+    existente.quantidade++;
+  } else {
+    carrinho.push({
+      id: produtoAtual.id,
+      nome: produtoAtual.nome,
+      preco: produtoAtual.preco,
+      cor: corSelecionada,
+      tamanho: tamanhoSelecionado,
+      quantidade: 1
+    });
+  }
 
-  
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
   btnCarrinho.textContent = "✓ Adicionado";
-  setTimeout(() => btnCarrinho.textContent = "Adicionar ao carrinho", 1200);
+  setTimeout(() => {
+    btnCarrinho.textContent = "Adicionar ao carrinho";
+  }, 1200);
+
+  if (typeof atualizarBadge === "function") {
+    atualizarBadge();
+  }
 });
 
-if (typeof atualizarBadge === "function") {
-  atualizarBadge();
-}
-
 // ================================
-// FAVORITOS (ÚNICO SISTEMA)
+// FAVORITOS
 // ================================
 function getFavoritos() {
   return JSON.parse(localStorage.getItem("favoritos")) || [];
@@ -274,7 +190,7 @@ function atualizarFavorito() {
 }
 
 btnFavorito?.addEventListener("click", () => {
-  if (!localStorage.getItem("usuarioLogado")) {
+  if (!usuarioLogado) {
     alert("Faça login para favoritar 💙");
     localStorage.setItem("redirectPosLogin", location.href);
     location.href = "login.html";
@@ -289,11 +205,10 @@ btnFavorito?.addEventListener("click", () => {
 
   setFavoritos(favoritos);
   atualizarFavorito();
+
+  if (typeof atualizarBadgeFavoritos === "function") {
+    atualizarBadgeFavoritos();
+  }
 });
 
 atualizarFavorito();
-
-if (typeof atualizarBadgeFavoritos === "function") {
-  atualizarBadgeFavoritos();
-}
-
