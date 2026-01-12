@@ -102,6 +102,54 @@ const PRODUTOS = [
       Vermelho: { P: 5, M: 9, G: 3 }
     }
   }
+  {
+    id: "mulher-verde",
+    nome: "Biquíni Feminino Verde",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "assets/imagens/mulher-biquini-verde.jfif",
+    descricao: "Para quem quer chamar atenção.",
+    peso: "200g",
+    cores: {
+      Vermelho: { P: 5, M: 9, G: 3 }
+    }
+  }
+{
+    id: "mulher-rosa",
+    nome: "Biquíni Feminino Rosa",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "assets/imagens/mulher-biquini-rosa.jfif",
+    descricao: "Para quem quer chamar atenção.",
+    peso: "200g",
+    cores: {
+      Vermelho: { P: 3, M: 9, G: 3 }
+    }
+  }
+{
+    id: "mulher-cinza",
+    nome: "Biquíni Feminino Cinaz",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "assets/imagens/mulher-biquini-cinza.jfif",
+    descricao: "Para quem quer chamar atenção.",
+    peso: "200g",
+    cores: {
+      Vermelho: { P: 5, M: 9, G: 3 }
+    }
+  }
+{
+    id: "biquini-verde-e-branco",
+    nome: "Biquíni Feminino Verde e Branco",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "assets/imagens/biquini-verde-e-branco.jfif",
+    descricao: "Para quem quer chamar atenção.",
+    peso: "200g",
+    cores: {
+      Vermelho: { P: 5, M: 9, G: 10 }
+    }
+  }
 ];
 
 // ================================
