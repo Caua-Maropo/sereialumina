@@ -67,8 +67,8 @@ const PRODUTOS = [
       Amarelo: { P: 5, M: 10, G: 3 }
     }
   },
-  
-   id: "mulher-branco",
+  {
+    id: "mulher-branco",
     nome: "Mulher Branco",
     categoria: "biquini",
     preco: 59.9,
@@ -76,11 +76,11 @@ const PRODUTOS = [
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Amarelo: { P: 5, M: 10, G: 3 }
+      Branco: { P: 5, M: 10, G: 3 }
     }
   },
-
- id: "mulher-pintado",
+  {
+    id: "mulher-pintado",
     nome: "Mulher Pintado",
     categoria: "biquini",
     preco: 59.9,
@@ -88,10 +88,11 @@ const PRODUTOS = [
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Amarelo: { P: 5, M: 10, G: 3 }
+      Estampado: { P: 5, M: 10, G: 3 }
     }
   },
- id: "mulher-preto",
+  {
+    id: "mulher-preto",
     nome: "Mulher Preto",
     categoria: "biquini",
     preco: 59.9,
@@ -99,10 +100,11 @@ const PRODUTOS = [
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Amarelo: { P: 5, M: 10, G: 3 }
+      Preto: { P: 5, M: 10, G: 3 }
     }
   },
- id: "mulher-vermelho",
+  {
+    id: "mulher-vermelho",
     nome: "Mulher Vermelho",
     categoria: "biquini",
     preco: 59.9,
@@ -110,7 +112,7 @@ const PRODUTOS = [
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Amarelo: { P: 5, M: 9, G: 3 }
+      Vermelho: { P: 5, M: 9, G: 3 }
     }
   }
 ];
