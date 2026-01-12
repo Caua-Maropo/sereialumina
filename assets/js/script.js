@@ -1,18 +1,13 @@
 console.log("script.js carregado");
 
 // ================================
-// FIREBASE AUTH
+// ESTADO
 // ================================
-
-
-// ================================
-// VARIÁVEIS DE ESTADO
-// ================================
+let usuarioAtual = { uid: "guest" };
 let carrinho = [];
-let usuarioAtual = { uid: "guest" }; // 🔹 fallback para TESTES
 
 // ================================
-// ELEMENTOS DO DOM
+// ELEMENTOS
 // ================================
 const listaCarrinho = document.getElementById("lista-carrinho");
 const totalCarrinho = document.getElementById("total-carrinho");
@@ -35,7 +30,7 @@ function salvarCarrinho(uid, dados) {
 }
 
 // ================================
-// ATUALIZAR CARRINHO (UI)
+// UI CARRINHO
 // ================================
 function atualizarCarrinho() {
   if (!listaCarrinho || !totalCarrinho) return;
@@ -50,7 +45,7 @@ function atualizarCarrinho() {
     total += subtotal;
 
     const li = document.createElement("li");
-    li.classList.add("item-carrinho");
+    li.className = "item-carrinho";
 
     li.innerHTML = `
       <div>
@@ -69,135 +64,30 @@ function atualizarCarrinho() {
   totalCarrinho.textContent = total.toFixed(2).replace(".", ",");
 
   document.querySelectorAll(".btn-remover").forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.onclick = () => {
       carrinho.splice(btn.dataset.index, 1);
       atualizarCarrinho();
       atualizarBadgeCarrinho();
-    });
+    };
   });
 }
 
 // ================================
-// BADGE CARRINHO
+// BADGE
 // ================================
 function atualizarBadgeCarrinho() {
   const badge = document.getElementById("badge-carrinho");
   if (!badge) return;
 
-  const totalItens = carrinho.reduce(
+  badge.textContent = carrinho.reduce(
     (soma, item) => soma + item.quantidade,
     0
   );
-
-  badge.textContent = totalItens;
 }
 
 // ================================
-// ADICIONAR AO CARRINHO
+// ADICIONAR AO CARRINHO (DINÂMICO)
 // ================================
-function ativarBotoesCarrinho() {
-  document.querySelectorAll(".btn-carrinho").forEach(botao => {
-    botao.addEventListener("click", () => {
-      const produto = botao.dataset.produto;
-      const preco = Number(botao.dataset.preco);
-
-      const existente = carrinho.find(item => item.produto === produto);
-
-      if (existente) {
-        existente.quantidade++;
-      } else {
-        carrinho.push({
-          produto,
-          preco,
-          quantidade: 1
-        });
-      }
-
-      atualizarCarrinho();
-      atualizarBadgeCarrinho();
-
-      const texto = botao.textContent;
-      botao.textContent = "✓ Adicionado";
-      setTimeout(() => botao.textContent = texto, 1000);
-    });
-  });
-}
-
-// ================================
-// CARRINHO LATERAL (ABRIR / FECHAR)
-// ================================
-function abrirCarrinhoLateral() {
-  carrinhoLateral.classList.add("ativo");
-  overlay.classList.add("ativo");
-  document.body.style.overflow = "hidden";
-}
-
-function fecharCarrinhoLateral() {
-  carrinhoLateral.classList.remove("ativo");
-  overlay.classList.remove("ativo");
-  document.body.style.overflow = "";
-}
-
-abrirCarrinho.addEventListener("click", e => {
-  e.preventDefault();
-  abrirCarrinhoLateral();
-});
-
-fecharCarrinho.addEventListener("click", fecharCarrinhoLateral);
-overlay.addEventListener("click", fecharCarrinhoLateral);
-
-// ================================
-// FILTRO DE CATEGORIAS (ERRO ESTAVA AQUI)
-// ================================
-const categorias = document.querySelectorAll(".cat-card");
-const produtosCards = document.querySelectorAll(".card-produto");
-
-categorias.forEach(cat => {
-  cat.addEventListener("click", () => {
-    const filtro = cat.dataset.category;
-
-    categorias.forEach(c => c.classList.remove("ativo"));
-    cat.classList.add("ativo");
-
-    // 🔴 ANTES: produtos (não existia)
-    // ✅ AGORA: produtosCards
-    produtosCards.forEach(prod => {
-      prod.style.display =
-        filtro === "todos" || prod.dataset.category === filtro
-          ? "block"
-          : "none";
-    });
-  });
-});
-
-// ================================
-// FINALIZAR WHATSAPP
-// ================================
-if (botaoFinalizar) {
-  botaoFinalizar.addEventListener("click", () => {
-    if (carrinho.length === 0) {
-      alert("Carrinho vazio");
-      return;
-    }
-
-    let mensagem = "Olá! Meu pedido:\n\n";
-    let total = 0;
-
-    carrinho.forEach(item => {
-      const sub = item.preco * item.quantidade;
-      total += sub;
-      mensagem += `• ${item.produto} x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
-    });
-
-    mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
-
-    window.open(
-      `https://wa.me/5581984782598?text=${encodeURIComponent(mensagem)}`,
-      "_blank"
-    );
-  });
-}
-
 document.addEventListener("click", (event) => {
   const btn = event.target.closest(".btn-carrinho");
   if (!btn) return;
@@ -205,30 +95,69 @@ document.addEventListener("click", (event) => {
   const produto = btn.dataset.produto;
   const preco = Number(btn.dataset.preco);
 
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  const existente = carrinho.find(i => i.produto === produto);
 
-  carrinho.push({
-    nome: produto,
-    preco,
-    quantidade: 1
-  });
-
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  if (typeof atualizarBadge === "function") {
-    atualizarBadge();
+  if (existente) {
+    existente.quantidade++;
+  } else {
+    carrinho.push({ produto, preco, quantidade: 1 });
   }
 
+  atualizarCarrinho();
+  atualizarBadgeCarrinho();
+
   btn.textContent = "✓ Adicionado";
-  setTimeout(() => {
-    btn.textContent = "Adicionar ao carrinho";
-  }, 1000);
+  setTimeout(() => btn.textContent = "Adicionar ao carrinho", 1000);
+});
+
+// ================================
+// CARRINHO LATERAL
+// ================================
+abrirCarrinho?.addEventListener("click", e => {
+  e.preventDefault();
+  carrinhoLateral.classList.add("ativo");
+  overlay.classList.add("ativo");
+  document.body.style.overflow = "hidden";
+});
+
+fecharCarrinho?.addEventListener("click", fecharCarrinhoLateral);
+overlay?.addEventListener("click", fecharCarrinhoLateral);
+
+function fecharCarrinhoLateral() {
+  carrinhoLateral.classList.remove("ativo");
+  overlay.classList.remove("ativo");
+  document.body.style.overflow = "";
+}
+
+// ================================
+// FINALIZAR WHATSAPP
+// ================================
+botaoFinalizar?.addEventListener("click", () => {
+  if (!carrinho.length) {
+    alert("Carrinho vazio");
+    return;
+  }
+
+  let msg = "Olá! Meu pedido:\n\n";
+  let total = 0;
+
+  carrinho.forEach(item => {
+    const sub = item.preco * item.quantidade;
+    total += sub;
+    msg += `• ${item.produto} x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
+  });
+
+  msg += `\nTotal: R$ ${total.toFixed(2)}`;
+
+  window.open(
+    `https://wa.me/5581984782598?text=${encodeURIComponent(msg)}`,
+    "_blank"
+  );
 });
 
 // ================================
 // INIT
 // ================================
 carrinho = getCarrinho(usuarioAtual.uid);
-ativarBotoesCarrinho();
 atualizarCarrinho();
 atualizarBadgeCarrinho();
