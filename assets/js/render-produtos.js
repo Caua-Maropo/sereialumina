@@ -8,7 +8,10 @@ if (!container) {
 
 if (!Array.isArray(PRODUTOS) || PRODUTOS.length === 0) {
   console.warn("Nenhum produto disponível");
-  return;
+} else {
+  PRODUTOS.forEach(produto => {
+    // renderiza os cards
+  });
 }
 
 PRODUTOS.forEach(produto => {
