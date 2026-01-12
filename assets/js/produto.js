@@ -42,29 +42,29 @@ const PRODUTOS = [
       Preto: { P: 5, M: 10, G: 3 },
       Vermelho: { P: 0, M: 7, G: 1 }
     }
-  }
-];
- id: "maio-azul",
+  },
+  {
+    id: "maio-azul",
     nome: "Maiô Azul",
     categoria: "maio",
     preco: 89.9,
-    imagem: "../assets/imagens/biquini-brasil.png",
+    imagem: "assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Azul: { P: 5, M: 10, G: 3 },
+      Azul: { P: 5, M: 10, G: 3 }
     }
-  }
-];
- id: "mulher-amarelo",
+  },
+  {
+    id: "mulher-amarelo",
     nome: "Mulher Amarelo",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "../assets/imagens/mulher-biquini-amarelo.jfif",
+    imagem: "assets/imagens/mulher-biquini-amarelo.jfif",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
-      Amarelo: { P: 5, M: 10, G: 3 },
+      Amarelo: { P: 5, M: 10, G: 3 }
     }
   }
 ];
