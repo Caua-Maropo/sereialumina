@@ -22,7 +22,7 @@ const PRODUTOS = [
     nome: "Biquíni Preto",
     categoria: "biquini",
     preco: 79.9,
-    imagem: "assets/imagens/biquini-preto.png",
+    imagem: "sereialumina/assets/imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
@@ -35,7 +35,7 @@ const PRODUTOS = [
     nome: "Maiô Azul",
     categoria: "maio",
     preco: 89.9,
-    imagem: "assets/imagens/biquini-azul.png",
+    imagem: "sereialumina/assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
@@ -47,7 +47,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Amarelo",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-amarelo.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-amarelo.jfif",
     descricao: "Design vibrante para quem ama o verão.",
     peso: "200g",
     cores: {
@@ -59,7 +59,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Branco",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-branco.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-branco.jfif",
     descricao: "Visual clean e sofisticado.",
     peso: "200g",
     cores: {
@@ -71,7 +71,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Estampado",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-pintado.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-pintado.jfif",
     descricao: "Estampa exclusiva para destacar seu estilo.",
     peso: "200g",
     cores: {
@@ -83,7 +83,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Preto",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-preto.jfif",
+    imagem: "sereialumina;/assets/imagens/mulher-biquini-preto.jfif",
     descricao: "Clássico, elegante e indispensável.",
     peso: "200g",
     cores: {
@@ -95,7 +95,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Vermelho",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-vermelho.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-vermelho.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     cores: {
@@ -107,7 +107,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Verde",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-verde.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-verde.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     cores: {
@@ -119,7 +119,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Rosa",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-rosa.jfif",
+    imagem: "sereialumina/assets/imagens/mulher-biquini-rosa.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     cores: {
@@ -143,7 +143,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Verde e Branco",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/biquini-verde-e-branco.jfif",
+    imagem: "sereialumina/assets/imagens/biquini-verde-e-branco.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     cores: {
