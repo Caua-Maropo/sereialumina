@@ -1,5 +1,9 @@
 const container = document.getElementById("lista-produtos");
 
+if (!container) {
+  console.error("Container #lista-produtos não encontrado");
+}
+
 PRODUTOS.forEach(produto => {
   const article = document.createElement("article");
   article.className = "card-produto";
