@@ -204,7 +204,7 @@ overlay?.addEventListener("click", fecharCarrinhoLateral);
 // FILTRO DE CATEGORIAS
 // ================================
 const categorias = document.querySelectorAll(".cat-card");
-const produtos = document.querySelectorAll(".produto, .card-produto");
+const produtosCards = document.querySelectorAll(".card-produto");
 
 categorias.forEach(cat => {
   cat.addEventListener("click", () => {
