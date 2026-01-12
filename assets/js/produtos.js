@@ -131,7 +131,7 @@ const PRODUTOS = [
     nome: "Biquíni Feminino Cinaz",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "assets/imagens/mulher-biquini-cinza.jfif",
+    imagem:"/sereialumina/assets/imagens/mulher-biquini-cinza.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     cores: {
