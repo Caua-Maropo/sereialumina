@@ -22,7 +22,7 @@ const PRODUTOS = [
     nome: "Biquíni Preto",
     categoria: "biquini",
     preco: 79.9,
-    imagem: "sereialumina/assets/imagens/biquini-preto.png",
+    imagem: "../sereialumina/assets/imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
     cores: {
