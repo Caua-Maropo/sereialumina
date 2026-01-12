@@ -67,6 +67,50 @@ const PRODUTOS = [
       Amarelo: { P: 5, M: 10, G: 3 }
     }
   }
+   id: "mulher-branco",
+    nome: "Mulher Branco",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "../assets/imagens/mulher-biquini-branco.jfif",
+    descricao: "Modelo elegante e moderno, perfeito para o verão.",
+    peso: "200g",
+    cores: {
+      Amarelo: { P: 5, M: 10, G: 3 }
+    }
+  }
+ id: "mulher-pintado",
+    nome: "Mulher Pintado",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "../assets/imagens/mulher-biquini-pintado.jfif",
+    descricao: "Modelo elegante e moderno, perfeito para o verão.",
+    peso: "200g",
+    cores: {
+      Amarelo: { P: 5, M: 10, G: 3 }
+    }
+  }
+ id: "mulher-preto",
+    nome: "Mulher Preto",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "../assets/imagens/mulher-biquini-preto.jfif",
+    descricao: "Modelo elegante e moderno, perfeito para o verão.",
+    peso: "200g",
+    cores: {
+      Amarelo: { P: 5, M: 10, G: 3 }
+    }
+  }
+ id: "mulher-vermelho",
+    nome: "Mulher Vermelho",
+    categoria: "biquini",
+    preco: 59.9,
+    imagem: "../assets/imagens/mulher-biquini-vermelho.jfif",
+    descricao: "Modelo elegante e moderno, perfeito para o verão.",
+    peso: "200g",
+    cores: {
+      Amarelo: { P: 5, M: 9, G: 3 }
+    }
+  }
 ];
 
 // ================================
