@@ -101,7 +101,7 @@ const PRODUTOS = [
     cores: {
       Vermelho: { P: 5, M: 9, G: 3 }
     }
-  }
+  },
   {
     id: "mulher-verde",
     nome: "Biquíni Feminino Verde",
@@ -113,7 +113,7 @@ const PRODUTOS = [
     cores: {
       Vermelho: { P: 5, M: 9, G: 3 }
     }
-  }
+  },
 {
     id: "mulher-rosa",
     nome: "Biquíni Feminino Rosa",
@@ -125,7 +125,7 @@ const PRODUTOS = [
     cores: {
       Vermelho: { P: 3, M: 9, G: 3 }
     }
-  }
+  },
 {
     id: "mulher-cinza",
     nome: "Biquíni Feminino Cinaz",
@@ -137,7 +137,7 @@ const PRODUTOS = [
     cores: {
       Vermelho: { P: 5, M: 9, G: 3 }
     }
-  }
+  },
 {
     id: "biquini-verde-e-branco",
     nome: "Biquíni Feminino Verde e Branco",
