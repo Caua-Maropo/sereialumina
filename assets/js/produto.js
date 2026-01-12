@@ -16,7 +16,7 @@ if (iconLogin) {
 // ================================
 // PRODUTOS (FONTE ÚNICA)
 // ================================
-const PRODUTOS = [
+PRODUTOS.push = ({
   {
     id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
@@ -115,7 +115,7 @@ const PRODUTOS = [
       Vermelho: { P: 5, M: 9, G: 3 }
     }
   }
-];
+});
 
 // ================================
 // PRODUTO ATUAL (URL)
