@@ -114,7 +114,7 @@ PRODUTOS.push = ({
       Vermelho: { P: 5, M: 9, G: 3 }
     }
   }
-});
+);
 
 // ================================
 // PRODUTO ATUAL (URL)
