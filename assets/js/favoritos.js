@@ -21,19 +21,34 @@ function alternarFavorito(id) {
 // ================================
 // INDEX
 // ================================
-document.querySelectorAll(".btn-favorito").forEach(btn => {
+document.addEventListener("click", (event) => {
+  const btn = event.target.closest(".btn-favorito");
+  if (!btn) return;
+
   const id = btn.dataset.id;
 
-  if (getFavoritos().includes(id)) btn.classList.add("ativo");
+  let favoritos = getFavoritos();
 
-  btn.onclick = () => {
-    if (!usuarioLogado()) {
-      alert("Faça login para favoritar ❤️");
-      window.location.href = "login.html";
-      return;
+  if (favoritos.includes(id)) {
+    favoritos = favoritos.filter(f => f !== id);
+    btn.classList.remove("ativo");
+  } else {
+    favoritos.push(id);
+    btn.classList.add("ativo");
+  }
+
+  setFavoritos(favoritos);
+  atualizarBadgeFavoritos();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const favoritos = getFavoritos();
+
+  document.querySelectorAll(".btn-favorito").forEach(btn => {
+    if (favoritos.includes(btn.dataset.id)) {
+      btn.classList.add("ativo");
     }
+  });
 
-    alternarFavorito(id);
-    btn.classList.toggle("ativo");
-  };
+  atualizarBadgeFavoritos();
 });
