@@ -66,7 +66,8 @@ const PRODUTOS = [
     cores: {
       Amarelo: { P: 5, M: 10, G: 3 }
     }
-  }
+  },
+  
    id: "mulher-branco",
     nome: "Mulher Branco",
     categoria: "biquini",
@@ -77,7 +78,8 @@ const PRODUTOS = [
     cores: {
       Amarelo: { P: 5, M: 10, G: 3 }
     }
-  }
+  },
+
  id: "mulher-pintado",
     nome: "Mulher Pintado",
     categoria: "biquini",
@@ -88,7 +90,7 @@ const PRODUTOS = [
     cores: {
       Amarelo: { P: 5, M: 10, G: 3 }
     }
-  }
+  },
  id: "mulher-preto",
     nome: "Mulher Preto",
     categoria: "biquini",
@@ -99,7 +101,7 @@ const PRODUTOS = [
     cores: {
       Amarelo: { P: 5, M: 10, G: 3 }
     }
-  }
+  },
  id: "mulher-vermelho",
     nome: "Mulher Vermelho",
     categoria: "biquini",
