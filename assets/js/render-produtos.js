@@ -3,7 +3,8 @@ console.log("render-produtos.js carregado");
 const container = document.getElementById("lista-produtos");
 
 if (!container) {
-  console.error("Container #lista-produtos não encontrado");
+  console.warn("Página sem lista de produtos, script ignorado");
+  return;
 } else {
   PRODUTOS.forEach(produto => {
     const article = document.createElement("article");
