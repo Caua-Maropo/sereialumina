@@ -198,6 +198,33 @@ if (botaoFinalizar) {
   });
 }
 
+document.addEventListener("click", (event) => {
+  const btn = event.target.closest(".btn-carrinho");
+  if (!btn) return;
+
+  const produto = btn.dataset.produto;
+  const preco = Number(btn.dataset.preco);
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  carrinho.push({
+    nome: produto,
+    preco,
+    quantidade: 1
+  });
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  if (typeof atualizarBadge === "function") {
+    atualizarBadge();
+  }
+
+  btn.textContent = "✓ Adicionado";
+  setTimeout(() => {
+    btn.textContent = "Adicionar ao carrinho";
+  }, 1000);
+});
+
 // ================================
 // INIT
 // ================================
