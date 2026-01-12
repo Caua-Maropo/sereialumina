@@ -3,12 +3,7 @@ console.log("script.js carregado");
 // ================================
 // FIREBASE AUTH
 // ================================
-import {
-  getAuth,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const auth = getAuth();
 
 // ================================
 // VARIÁVEIS DE ESTADO
