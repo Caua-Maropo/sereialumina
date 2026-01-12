@@ -17,7 +17,6 @@ if (iconLogin) {
 // PRODUTOS (FONTE ÚNICA)
 // ================================
 PRODUTOS.push = ({
-  {
     id: "biquini-amarelo",
     nome: "Biquíni Amarelo",
     categoria: "biquini",
