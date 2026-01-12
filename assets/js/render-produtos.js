@@ -4,7 +4,6 @@ const container = document.getElementById("lista-produtos");
 
 if (!container) {
   console.warn("Página sem lista de produtos, script ignorado");
-  return;
 } else {
   PRODUTOS.forEach(produto => {
     const article = document.createElement("article");
@@ -37,4 +36,3 @@ if (!container) {
     container.appendChild(article);
   });
 }
-
