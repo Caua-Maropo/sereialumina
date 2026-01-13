@@ -25,8 +25,8 @@ function getCarrinho(uid) {
   return JSON.parse(localStorage.getItem(`carrinho_${uid}`)) || [];
 }
 
-function salvarCarrinho(uid, dados) {
-  localStorage.setItem(`carrinho_${uid}`, JSON.stringify(dados));
+function salvarCarrinho(uid, carrinho) {
+  localStorage.setItem(`carrinho_${uid}`, JSON.stringify(carrinho));
 }
 
 // ================================
