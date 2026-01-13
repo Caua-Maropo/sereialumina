@@ -185,6 +185,7 @@ body {
 
 /* CARD */
 .card-produto {
+  transition: transform .3s ease, box-shadow .3s ease;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,.08);
@@ -196,6 +197,7 @@ body {
 
 .card-produto:hover {
   transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
 .card-produto a {
@@ -229,7 +231,13 @@ body {
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: background .3s ease;
 }
+
+.btn-carrinho:active {
+  transform: scale(0.95);
+}
+
 
 /* FAVORITO */
 .btn-favorito {
