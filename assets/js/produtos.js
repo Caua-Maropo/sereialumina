@@ -9,7 +9,7 @@ const PRODUTOS = [
     nome: "Biquíni Amarelo",
     categoria: "biquini",
     preco: 59.9,
-    imagem: "/sereialumina/assets/imagens/biquini-amarelo.png",
+    imagem: "assets/imagens/biquini-amarelo.png",
     descricao: "Biquíni confortável, tecido premium e secagem rápida.",
     peso: "180g",
     cores: {
