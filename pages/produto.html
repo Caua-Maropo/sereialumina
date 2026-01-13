@@ -17,32 +17,29 @@
   <a href="../index.html">← Voltar</a>
 </header>
 
-<main class="produto-page">
+<main class="produto-container">
 
-  <section class="produto-container">
-    <img id="produto-imagem" alt="Imagem do produto">
+  <div class="produto-card">
+
+    <div class="produto-imagem">
+      <img id="produto-imagem" src="" alt="">
+    </div>
 
     <div class="produto-info">
       <h1 id="produto-nome"></h1>
-      <p id="produto-preco"></p>
-      <p id="produto-descricao"></p>
-      <p><strong>Peso:</strong> <span id="produto-peso"></span></p>
 
-      <div>
-        <h4>Cores</h4>
-        <div id="produto-cores" class="cores"></div>
-      </div>
+      <p class="preco">
+        R$ <span id="produto-preco"></span>
+      </p>
 
-      <div>
-        <h4>Tamanhos</h4>
-        <div id="produto-tamanhos" class="tamanhos"></div>
-        <p id="estoque-info"></p>
-      </div>
+      <p class="descricao" id="produto-descricao"></p>
 
-      <button id="btn-add-produto">Adicionar ao carrinho</button>
-      <button id="btn-favorito">❤ Favoritar</button>
+      <button class="btn-carrinho">
+        Adicionar ao carrinho
+      </button>
     </div>
-  </section>
+
+  </div>
 
 </main>
 
