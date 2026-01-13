@@ -238,6 +238,39 @@ body {
   transform: scale(0.95);
 }
 
+/* ===== AJUSTES FINOS PRODUTO ===== */
+
+.produto-imagem img {
+  max-height: 560px;
+}
+
+.produto-card {
+  padding: 40px;
+}
+
+.produto-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.produto-info h1 {
+  font-size: 2.2rem;
+}
+
+.produto-info .preco {
+  font-size: 2.1rem;
+  color: #111;
+}
+
+.produto-info .btn-carrinho {
+  margin-top: auto;
+  font-size: 1.1rem;
+}
+
+.produto-info .btn-carrinho:active {
+  transform: scale(0.97);
+}
+
 
 /* FAVORITO */
 .btn-favorito {
@@ -275,7 +308,7 @@ body {
 
 /* IMAGEM */
 .produto-imagem {
-  background: #f8f8f8;
+  background: linear-gradient(180deg, #fdfdfd, #f1f1f1);
   border-radius: 18px;
   padding: 40px;
   display: flex;
