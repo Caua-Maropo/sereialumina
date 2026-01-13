@@ -21,11 +21,18 @@
 
   <section class="produto-wrapper">
 
-    <div class="produto-galeria">
-      <img id="produto-imagem" src="" alt="">
+    <!-- ESQUERDA: galeria de imagens -->
+    <div class="produto-gallery">
+      <div class="produto-main-image">
+        <img id="produto-imagem" src="" alt="">
+      </div>
+      <div class="produto-thumbs">
+        <!-- miniaturas serão geradas aqui -->
+      </div>
     </div>
 
-    <div class="produto-detalhes">
+    <!-- DIREITA: detalhes do produto -->
+    <div class="produto-details">
 
       <h1 id="produto-nome"></h1>
 
@@ -35,15 +42,27 @@
 
       <p id="produto-descricao" class="produto-descricao"></p>
 
-      <button class="btn-carrinho btn-principal">
+      <!-- CORES -->
+      <div class="produto-selecao">
+        <p>Cor:</p>
+        <div id="produto-cores" class="produto-cores"></div>
+      </div>
+
+      <!-- TAMANHOS -->
+      <div class="produto-selecao">
+        <p>Tamanho:</p>
+        <div id="produto-tamanhos" class="produto-tamanhos"></div>
+        <p id="estoque-info" class="estoque-info"></p>
+      </div>
+
+      <button class="btn-principal btn-add-carrinho">
         <i class="fa-solid fa-bag-shopping"></i>
         Adicionar ao carrinho
       </button>
 
       <div class="produto-beneficios">
-        <p>✔️ Tecido premium</p>
-        <p>✔️ Secagem rápida</p>
-        <p>✔️ Conforto garantido</p>
+        <p>✔ Envio rápido</p>
+        <p>✔ Entrega segura</p>
       </div>
 
     </div>
@@ -51,6 +70,7 @@
   </section>
 
 </main>
+
 
 
 <script src="../assets/js/produtos.js"></script>
