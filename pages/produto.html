@@ -17,31 +17,41 @@
   <a href="../index.html">← Voltar</a>
 </header>
 
-<main class="produto-container">
+<main class="produto-page">
 
-  <div class="produto-card">
+  <section class="produto-wrapper">
 
-    <div class="produto-imagem">
+    <div class="produto-galeria">
       <img id="produto-imagem" src="" alt="">
     </div>
 
-    <div class="produto-info">
+    <div class="produto-detalhes">
+
       <h1 id="produto-nome"></h1>
 
-      <p class="preco">
+      <p class="produto-preco">
         R$ <span id="produto-preco"></span>
       </p>
 
-      <p class="descricao" id="produto-descricao"></p>
+      <p id="produto-descricao" class="produto-descricao"></p>
 
-      <button class="btn-carrinho">
+      <button class="btn-carrinho btn-principal">
+        <i class="fa-solid fa-bag-shopping"></i>
         Adicionar ao carrinho
       </button>
+
+      <div class="produto-beneficios">
+        <p>✔️ Tecido premium</p>
+        <p>✔️ Secagem rápida</p>
+        <p>✔️ Conforto garantido</p>
+      </div>
+
     </div>
 
-  </div>
+  </section>
 
 </main>
+
 
 <script src="../assets/js/produtos.js"></script>
 <script src="../assets/js/produto.js"></script>
