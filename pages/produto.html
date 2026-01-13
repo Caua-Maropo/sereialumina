@@ -59,62 +59,31 @@
 </header>
 
 <!-- ÁREA DO PRODUTO -->
-<main class="produto-page">
-  <div class="produto-container">
-
-    <!-- IMAGEM -->
-    <div class="produto-imagem-wrapper">
-      <img id="produto-imagem" src="" alt="Produto">
+<main class="pagina-produto">
+  <section class="produto-container">
+    
+    <div class="produto-imagem">
+      <img id="produto-imagem" alt="Imagem do produto">
     </div>
 
-    <!-- INFO -->
     <div class="produto-info">
       <h1 id="produto-nome"></h1>
+      <p id="produto-preco"></p>
+      <p id="produto-descricao"></p>
 
-      <p class="produto-preco">
-        R$ <span id="produto-preco"></span>
-      </p>
-
-      <p id="produto-descricao" class="produto-descricao"></p>
-
-      <div class="produto-detalhes">
-        <p><strong>Peso:</strong> <span id="produto-peso"></span></p>
+      <div class="produto-opcoes">
+        <div id="produto-cores"></div>
+        <div id="produto-tamanhos"></div>
+        <p id="estoque-info"></p>
       </div>
 
-      <!-- CORES -->
-      <div class="produto-bloco">
-        <h4>Cor</h4>
-        <div id="produto-cores" class="produto-cores"></div>
-      </div>
-
-      <!-- TAMANHOS -->
-      <div class="produto-bloco">
-        <h4>Tamanho</h4>
-        <div id="produto-tamanhos" class="produto-tamanhos"></div>
-        <p id="estoque-info" class="estoque-info">
-          Selecione um tamanho
-        </p>
-      </div>
-
-      <div class="produto-detalhes">
-        <p><strong>Categoria:</strong> Moda Praia</p>
-      </div>
-      
-      <button 
-  class="btn-favorito"
-  data-id="biquini-amarelo"
-  title="Favoritar"
->
-  <i class="fa-regular fa-heart"></i>
-</button>
-
-      <button id="btn-add-produto" class="btn-produto">
-        Adicionar ao carrinho
-      </button>
+      <button id="btn-add-produto">Adicionar ao carrinho</button>
+      <button id="btn-favorito">♡ Favoritar</button>
     </div>
 
-  </div>
+  </section>
 </main>
+
 
 <!-- RELACIONADOS -->
 <section class="produtos-relacionados">
