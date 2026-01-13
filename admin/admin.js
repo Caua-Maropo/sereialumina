@@ -1,23 +1,24 @@
-// admin.js
-import { auth } from "./firebase.js";
-import {
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+const form = document.getElementById("form-produto");
 
-// PROTEÇÃO DO ADMIN
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    // Não está logado → volta para login
-    window.location.href = "login.html";
-  }
-});
+form.addEventListener("submit", e => {
+  e.preventDefault();
 
-// LOGOUT
-const btnLogout = document.getElementById("logout-admin");
+  const novoProduto = {
+    id: form.id.value,
+    nome: form.nome.value,
+    categoria: form.categoria.value,
+    preco: Number(form.preco.value),
+    imagem: form.imagem.value,
+    descricao: form.descricao.value,
+    peso: "200g",
+    cores: {
+      Padrão: { P: 5, M: 5, G: 5 }
+    }
+  };
 
-btnLogout.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    window.location.href = "login.html";
-  });
+  const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+  produtos.push(novoProduto);
+
+  localStorage.setItem("produtos", JSON.stringify(produtos));
+  alert("Produto salvo!");
 });
