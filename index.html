@@ -2,7 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Sereia Lumina</title>
+
+  <title>Biquínis Femininos e Moda Praia | Sereia Lumina</title>
+
+  <meta name="description"
+    content="Moda praia feminina com biquínis, maiôs e conjuntos exclusivos. Conforto, estilo e qualidade para o verão.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,7 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -20,68 +26,70 @@
 <header class="site-header clean-header">
   <div class="header-container">
 
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" aria-label="Página inicial Sereia Lumina">
       <span class="use">Use</span>
-      <h1>Sereia Lumina</h1>
+      <span class="brand-name">Sereia Lumina</span>
     </a>
 
     <div class="search-area">
-      <input type="text" placeholder="Pesquisar produtos">
-      <button type="button">🔍</button>
+      <input type="text" placeholder="Pesquisar produtos" aria-label="Pesquisar produtos">
+      <button type="button" aria-label="Buscar">🔍</button>
     </div>
 
     <div class="header-icons">
-      <a href="pages/login.html"><i class="fa-regular fa-user"></i></a>
+      <a href="pages/login.html" aria-label="Minha conta">
+        <i class="fa-regular fa-user"></i>
+      </a>
 
-      <a href="pages/favoritos.html" class="icon-heart">
+      <a href="pages/favoritos.html" class="icon-heart" aria-label="Favoritos">
         <i class="fa-regular fa-heart"></i>
         <span id="badge-favoritos" class="badge">0</span>
       </a>
 
-      <a href="#" id="abrir-carrinho" class="icon-bag" title="Carrinho">
+      <a href="#" id="abrir-carrinho" class="icon-bag" title="Carrinho" aria-label="Carrinho">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="badge-carrinho" id="badge-carrinho">0</span>
       </a>
-
-      <div class="user-area" id="user-area" style="display:none;">
-        <span id="user-email"></span>
-        <button type="button" id="logout-btn">Sair</button>
-      </div>
     </div>
 
   </div>
 </header>
 
-<!-- CONTEÚDO PRINCIPAL -->
 <main>
 
+  <!-- HERO -->
   <section class="hero">
-  <div class="hero-images">
-    <img src="assets/imagens/biquini-amarelo.png" alt="">
-    <img src="assets/imagens/biquini-preto.png" alt="">
-    <img src="assets/imagens/biquini-brasil.png" alt="">
-  </div>
+    <div class="hero-images">
+      <img src="assets/imagens/biquini-amarelo.png" alt="Biquíni feminino amarelo Sereia Lumina">
+      <img src="assets/imagens/biquini-preto.png" alt="Biquíni feminino preto Sereia Lumina">
+      <img src="assets/imagens/biquini-brasil.png" alt="Biquíni feminino verde e amarelo Sereia Lumina">
+    </div>
 
-  <div class="hero-text">
-    <p class="season">Moda Verão 2026</p>
-    <h2>Coleções em Destaque</h2>
-    <a href="#produtos" class="btn-hero">Ver Produtos</a>
-  </div>
-</section>
+    <div class="hero-text">
+      <p class="season">Moda Verão 2026</p>
 
+      <!-- H1 PRINCIPAL DA PÁGINA -->
+      <h1>Biquínis Femininos e Moda Praia</h1>
 
-  <section class="categorias">
+      <p>Conforto, estilo e elegância para o seu verão.</p>
+
+      <a href="#lista-produtos" class="btn-hero">Ver Produtos</a>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section class="categorias" aria-label="Categorias de produtos">
     <div class="cat-card" data-category="biquini">Biquínis</div>
     <div class="cat-card" data-category="maio">Maiôs</div>
     <div class="cat-card" data-category="saida">Saídas de Praia</div>
     <div class="cat-card" data-category="todos">Todos</div>
   </section>
 
- <section id="lista-produtos" class="grid-produtos">
-  <!-- cards gerados automaticamente -->
-</section>
+  <!-- PRODUTOS -->
+  <section id="lista-produtos" class="grid-produtos">
+    <!-- cards gerados automaticamente -->
+  </section>
 
-   
 </main>
 
 <footer class="site-footer">
@@ -93,22 +101,25 @@
 
 <aside id="carrinho-lateral">
   <header class="carrinho-header">
-    <h3>Meu Carrinho</h3>
-    <button type="button" id="fechar-carrinho">✕</button>
+    <h2>Meu Carrinho</h2>
+    <button type="button" id="fechar-carrinho" aria-label="Fechar carrinho">✕</button>
   </header>
 
   <ul id="lista-carrinho"></ul>
 
   <div class="carrinho-footer">
     <span>Total: R$ <strong id="total-carrinho">0,00</strong></span>
-    <button type="button" id="finalizar-whatsapp">Finalizar no WhatsApp</button>
+    <button type="button" id="finalizar-whatsapp">
+      Finalizar no WhatsApp
+    </button>
   </div>
 </aside>
 
-<script src="assets/js/produtos.js"></script>
-<script src="assets/js/render-produtos.js"></script>
-<script src="assets/js/script.js"></script> 
-<script src="assets/js/favoritos.js"></script>
+<!-- SCRIPTS -->
+<script src="assets/js/produtos.js" defer></script>
+<script src="assets/js/render-produtos.js" defer></script>
+<script src="assets/js/script.js" defer></script>
+<script src="assets/js/favoritos.js" defer></script>
 
 </body>
 </html>
