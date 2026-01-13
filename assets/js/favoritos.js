@@ -50,5 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  atualizarBadgeFavoritos();
+  function atualizarBadgeFavoritos() {
+  const badge = document.getElementById("badge-favoritos");
+  if (!badge) return;
+
+  const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  badge.textContent = favoritos.length;
+}
+
+
+document.addEventListener("DOMContentLoaded", atualizarBadgeFavoritos);
+
 });
