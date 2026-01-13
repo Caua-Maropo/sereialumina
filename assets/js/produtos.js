@@ -152,6 +152,44 @@ const PRODUTOS = [
   }
 ];
 
+function validarProdutos(lista) {
+  const erros = [];
+
+  lista.forEach((p, i) => {
+    if (!p.id) erros.push(`Produto ${i} sem id`);
+    if (!p.nome) erros.push(`Produto ${p.id || i} sem nome`);
+    if (!p.preco || typeof p.preco !== "number")
+      erros.push(`Produto ${p.id} com preço inválido`);
+    if (!p.imagem) erros.push(`Produto ${p.id} sem imagem`);
+    if (!p.categoria) erros.push(`Produto ${p.id} sem categoria`);
+  });
+
+  if (erros.length > 0) {
+    console.group("❌ Erros nos PRODUTOS");
+    erros.forEach(e => console.error(e));
+    console.groupEnd();
+  } else {
+    console.log("✅ PRODUTOS validados com sucesso");
+  }
+}
+
+validarProdutos(PRODUTOS);
+
+function validarIdsDuplicados(lista) {
+  const ids = lista.map(p => p.id);
+  const duplicados = ids.filter(
+    (id, i) => ids.indexOf(id) !== i
+  );
+
+  if (duplicados.length > 0) {
+    console.error("❌ IDs duplicados encontrados:", duplicados);
+  } else {
+    console.log("✅ Nenhum ID duplicado encontrado");
+  }
+}
+
+validarIdsDuplicados(PRODUTOS);
+
 // ================================
 // DISPONIBILIZA GLOBALMENTE
 // ================================
