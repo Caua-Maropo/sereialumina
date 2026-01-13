@@ -316,3 +316,160 @@ body {
     display: none;
   }
 }
+/* ================================
+   PRODUTO - LAYOUT PREMIUM
+================================ */
+
+/* estrutura geral */
+.produto-page {
+  max-width: 1300px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.produto-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+}
+
+/* galeria de imagens */
+.produto-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.produto-main-image {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.produto-main-image img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.produto-thumbs {
+  display: flex;
+  gap: 10px;
+}
+
+.produto-thumbs img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border .2s ease;
+}
+
+.produto-thumbs img:hover,
+.produto-thumbs img.ativa {
+  border-color: var(--azul);
+}
+
+/* detalhes do produto */
+.produto-details h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  margin-bottom: 14px;
+}
+
+.produto-preco {
+  font-size: 2.2rem;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.produto-descricao {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* seleção de opções */
+.produto-selecao {
+  margin-bottom: 20px;
+}
+
+.produto-cores,
+.produto-tamanhos {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.produto-cores .cor-item,
+.produto-tamanhos button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.produto-cores .cor-item.ativa,
+.produto-tamanhos button.ativo {
+  border-color: var(--azul);
+}
+
+/* tamanho */
+.produto-tamanhos button {
+  width: auto;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #f2f2f2;
+  font-size: .95rem;
+}
+
+/* botão principal */
+.btn-principal {
+  width: 100%;
+  background: var(--azul);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 16px;
+  border-radius: 38px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.btn-principal:hover {
+  background: var(--azul-hover);
+  transform: translateY(-3px);
+}
+
+/* benefícos loja */
+.produto-beneficios {
+  margin-top: 28px;
+  font-size: .95rem;
+  color: #555;
+}
+
+.produto-beneficios p {
+  margin-bottom: 6px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  .produto-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .produto-thumbs {
+    justify-content: center;
+  }
+}
