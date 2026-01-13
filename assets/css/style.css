@@ -19,7 +19,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: var(--fundo-claro);
+  background: #f4f6f8;
   color: var(--texto);
 }
 
@@ -258,19 +258,26 @@ body {
 ================================ */
 
 .produto-container {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  max-width: 1150px;
+  margin: 80px auto;
+  padding: 0 20px;
 }
 
-/* Imagem */
+.produto-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* IMAGEM */
 .produto-imagem {
-  background: #f7f7f7;
-  border-radius: 16px;
-  padding: 30px;
+  background: #f8f8f8;
+  border-radius: 18px;
+  padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,53 +285,58 @@ body {
 
 .produto-imagem img {
   max-width: 100%;
-  border-radius: 12px;
+  max-height: 480px;
+  object-fit: contain;
 }
 
-/* Infos */
+/* INFO */
 .produto-info h1 {
   font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .produto-info .preco {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #1a1a1a;
-  margin: 20px 0;
+  color: #000;
+  margin-bottom: 25px;
 }
 
 .produto-info .descricao {
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
-/* Botão */
+/* BOTÃO */
 .produto-info .btn-carrinho {
-  background: #000;
+  width: 100%;
+  background: linear-gradient(135deg, #000, #333);
   color: #fff;
   border: none;
-  padding: 16px 32px;
-  font-size: 1rem;
-  border-radius: 30px;
+  padding: 18px;
+  font-size: 1.05rem;
+  border-radius: 40px;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .produto-info .btn-carrinho:hover {
-  transform: scale(1.03);
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .produto-container {
+/* MOBILE */
+@media (max-width: 900px) {
+  .produto-card {
     grid-template-columns: 1fr;
+    padding: 30px;
   }
 }
-
 
 /* =========================
    CARRINHO
