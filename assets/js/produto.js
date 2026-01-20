@@ -106,5 +106,3 @@ document.addEventListener("DOMContentLoaded", () => {
       btnCarrinho.textContent = "Adicionar ao carrinho";
     }, 1200);
   });
-
-});
