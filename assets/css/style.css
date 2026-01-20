@@ -54,7 +54,7 @@ body {
   color: var(--azul);
 }
 
-.logo h1 {
+.logo .brand-name {
   font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   color: var(--azul);
@@ -88,10 +88,24 @@ body {
   display: flex;
   gap: 18px;
   font-size: 1.4rem;
+  position: relative;
 }
 
 .header-icons a {
   color: var(--azul);
+  position: relative;
+}
+
+/* BADGE */
+.badge-carrinho {
+  background: var(--azul);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;
+  right: -10px;
 }
 
 /* =========================
@@ -110,61 +124,6 @@ body {
   text-align: center;
 }
 
-.hero-images {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  opacity: 0.25;
-}
-
-.hero-images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-text {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-}
-
-.btn-hero {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
-  background: #fff;
-  color: var(--azul);
-  border-radius: 30px;
-  text-decoration: none;
-}
-
-/* =========================
-   CATEGORIAS
-========================= */
-.categorias {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 40px 20px;
-}
-
-.cat-card {
-  padding: 12px 22px;
-  border-radius: 30px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-  cursor: pointer;
-  transition: .3s;
-}
-
-.cat-card.ativo,
-.cat-card:hover {
-  background: var(--azul);
-  color: #fff;
-}
-
 /* =========================
    PRODUTOS (GRID)
 ========================= */
@@ -177,7 +136,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* CARD */
 .card-produto {
   background: #fff;
   border-radius: 16px;
@@ -220,46 +178,132 @@ body {
 /* =========================
    PRODUTO PAGE
 ========================= */
-.produto-container {
-  max-width: 1150px;
-  margin: 80px auto;
+.produto-page {
+  max-width: 1300px;
+  margin: 60px auto;
   padding: 0 20px;
 }
 
-.produto-card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 50px;
+.produto-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 60px;
 }
 
-.produto-imagem {
+/* GALERIA */
+.produto-gallery {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.produto-imagem img {
-  max-width: 100%;
-  max-height: 480px;
+.produto-main-image {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 18px;
 }
 
-.produto-info h1 {
+.produto-main-image img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* DETALHES */
+.produto-details {
+  padding-top: 20px;
+}
+
+.produto-details h1 {
   font-family: "Playfair Display", serif;
-  font-size: 2.4rem;
-  margin-bottom: 20px;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
-.produto-info .preco {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.produto-preco {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 18px;
 }
 
-.produto-info .descricao {
+.produto-descricao {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+/* TAMANHOS */
+.titulo-tamanho {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.lista-tamanhos {
+  display: flex;
+  gap: 12px;
+}
+
+.lista-tamanhos button {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.lista-tamanhos button:hover {
+  border-color: var(--azul);
+}
+
+.lista-tamanhos button.ativo {
+  background: var(--azul);
+  color: #fff;
+  border-color: var(--azul);
+}
+
+.lista-tamanhos button.esgotado {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.aviso-tamanho {
+  font-size: .9rem;
+  margin-top: 10px;
+  color: #777;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-principal {
+  width: 100%;
+  background: var(--azul);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 16px;
+  border-radius: 38px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.btn-principal:hover {
+  background: var(--azul-hover);
+  transform: translateY(-3px);
+}
+
+/* BENEFÍCIOS */
+.produto-beneficios {
+  margin-top: 28px;
+  font-size: .95rem;
   color: #555;
-  margin-bottom: 30px;
 }
 
 /* =========================
@@ -288,218 +332,43 @@ body {
   background: #fff;
   transition: .4s;
   z-index: 1001;
+  display: flex;
+  flex-direction: column;
 }
 
 #carrinho-lateral.ativo {
   right: 0;
 }
 
-/* =========================
-   FOOTER
-========================= */
-.site-footer {
-  padding: 40px;
-  text-align: center;
-  background: #fff;
-  margin-top: 60px;
+#carrinho-lateral header {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+#lista-carrinho {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.carrinho-footer {
+  padding: 16px;
+  border-top: 1px solid #eee;
 }
 
 /* =========================
    RESPONSIVO
 ========================= */
-@media (max-width: 900px) {
-  .produto-card {
-    grid-template-columns: 1fr;
-  }
-
-  .search-area {
-    display: none;
-  }
-}
-/* ================================
-   PRODUTO - LAYOUT PREMIUM
-================================ */
-
-/* estrutura geral */
-.produto-page {
-  max-width: 1300px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.produto-wrapper {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 60px;
-}
-
-/* galeria de imagens */
-.produto-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.produto-main-image {
-  background: #f8f8f8;
-  padding: 20px;
-  border-radius: 18px;
-}
-
-.produto-main-image img {
-  width: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-.produto-thumbs {
-  display: flex;
-  gap: 10px;
-}
-
-.produto-thumbs img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border .2s ease;
-}
-
-.produto-thumbs img:hover,
-.produto-thumbs img.ativa {
-  border-color: var(--azul);
-}
-
-/* detalhes do produto */
-.produto-details h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.6rem;
-  margin-bottom: 14px;
-}
-
-.produto-preco {
-  font-size: 2.2rem;
-  color: #000;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.produto-descricao {
-  font-size: 1.05rem;
-  color: #444;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-/* seleção de opções */
-.produto-selecao {
-  margin-bottom: 20px;
-}
-
-/* TAMANHOS */
-.produto-tamanhos {
-  margin-bottom: 30px;
-}
-
-.titulo-tamanho {
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.produto-tamanhos .label {
-  font-weight: 500;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.lista-tamanhos {
-  display: flex;
-  gap: 12px;
-}
-
-.lista-tamanhos button {
-  padding: 10px 16px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  background: #fff;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.lista-tamanhos button:hover {
-  border-color: var(--azul-principal);
-}
-
-.lista-tamanhos button.ativo {
-  background: var(--azul-principal);
-  color: #fff;
-  border-color: var(--azul-principal);
-}
-
-.aviso-tamanho {
-  font-size: .9rem;
-  margin-top: 10px;
-  color: #777;
-}
-
-.aviso-tamanho.erro {
-  color: #c62828;
-}
-
-.lista-tamanhos button.esgotado {
-  opacity: 0.4;
-  cursor: not-allowed;
-  text-decoration: line-through;
-}
-
-.estoque-info {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* botão principal */
-.btn-principal {
-  width: 100%;
-  background: var(--azul);
-  color: #fff;
-  font-size: 1.1rem;
-  padding: 16px;
-  border-radius: 38px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 12px;
-  transition: background .2s ease, transform .2s ease;
-}
-
-.btn-principal:hover {
-  background: var(--azul-hover);
-  transform: translateY(-3px);
-}
-
-/* benefícos loja */
-.produto-beneficios {
-  margin-top: 28px;
-  font-size: .95rem;
-  color: #555;
-}
-
-.produto-beneficios p {
-  margin-bottom: 6px;
-}
-
-/* RESPONSIVO */
 @media (max-width: 1024px) {
   .produto-wrapper {
     grid-template-columns: 1fr;
   }
+}
 
-  .produto-thumbs {
-    justify-content: center;
+@media (max-width: 900px) {
+  .search-area {
+    display: none;
   }
 }
