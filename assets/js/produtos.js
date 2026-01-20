@@ -109,7 +109,7 @@ const PRODUTOS = [
     preco: 59.9,
     imagem: "assets/imagens/mulher-biquini-rosa.jfif",
     descricao: "Para quem quer chamar atenção.",
-    variacoes: {
+    peso: "200g",
     tamanhos: ["P", "M", "G"]
   },
   
@@ -122,7 +122,7 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
      tamanhos: ["P", "M", "G"]
-  },
+ },
   
 {
     id: "biquini-verde-e-branco",
