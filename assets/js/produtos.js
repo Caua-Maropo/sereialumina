@@ -25,6 +25,7 @@ const PRODUTOS = [
     peso: "200g",
     tamanhos: ["P", "M", "G"]
   },
+  
   {
     id: "maio-azul",
     nome: "Maiô Azul",
@@ -33,9 +34,8 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-amarelo",
     nome: "Biquíni Feminino Amarelo",
@@ -45,9 +45,8 @@ const PRODUTOS = [
     descricao: "Design vibrante para quem ama o verão.",
     peso: "200g",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-branco",
     nome: "Biquíni Feminino Branco",
@@ -57,9 +56,8 @@ const PRODUTOS = [
     descricao: "Visual clean e sofisticado.",
     peso: "200g",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-pintado",
     nome: "Biquíni Feminino Estampado",
@@ -69,9 +67,8 @@ const PRODUTOS = [
     descricao: "Estampa exclusiva para destacar seu estilo.",
     peso: "200g",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-preto",
     nome: "Biquíni Feminino Preto",
@@ -81,9 +78,8 @@ const PRODUTOS = [
     descricao: "Clássico, elegante e indispensável.",
     peso: "200g",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-vermelho",
     nome: "Biquíni Feminino Vermelho",
@@ -93,9 +89,8 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
   {
     id: "mulher-verde",
     nome: "Biquíni Feminino Verde",
@@ -105,9 +100,8 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
      tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
 {
     id: "mulher-rosa",
     nome: "Biquíni Feminino Rosa",
@@ -117,9 +111,8 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     variacoes: {
     tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
 {
     id: "mulher-cinza",
     nome: "Biquíni Feminino Cinza",
@@ -129,9 +122,8 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
      tamanhos: ["P", "M", "G"]
-      }
-    }
   },
+  
 {
     id: "biquini-verde-e-branco",
     nome: "Biquíni Feminino Verde e Branco",
@@ -141,8 +133,6 @@ const PRODUTOS = [
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
      tamanhos: ["P", "M", "G"]
-      }
-    }
   }
 ];
 
