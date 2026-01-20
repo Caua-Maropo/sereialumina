@@ -359,3 +359,34 @@ a {
     display: none;
   }
 }
+/* =========================
+   GRID DE PRODUTOS
+========================= */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* desktop */
+  gap: 28px;
+  padding: 40px;
+}
+
+/* Notebook */
+@media (max-width: 1200px) {
+  .grid-produtos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .grid-produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular */
+@media (max-width: 500px) {
+  .grid-produtos {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
