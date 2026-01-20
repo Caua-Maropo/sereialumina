@@ -16,7 +16,7 @@
 <header class="site-header clean-header">
   <div class="header-container">
 
-    <a href="index.html" class="logo" aria-label="Página inicial Sereia Lumina">
+    <a href="../index.html" class="logo" aria-label="Página inicial Sereia Lumina">
       <span class="use">Use</span>
       <span class="brand-name">Sereia Lumina</span>
     </a>
@@ -27,11 +27,11 @@
     </div>
 
     <div class="header-icons">
-      <a href="pages/login.html" aria-label="Minha conta">
+      <a href="login.html" aria-label="Minha conta">
         <i class="fa-regular fa-user"></i>
       </a>
 
-      <a href="pages/favoritos.html" class="icon-heart" aria-label="Favoritos">
+      <a href="favoritos.html" class="icon-heart" aria-label="Favoritos">
         <i class="fa-regular fa-heart"></i>
         <span id="badge-favoritos" class="badge">0</span>
       </a>
@@ -89,10 +89,6 @@
         Adicionar ao carrinho
       </button>
 
-      <p id="aviso-tamanho" class="aviso-tamanho">
-  Selecione um tamanho
-</p>
-
       <div class="produto-beneficios">
         <p>✔ Envio rápido</p>
         <p>✔ Entrega segura</p>
@@ -104,6 +100,21 @@
 
 </main>
 
+<div id="overlay-carrinho"></div>
+
+<aside id="carrinho-lateral">
+  <header>
+    <h3>Meu carrinho</h3>
+    <button id="fechar-carrinho">✕</button>
+  </header>
+
+  <ul id="lista-carrinho"></ul>
+
+  <div class="carrinho-footer">
+    <p>Total: R$ <span id="total-carrinho">0,00</span></p>
+    <button id="finalizar-whatsapp">Finalizar no WhatsApp</button>
+  </div>
+</aside>
 
 
 <script src="../assets/js/produtos.js"></script>
