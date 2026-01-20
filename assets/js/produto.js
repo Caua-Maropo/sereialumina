@@ -57,15 +57,18 @@ Object.entries(produto.estoque).forEach(([tamanho, qtd]) => {
     btn.classList.add("esgotado");
   }
 
-  btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".lista-tamanhos button")
-      .forEach(b => b.classList.remove("ativo"));
+ btn.addEventListener("click", () => {
+  document
+    .querySelectorAll(".lista-tamanhos button")
+    .forEach(b => b.classList.remove("ativo"));
 
-    btn.classList.add("ativo");
-    tamanhoSelecionado = tamanho;
-    estoqueInfo.textContent = `Em estoque: ${qtd}`;
-  });
+  btn.classList.add("ativo");
+  tamanhoSelecionado = tamanho;
+  estoqueInfo.textContent = `Em estoque: ${qtd}`;
+
+  // ✅ HABILITA O BOTÃO
+  btnCarrinho.disabled = false;
+});
 
   listaTamanhos.appendChild(btn);
 });
@@ -75,6 +78,18 @@ Object.entries(produto.estoque).forEach(([tamanho, qtd]) => {
     alert("Por favor, selecione um tamanho disponível.");
     return;
   }
+
+  // 🔗 Integração com o carrinho global
+  btnCarrinho.dataset.produto = `${produto.nome} (${tamanhoSelecionado})`;
+  btnCarrinho.dataset.preco = produto.preco;
+
+  // feedback visual
+  btnCarrinho.textContent = "✓ Adicionado";
+  setTimeout(() => {
+    btnCarrinho.textContent = "Adicionar ao carrinho";
+  }, 1000);
+});
+
 
   console.log("Produto:", produto.nome);
   console.log("Tamanho:", tamanhoSelecionado);
