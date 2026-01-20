@@ -81,4 +81,4 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Tamanho:", tamanhoSelecionado);
   });
 
-});
+
