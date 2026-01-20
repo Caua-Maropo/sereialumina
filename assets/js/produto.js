@@ -72,6 +72,17 @@ Object.entries(produto.estoque).forEach(([tamanho, qtd]) => {
   listaTamanhos.appendChild(btn);
 });
 
+  btnCarrinho.addEventListener("click", () => {
+  if (!tamanhoSelecionado) {
+    alert("Por favor, selecione um tamanho disponível.");
+    return;
+  }
+
+  console.log("Produto:", produto.nome);
+  console.log("Tamanho:", tamanhoSelecionado);
+});
+
+
     // aqui depois entra o carrinho real
   });
 
