@@ -12,14 +12,9 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-amarelo.png",
     descricao: "Cauã é lindo!.",
     peso: "200g",
-    variacoes: {
-      Amarelo: {
-        P: 3,
-        M: 9,
-        G: 5
-      }
-    }
+    tamanhos: ["P", "M", "G"]
   },
+  
   {
     id: "biquini-preto",
     nome: "Biquíni Preto",
@@ -28,13 +23,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
-   variacoes: {
-      Preto: {
-        P: 5,
-        M: 10,
-        G: 3
-      }
-    }
+    tamanhos: ["P", "M", "G"]
   },
   {
     id: "maio-azul",
@@ -43,11 +32,7 @@ const PRODUTOS = [
     preco: 89.9,
     imagem: "assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    variacoes: {
-      Azul: {
-        P: 4,
-        M: 6,
-        G: 9
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -59,11 +44,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-amarelo.jfif",
     descricao: "Design vibrante para quem ama o verão.",
     peso: "200g",
-     variacoes: {
-      Amarelo: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -75,11 +56,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-branco.jfif",
     descricao: "Visual clean e sofisticado.",
     peso: "200g",
-    variacoes: {
-      Branco: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -91,11 +68,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-pintado.jfif",
     descricao: "Estampa exclusiva para destacar seu estilo.",
     peso: "200g",
-    variacoes: {
-      Estampado: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -107,11 +80,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-preto.jfif",
     descricao: "Clássico, elegante e indispensável.",
     peso: "200g",
-    variacoes: {
-      Preto: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -123,11 +92,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-vermelho.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-    variacoes: {
-      Vermelho: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -139,11 +104,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-verde.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-     variacoes: {
-      Verde: {
-        P: 3,
-        M: 9,
-        G: 5
+     tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -155,10 +116,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-rosa.jfif",
     descricao: "Para quem quer chamar atenção.",
     variacoes: {
-      Rosa: {
-        P: 3,
-        M: 9,
-        G: 5
+    tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -170,11 +128,7 @@ const PRODUTOS = [
     imagem:"assets/imagens/mulher-biquini-cinza.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-     variacoes: {
-      Cinza: {
-        P: 3,
-        M: 9,
-        G: 5
+     tamanhos: ["P", "M", "G"]
       }
     }
   },
@@ -186,11 +140,7 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-verde-e-branco.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-     variacoes: {
-      Verde: {
-        P: 3,
-        M: 9,
-        G: 5
+     tamanhos: ["P", "M", "G"]
       }
     }
   }
