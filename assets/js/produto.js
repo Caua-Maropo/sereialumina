@@ -37,31 +37,40 @@ btnCarrinho.disabled = true
   imagemEl.src = `../${produto.imagem}`;
   imagemEl.alt = produto.nome;
 
-  // ================================
-  // TAMANHOS
-  // ================================
-  produto.tamanhos.forEach(tam => {
-    const btn = document.createElement("button");
-    btn.textContent = tam;
+// ================================
+// TAMANHOS + ESTOQUE
+// ================================
+let tamanhoSelecionado = null;
 
-    btn.addEventListener("click", () => {
-  document
-    .querySelectorAll(".lista-tamanhos button")
-    .forEach(b => b.classList.remove("ativo"));
+const listaTamanhos = document.getElementById("lista-tamanhos");
+const estoqueInfo = document.getElementById("estoque-info");
 
-  btn.classList.add("ativo");
-  tamanhoSelecionado = tam;
+if (!produto.estoque || !listaTamanhos) {
+  console.warn("Produto sem estoque definido");
+  return;
+}
 
-  // 🔓 libera botão
-  btnCarrinho.disabled = false;
-  btnCarrinho.classList.add("ativo");
+Object.entries(produto.estoque).forEach(([tamanho, qtd]) => {
+  const btn = document.createElement("button");
+  btn.textContent = tamanho;
 
-  avisoTamanho.textContent = `Tamanho ${tam} selecionado`;
-  avisoTamanho.style.color = "#2e7d32";
-});
+  if (qtd === 0) {
+    btn.disabled = true;
+    btn.classList.add("esgotado");
+  }
 
-    listaTamanhos.appendChild(btn);
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".lista-tamanhos button")
+      .forEach(b => b.classList.remove("ativo"));
+
+    btn.classList.add("ativo");
+    tamanhoSelecionado = tamanho;
+    estoqueInfo.textContent = `Em estoque: ${qtd}`;
   });
+
+  listaTamanhos.appendChild(btn);
+});
 
   // ================================
   // BOTÃO CARRINHO
