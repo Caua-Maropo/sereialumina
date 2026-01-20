@@ -403,6 +403,10 @@ body {
   margin-bottom: 30px;
 }
 
+.titulo-tamanho {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
 .produto-tamanhos .label {
   font-weight: 500;
   margin-bottom: 10px;
@@ -434,6 +438,15 @@ body {
   border-color: var(--azul-principal);
 }
 
+.aviso-tamanho {
+  font-size: .9rem;
+  margin-top: 10px;
+  color: #777;
+}
+
+.aviso-tamanho.erro {
+  color: #c62828;
+}
 
 /* botão principal */
 .btn-principal {
