@@ -42,15 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.textContent = tam;
 
     btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".lista-tamanhos button")
-        .forEach(b => b.classList.remove("ativo"));
+  document
+    .querySelectorAll(".lista-tamanhos button")
+    .forEach(b => b.classList.remove("ativo"));
 
-      btn.classList.add("ativo");
-      tamanhoSelecionado = tam;
-      avisoTamanho.textContent = `Tamanho ${tam} selecionado`;
-      avisoTamanho.classList.remove("erro");
-    });
+  btn.classList.add("ativo");
+  tamanhoSelecionado = tam;
+
+  // 🔓 libera botão
+  btnCarrinho.disabled = false;
+  btnCarrinho.classList.add("ativo");
+
+  avisoTamanho.textContent = `Tamanho ${tam} selecionado`;
+  avisoTamanho.style.color = "#2e7d32";
+});
 
     listaTamanhos.appendChild(btn);
   });
@@ -70,5 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // aqui depois entra o carrinho real
   });
+const avisoTamanho = document.getElementById("aviso-tamanho");
+
+// botão começa bloqueado
+btnCarrinho.disabled = true;
 
 });
