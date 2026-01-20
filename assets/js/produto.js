@@ -7,12 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const descricaoEl = document.getElementById("produto-descricao");
   const imagemEl = document.getElementById("produto-imagem");
   const btnCarrinho = document.querySelector(".btn-carrinho");
+  const listaTamanhos = document.getElementById("lista-tamanhos");
 
-  if (!nomeEl || !precoEl || !descricaoEl || !imagemEl) {
-    console.error("Elementos do produto não encontrados no DOM");
-    return;
-  }
+  let tamanhoSelecionado = null;
 
+  // ================================
+  // PEGAR PRODUTO DA URL
+  // ================================
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
@@ -23,14 +24,52 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // ================================
+  // RENDER PRODUTO
+  // ================================
   nomeEl.textContent = produto.nome;
   precoEl.textContent = produto.preco.toFixed(2).replace(".", ",");
   descricaoEl.textContent = produto.descricao;
   imagemEl.src = `../${produto.imagem}`;
   imagemEl.alt = produto.nome;
 
-  // Integra com o carrinho global
-  btnCarrinho.dataset.produto = produto.nome;
-  btnCarrinho.dataset.preco = produto.preco;
+  // ================================
+  // TAMANHOS
+  // ================================
+  if (produto.tamanhos && listaTamanhos) {
+    produto.tamanhos.forEach(tam => {
+      const btn = document.createElement("button");
+      btn.textContent = tam;
+
+      btn.addEventListener("click", () => {
+        document
+          .querySelectorAll(".lista-tamanhos button")
+          .forEach(b => b.classList.remove("ativo"));
+
+        btn.classList.add("ativo");
+        tamanhoSelecionado = tam;
+      });
+
+      listaTamanhos.appendChild(btn);
+    });
+  }
+
+  // ================================
+  // BOTÃO CARRINHO
+  // ================================
+  btnCarrinho.addEventListener("click", () => {
+    if (!tamanhoSelecionado) {
+      alert("Por favor, selecione um tamanho.");
+      return;
+    }
+
+    // integração com carrinho global
+    btnCarrinho.dataset.produto = produto.nome;
+    btnCarrinho.dataset.preco = produto.preco;
+    btnCarrinho.dataset.tamanho = tamanhoSelecionado;
+
+    console.log("Produto:", produto.nome);
+    console.log("Tamanho:", tamanhoSelecionado);
+  });
 
 });
