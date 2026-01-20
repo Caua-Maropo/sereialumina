@@ -41,7 +41,6 @@ btnCarrinho.disabled = true
 // TAMANHOS + ESTOQUE
 // ================================
 
-const listaTamanhos = document.getElementById("lista-tamanhos");
 const estoqueInfo = document.getElementById("estoque-info");
 
 if (!produto.estoque || !listaTamanhos) {
