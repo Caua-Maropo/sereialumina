@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
        if (estoqueInfo) {
       estoqueInfo.textContent = `Em estoque: ${quantidade}`;
       }
-      .forEach(b => b.classList.remove("ativo"));
+.forEach(b => b.classList.remove("ativo"));
 
       btn.classList.add("ativo");
       tamanhoSelecionado = tamanho;
