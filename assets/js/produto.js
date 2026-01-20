@@ -62,23 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("esgotado");
     }
 
-    btn.addEventListener("click", () => {
-      document
-       if (estoqueInfo) {
-      estoqueInfo.textContent = `Em estoque: ${quantidade}`;
-      }
-      forEach(b => b.classList.remove("ativo"));
+  btn.addEventListener("click", () => {
 
-      btn.classList.add("ativo");
-      tamanhoSelecionado = tamanho;
+  document
+    .querySelectorAll(".lista-tamanhos button")
+    .forEach(b => b.classList.remove("ativo"));
 
-      if (estoqueInfo) {
-        estoqueInfo.textContent = `Em estoque: ${quantidade}`;
-      }
+  btn.classList.add("ativo");
+  tamanhoSelecionado = tamanho;
+  estoqueInfo.textContent = `Em estoque: ${qtd}`;
+  btnCarrinho.disabled = false;
+});
 
-      // libera o botão do carrinho
-      btnCarrinho.disabled = false;
-    });
 
     listaTamanhos.appendChild(btn);
   });
