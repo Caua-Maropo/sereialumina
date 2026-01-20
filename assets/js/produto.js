@@ -84,6 +84,4 @@ Object.entries(produto.estoque).forEach(([tamanho, qtd]) => {
     // aqui depois entra o carrinho real
   });
 
-;
-
 });
