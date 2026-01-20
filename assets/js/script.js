@@ -1,10 +1,10 @@
 console.log("script.js carregado");
 
 // ================================
-// ESTADO
+// ESTADO GLOBAL
 // ================================
-let usuarioAtual = { uid: "guest" };
-let carrinho = [];
+const usuarioAtual = { uid: "guest" };
+let carrinho = JSON.parse(localStorage.getItem(`carrinho_${usuarioAtual.uid}`)) || [];
 
 // ================================
 // ELEMENTOS
@@ -21,21 +21,26 @@ const overlay = document.getElementById("overlay-carrinho");
 // ================================
 // STORAGE
 // ================================
-function getCarrinho(uid) {
-  return JSON.parse(localStorage.getItem(`carrinho_${uid}`)) || [];
-}
-
-function salvarCarrinho(uid, carrinho) {
-  localStorage.setItem(`carrinho_${uid}`, JSON.stringify(carrinho));
+function salvarCarrinho() {
+  localStorage.setItem(
+    `carrinho_${usuarioAtual.uid}`,
+    JSON.stringify(carrinho)
+  );
 }
 
 // ================================
-// UI CARRINHO
+// UI
 // ================================
+function atualizarBadgeCarrinho() {
+  const badge = document.getElementById("badge-carrinho");
+  if (!badge) return;
+
+  const total = carrinho.reduce((s, i) => s + i.quantidade, 0);
+  badge.textContent = total;
+}
+
 function atualizarCarrinho() {
   if (!listaCarrinho || !totalCarrinho) return;
-
-  salvarCarrinho(usuarioAtual.uid, carrinho);
 
   listaCarrinho.innerHTML = "";
   let total = 0;
@@ -49,7 +54,7 @@ function atualizarCarrinho() {
 
     li.innerHTML = `
       <div>
-        <span>${item.produto}</span>
+        <strong>${item.produto}</strong><br>
         <small>Qtd: ${item.quantidade}</small>
       </div>
       <div class="acoes">
@@ -66,30 +71,20 @@ function atualizarCarrinho() {
   document.querySelectorAll(".btn-remover").forEach(btn => {
     btn.onclick = () => {
       carrinho.splice(btn.dataset.index, 1);
+      salvarCarrinho();
       atualizarCarrinho();
       atualizarBadgeCarrinho();
     };
   });
+
+  salvarCarrinho();
 }
 
 // ================================
-// BADGE
+// ADICIONAR AO CARRINHO
 // ================================
-function atualizarBadgeCarrinho() {
-  const badge = document.getElementById("badge-carrinho");
-  if (!badge) return;
-
-  badge.textContent = carrinho.reduce(
-    (soma, item) => soma + item.quantidade,
-    0
-  );
-}
-
-// ================================
-// ADICIONAR AO CARRINHO (DINÂMICO)
-// ================================
-document.addEventListener("click", (event) => {
-  const btn = event.target.closest(".btn-carrinho");
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".btn-carrinho");
   if (!btn) return;
 
   const produto = btn.dataset.produto;
@@ -103,6 +98,7 @@ document.addEventListener("click", (event) => {
     carrinho.push({ produto, preco, quantidade: 1 });
   }
 
+  salvarCarrinho();
   atualizarCarrinho();
   atualizarBadgeCarrinho();
 
@@ -120,14 +116,14 @@ abrirCarrinho?.addEventListener("click", e => {
   document.body.style.overflow = "hidden";
 });
 
-fecharCarrinho?.addEventListener("click", fecharCarrinhoLateral);
-overlay?.addEventListener("click", fecharCarrinhoLateral);
-
 function fecharCarrinhoLateral() {
   carrinhoLateral.classList.remove("ativo");
   overlay.classList.remove("ativo");
   document.body.style.overflow = "";
 }
+
+fecharCarrinho?.addEventListener("click", fecharCarrinhoLateral);
+overlay?.addEventListener("click", fecharCarrinhoLateral);
 
 // ================================
 // FINALIZAR WHATSAPP
@@ -158,6 +154,5 @@ botaoFinalizar?.addEventListener("click", () => {
 // ================================
 // INIT
 // ================================
-carrinho = getCarrinho(usuarioAtual.uid);
 atualizarCarrinho();
 atualizarBadgeCarrinho();
