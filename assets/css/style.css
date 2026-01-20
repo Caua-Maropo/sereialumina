@@ -448,6 +448,17 @@ body {
   color: #c62828;
 }
 
+.lista-tamanhos button.esgotado {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.estoque-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
 /* botão principal */
 .btn-principal {
   width: 100%;
