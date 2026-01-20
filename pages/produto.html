@@ -14,7 +14,35 @@
 <body>
 
 <header class="site-header clean-header">
-  <a href="../index.html">← Voltar</a>
+  <div class="header-container">
+
+    <a href="index.html" class="logo" aria-label="Página inicial Sereia Lumina">
+      <span class="use">Use</span>
+      <span class="brand-name">Sereia Lumina</span>
+    </a>
+
+    <div class="search-area">
+      <input type="text" placeholder="Pesquisar produtos" aria-label="Pesquisar produtos">
+      <button type="button" aria-label="Buscar">🔍</button>
+    </div>
+
+    <div class="header-icons">
+      <a href="pages/login.html" aria-label="Minha conta">
+        <i class="fa-regular fa-user"></i>
+      </a>
+
+      <a href="pages/favoritos.html" class="icon-heart" aria-label="Favoritos">
+        <i class="fa-regular fa-heart"></i>
+        <span id="badge-favoritos" class="badge">0</span>
+      </a>
+
+      <a href="#" id="abrir-carrinho" class="icon-bag" title="Carrinho" aria-label="Carrinho">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge-carrinho" id="badge-carrinho">0</span>
+      </a>
+    </div>
+
+  </div>
 </header>
 
 <main class="produto-page">
