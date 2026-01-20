@@ -10,11 +10,14 @@ const PRODUTOS = [
     categoria: "biquini",
     preco: 59.9,
     imagem: "assets/imagens/biquini-amarelo.png",
-    descricao: "Biquíni confortável, tecido premium e secagem rápida.",
-    peso: "180g",
-    cores: {
-      Amarelo: { P: 3, M: 5, G: 0 },
-      Preto: { P: 2, M: 0, G: 4 }
+    descricao: "Cauã é lindo!.",
+    peso: "200g",
+    variacoes: {
+      Amarelo: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -25,9 +28,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-preto.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
     peso: "200g",
-    cores: {
-      Preto: { P: 5, M: 10, G: 3 },
-      Vermelho: { P: 0, M: 7, G: 1 }
+   variacoes: {
+      Preto: {
+        P: 5,
+        M: 10,
+        G: 3
+      }
     }
   },
   {
@@ -37,9 +43,12 @@ const PRODUTOS = [
     preco: 89.9,
     imagem: "assets/imagens/biquini-azul.png",
     descricao: "Modelo elegante e moderno, perfeito para o verão.",
-    peso: "200g",
-    cores: {
-      Azul: { P: 5, M: 10, G: 3 }
+    variacoes: {
+      Azul: {
+        P: 4,
+        M: 6,
+        G: 9
+      }
     }
   },
   {
@@ -50,8 +59,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-amarelo.jfif",
     descricao: "Design vibrante para quem ama o verão.",
     peso: "200g",
-    cores: {
-      Amarelo: { P: 5, M: 10, G: 3 }
+     variacoes: {
+      Amarelo: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -62,8 +75,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-branco.jfif",
     descricao: "Visual clean e sofisticado.",
     peso: "200g",
-    cores: {
-      Branco: { P: 5, M: 10, G: 3 }
+    variacoes: {
+      Branco: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -74,8 +91,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-pintado.jfif",
     descricao: "Estampa exclusiva para destacar seu estilo.",
     peso: "200g",
-    cores: {
-      Estampado: { P: 5, M: 10, G: 3 }
+    variacoes: {
+      Estampado: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -86,8 +107,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-preto.jfif",
     descricao: "Clássico, elegante e indispensável.",
     peso: "200g",
-    cores: {
-      Preto: { P: 5, M: 10, G: 3 }
+    variacoes: {
+      Preto: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -98,8 +123,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-vermelho.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-    cores: {
-      Vermelho: { P: 5, M: 9, G: 3 }
+    variacoes: {
+      Vermelho: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
   {
@@ -110,8 +139,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/mulher-biquini-verde.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-    cores: {
-      Vermelho: { P: 5, M: 9, G: 3 }
+     variacoes: {
+      Verde: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
 {
@@ -121,9 +154,12 @@ const PRODUTOS = [
     preco: 59.9,
     imagem: "assets/imagens/mulher-biquini-rosa.jfif",
     descricao: "Para quem quer chamar atenção.",
-    peso: "200g",
-    cores: {
-      Vermelho: { P: 3, M: 9, G: 3 }
+    variacoes: {
+      Rosa: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
 {
@@ -134,8 +170,12 @@ const PRODUTOS = [
     imagem:"assets/imagens/mulher-biquini-cinza.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-    cores: {
-      Vermelho: { P: 5, M: 9, G: 3 }
+     variacoes: {
+      Cinza: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   },
 {
@@ -146,8 +186,12 @@ const PRODUTOS = [
     imagem: "assets/imagens/biquini-verde-e-branco.jfif",
     descricao: "Para quem quer chamar atenção.",
     peso: "200g",
-    cores: {
-      Vermelho: { P: 5, M: 9, G: 10 }
+     variacoes: {
+      Verde: {
+        P: 3,
+        M: 9,
+        G: 5
+      }
     }
   }
 ];
