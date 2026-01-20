@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // botão começa desativado
   btnCarrinho.disabled = true;
 
   let tamanhoSelecionado = null;
+  let estoqueSelecionado = null;
 
   // ================================
   // PRODUTO PELA URL
@@ -49,60 +49,63 @@ document.addEventListener("DOMContentLoaded", () => {
   // TAMANHOS / ESTOQUE
   // ================================
   if (!produto.estoque || !listaTamanhos) {
-    console.warn("Produto sem estoque/tamanhos definidos");
+    console.warn("Produto sem estoque/tamanhos");
     return;
   }
 
   Object.entries(produto.estoque).forEach(([tamanho, quantidade]) => {
+    const btn = document.createElement("button");
+    btn.textContent = tamanho;
 
-  const btn = document.createElement("button");
-  btn.textContent = tamanho;
+    if (quantidade === 0) {
+      btn.disabled = true;
+      btn.classList.add("esgotado");
+    }
 
-  if (quantidade === 0) {
-    btn.disabled = true;
-    btn.classList.add("esgotado");
-  }
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".lista-tamanhos button")
+        .forEach(b => b.classList.remove("ativo"));
 
-  btn.addEventListener("click", () => {
+      btn.classList.add("ativo");
 
-    document
-      .querySelectorAll(".lista-tamanhos button")
-      .forEach(b => b.classList.remove("ativo"));
+      tamanhoSelecionado = tamanho;
+      estoqueSelecionado = quantidade;
 
-    btn.classList.add("ativo");
+      if (estoqueInfo) {
+        estoqueInfo.textContent = `Em estoque: ${quantidade}`;
+      }
 
-    tamanhoSelecionado = tamanho;
-    estoqueSelecionado = quantidade;
+      btnCarrinho.disabled = false;
+    });
 
-    estoqueInfo.textContent = `Em estoque: ${quantidade}`;
-    btnCarrinho.disabled = false;
+    listaTamanhos.appendChild(btn);
   });
-
-  listaTamanhos.appendChild(btn);
-});
 
   // ================================
   // ADICIONAR AO CARRINHO
   // ================================
- btnCarrinho.addEventListener("click", () => {
-  if (!tamanhoSelecionado) {
-    alert("Selecione um tamanho");
-    return;
-  }
+  btnCarrinho.addEventListener("click", () => {
 
-  console.log("Produto:", produto.nome);
-  console.log("Tamanho:", tamanhoSelecionado);
-  console.log("Estoque:", estoqueSelecionado);
-});
-
+    if (!tamanhoSelecionado) {
+      alert("Selecione um tamanho");
+      return;
+    }
 
     // integração com script.js
     btnCarrinho.dataset.produto = `${produto.nome} - Tam ${tamanhoSelecionado}`;
     btnCarrinho.dataset.preco = produto.preco;
 
+    console.log("Produto:", produto.nome);
+    console.log("Tamanho:", tamanhoSelecionado);
+    console.log("Estoque:", estoqueSelecionado);
+
     // feedback visual
+    const textoOriginal = btnCarrinho.textContent;
     btnCarrinho.textContent = "✓ Adicionado";
+
     setTimeout(() => {
-      btnCarrinho.textContent = "Adicionar ao carrinho";
+      btnCarrinho.textContent = textoOriginal;
     }, 1200);
   });
+});
