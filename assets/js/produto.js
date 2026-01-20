@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaTamanhos = document.getElementById("lista-tamanhos");
   const avisoTamanho = document.getElementById("aviso-tamanho");
 
+  // botão começa bloqueado
+btnCarrinho.disabled = true
+
   let tamanhoSelecionado = null;
 
   // ================================
@@ -75,9 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // aqui depois entra o carrinho real
   });
-const avisoTamanho = document.getElementById("aviso-tamanho");
 
-// botão começa bloqueado
-btnCarrinho.disabled = true;
+;
 
 });
