@@ -24,6 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // 👉 AGORA SIM PODE
+  const corPadrao = Object.keys(produto.variacoes)[0];
+  const estoque = produto.variacoes[corPadrao];
+
+  console.log("Cor padrão:", corPadrao);
+  console.log("Estoque:", estoque);
+
+});
+
   // ================================
   // RENDER PRODUTO
   // ================================
