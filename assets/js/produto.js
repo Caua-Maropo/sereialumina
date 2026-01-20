@@ -24,15 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 👉 AGORA SIM PODE
-  const corPadrao = Object.keys(produto.variacoes)[0];
-  const estoque = produto.variacoes[corPadrao];
-
-  console.log("Cor padrão:", corPadrao);
-  console.log("Estoque:", estoque);
-
-});
-
   // ================================
   // RENDER PRODUTO
   // ================================
@@ -52,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       btn.addEventListener("click", () => {
         document
-          .querySelectorAll(".lista-tamanhos button")
+          .querySelectorAll("#lista-tamanhos button")
           .forEach(b => b.classList.remove("ativo"));
 
         btn.classList.add("ativo");
@@ -66,19 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================================
   // BOTÃO CARRINHO
   // ================================
-  btnCarrinho.addEventListener("click", () => {
-    if (!tamanhoSelecionado) {
-      alert("Por favor, selecione um tamanho.");
-      return;
-    }
+  if (btnCarrinho) {
+    btnCarrinho.addEventListener("click", () => {
+      if (!tamanhoSelecionado) {
+        alert("Por favor, selecione um tamanho.");
+        return;
+      }
 
-    // integração com carrinho global
-    btnCarrinho.dataset.produto = produto.nome;
-    btnCarrinho.dataset.preco = produto.preco;
-    btnCarrinho.dataset.tamanho = tamanhoSelecionado;
+      btnCarrinho.dataset.produto = produto.nome;
+      btnCarrinho.dataset.preco = produto.preco;
+      btnCarrinho.dataset.tamanho = tamanhoSelecionado;
 
-    console.log("Produto:", produto.nome);
-    console.log("Tamanho:", tamanhoSelecionado);
-  });
+      console.log("Produto:", produto.nome);
+      console.log("Tamanho:", tamanhoSelecionado);
+    });
+  }
 
-
+});
