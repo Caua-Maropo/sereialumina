@@ -8,11 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const imagemEl = document.getElementById("produto-imagem");
   const btnCarrinho = document.querySelector(".btn-carrinho");
   const listaTamanhos = document.getElementById("lista-tamanhos");
+  const avisoTamanho = document.getElementById("aviso-tamanho");
 
   let tamanhoSelecionado = null;
 
   // ================================
-  // PEGAR PRODUTO DA URL
+  // PRODUTO DA URL
   // ================================
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -36,41 +37,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================================
   // TAMANHOS
   // ================================
-  if (produto.tamanhos && listaTamanhos) {
-    produto.tamanhos.forEach(tam => {
-      const btn = document.createElement("button");
-      btn.textContent = tam;
+  produto.tamanhos.forEach(tam => {
+    const btn = document.createElement("button");
+    btn.textContent = tam;
 
-      btn.addEventListener("click", () => {
-        document
-          .querySelectorAll("#lista-tamanhos button")
-          .forEach(b => b.classList.remove("ativo"));
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".lista-tamanhos button")
+        .forEach(b => b.classList.remove("ativo"));
 
-        btn.classList.add("ativo");
-        tamanhoSelecionado = tam;
-      });
-
-      listaTamanhos.appendChild(btn);
+      btn.classList.add("ativo");
+      tamanhoSelecionado = tam;
+      avisoTamanho.textContent = `Tamanho ${tam} selecionado`;
+      avisoTamanho.classList.remove("erro");
     });
-  }
+
+    listaTamanhos.appendChild(btn);
+  });
 
   // ================================
   // BOTÃO CARRINHO
   // ================================
-  if (btnCarrinho) {
-    btnCarrinho.addEventListener("click", () => {
-      if (!tamanhoSelecionado) {
-        alert("Por favor, selecione um tamanho.");
-        return;
-      }
+  btnCarrinho.addEventListener("click", () => {
+    if (!tamanhoSelecionado) {
+      avisoTamanho.textContent = "Por favor, selecione um tamanho";
+      avisoTamanho.classList.add("erro");
+      return;
+    }
 
-      btnCarrinho.dataset.produto = produto.nome;
-      btnCarrinho.dataset.preco = produto.preco;
-      btnCarrinho.dataset.tamanho = tamanhoSelecionado;
+    console.log("Produto:", produto.nome);
+    console.log("Tamanho:", tamanhoSelecionado);
 
-      console.log("Produto:", produto.nome);
-      console.log("Tamanho:", tamanhoSelecionado);
-    });
-  }
+    // aqui depois entra o carrinho real
+  });
 
 });
