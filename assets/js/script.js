@@ -83,27 +83,34 @@ function atualizarCarrinho() {
 // ================================
 // ADICIONAR AO CARRINHO
 // ================================
-document.addEventListener("click", e => {
-  const btn = e.target.closest(".btn-carrinho");
-  if (!btn) return;
 
-  const produto = btn.dataset.produto;
-  const preco = Number(btn.dataset.preco);
+document.addEventListener("click", (e) => {
+  const botao = e.target.closest(".btn-carrinho");
+  if (!botao) return;
 
-  const existente = carrinho.find(i => i.produto === produto);
+  const id = botao.dataset.id;
+  const produto = (window.PRODUTOS || []).find(p => p.id === id);
 
-  if (existente) {
-    existente.quantidade++;
+  if (!produto) {
+    console.error("Produto não encontrado para id:", id);
+    return;
+  }
+
+  // se já existe no carrinho, soma quantidade
+  const item = carrinho.find(i => i.id === id);
+  if (item) {
+    item.quantidade += 1;
   } else {
-    carrinho.push({ produto, preco, quantidade: 1 });
+    carrinho.push({
+      id: produto.id,
+      produto: produto.nome,
+      preco: produto.preco,
+      quantidade: 1
+    });
   }
 
   salvarCarrinho();
   atualizarCarrinho();
-  atualizarBadgeCarrinho();
-
-  btn.textContent = "✓ Adicionado";
-  setTimeout(() => btn.textContent = "Adicionar ao carrinho", 1000);
 });
 
 // ================================
