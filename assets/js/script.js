@@ -54,8 +54,8 @@ function atualizarCarrinho() {
 
     li.innerHTML = `
       <div>
-        <strong>${item.produto}</strong><br>
-        <small>Qtd: ${item.quantidade}</small>
+        <strong>${item.produto} <span class="cart-size">(${item.tamanho})</span></strong><br>
+<small>Qtd: ${item.quantidade}</small>
       </div>
       <div class="acoes">
         <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
@@ -169,10 +169,10 @@ botaoFinalizar?.addEventListener("click", () => {
   carrinho.forEach(item => {
     const sub = item.preco * item.quantidade;
     total += sub;
-    msg += `• ${item.produto} x${item.quantidade} — R$ ${sub.toFixed(2)}\n`;
+    msg += `• ${item.produto} (${item.tamanho}) x${item.quantidade} — R$ ${sub.toFixed(2).replace(".", ",")}\n`;
   });
 
-  msg += `\nTotal: R$ ${total.toFixed(2)}`;
+  msg += `\nTotal: R$ ${total.toFixed(2).replace(".", ",")}`;
 
   window.open(
     `https://wa.me/5581984782598?text=${encodeURIComponent(msg)}`,
