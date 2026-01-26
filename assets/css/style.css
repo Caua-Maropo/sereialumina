@@ -431,3 +431,29 @@ a {
     padding: 20px;
   }
 }
+/* ===== Estilo do tamanho no carrinho ===== */
+.cart-size {
+  font-size: 0.9rem;
+  color: var(--azul);
+  font-weight: 500;
+}
+.item-carrinho small {
+  display: block;
+  margin-top: 4px;
+  color: #555;
+}
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-remover {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #ff4d6d;
+  cursor: pointer;
+}
+.btn-remover:hover {
+  color: #d32246;
+}
