@@ -1,38 +1,44 @@
-console.log("render-produtos.js carregado");
+const lista = document.getElementById("lista-produtos");
 
-const container = document.getElementById("lista-produtos");
-
-if (!container) {
-  console.warn("Página sem lista de produtos, script ignorado");
-} else {
-  PRODUTOS.forEach(produto => {
-    const article = document.createElement("article");
-    article.className = "card-produto";
-    article.dataset.category = produto.categoria;
-
-    article.innerHTML = `
-      <a href="pages/produto.html?id=${produto.id}">
-        <img src="${produto.imagem.replace('../', '')}" alt="${produto.nome}">
-        <h3>${produto.nome}</h3>
-        <p class="preco">R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
-      </a>
-
-      <button
-        type="button"
-        class="btn-favorito"
-        data-id="${produto.id}">
-        <i class="fa-regular fa-heart"></i>
-      </button>
-
-      <button
-        type="button"
-        class="btn-carrinho"
-        data-produto="${produto.nome}"
-        data-preco="${produto.preco}">
-        Adicionar ao carrinho
-      </button>
-    `;
-
-    container.appendChild(article);
-  });
+function formatBRL(v) {
+  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v);
 }
+
+function criarCard(p) {
+  const article = document.createElement("article");
+  article.className = "card-produto";
+  article.dataset.category = p.categoria;
+  article.dataset.nome = (p.nome || "").toLowerCase();
+
+  article.innerHTML = `
+    <img src="${p.imagem}" alt="${p.nome}" loading="lazy">
+    <h3>${p.nome}</h3>
+    <p class="preco">${formatBRL(p.preco)}</p>
+    <button class="btn-carrinho" type="button"
+      data-id="${p.id}">
+      Adicionar ao carrinho
+    </button>
+  `;
+  return article;
+}
+
+function renderProdutos(produtos) {
+  if (!lista) return;
+  lista.innerHTML = "";
+  for (const p of produtos) lista.appendChild(criarCard(p));
+}
+
+function getProdutosBase() {
+  if (!window.PRODUTOS || !Array.isArray(window.PRODUTOS)) {
+    console.error("PRODUTOS não encontrado. Verifique a ordem dos scripts.");
+    return [];
+  }
+  return window.PRODUTOS;
+}
+
+// Inicial
+renderProdutos(getProdutosBase());
+
+// Exponha helpers (se quiser usar no script.js depois)
+window.renderProdutos = renderProdutos;
+window.getProdutosBase = getProdutosBase;
