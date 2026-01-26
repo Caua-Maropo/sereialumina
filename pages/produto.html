@@ -75,19 +75,22 @@
    <div class="tamanhos-area">
   <p class="titulo-tamanho">Tamanhos</p>
 
-  <div id="lista-tamanhos" class="lista-tamanhos">
-    <!-- JS vai inserir os botões aqui -->
-  </div>
+  <label class="sr-only" for="tam-produto">Tamanho</label>
+  <select id="tam-produto" class="select-tamanho">
+    <option value="">Selecione um tamanho</option>
+    <option value="P">P</option>
+    <option value="M">M</option>
+    <option value="G">G</option>
+  </select>
 
-  <p id="aviso-tamanho" class="aviso-tamanho">
-    Selecione um tamanho
-  </p>
+  <p id="aviso-tamanho" class="aviso-tamanho">Selecione um tamanho</p>
 </div>
 
-      <button class="btn-carrinho" disabled>
-        <i class="fa-solid fa-bag-shopping"></i>
-        Adicionar ao carrinho
-      </button>
+<button class="btn-carrinho" type="button" disabled>
+  <i class="fa-solid fa-bag-shopping"></i>
+  Adicionar ao carrinho
+</button>
+
 
       <div class="produto-beneficios">
         <p>✔ Envio rápido</p>
