@@ -34,9 +34,17 @@ function criarCard(p) {
   const dispG = estoqueDisponivel(p, "G");
 
   article.innerHTML = `
+  <a class="link-produto" href="pages/produto.html?id=${encodeURIComponent(p.id)}" aria-label="Ver ${p.nome}">
     <img src="${p.imagem}" alt="${p.nome}" loading="lazy">
+  </a>
+
+  <a class="link-produto" href="pages/produto.html?id=${encodeURIComponent(p.id)}">
     <h3>${p.nome}</h3>
-    <p class="preco">${formatBRL(p.preco)}</p>
+  </a>
+
+  <p class="preco">R$ ${p.preco.toFixed(2).replace(".", ",")}</p>
+  ...
+`;
 
     <div class="linha-tamanho">
       <label class="sr-only" for="tam-${p.id}">Tamanho</label>
