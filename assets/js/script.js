@@ -18,6 +18,7 @@ const fecharCarrinho = document.getElementById("fechar-carrinho");
 const carrinhoLateral = document.getElementById("carrinho-lateral");
 const overlay = document.getElementById("overlay-carrinho");
 
+
 // ================================
 // STORAGE
 // ================================
@@ -26,6 +27,14 @@ function salvarCarrinho() {
     `carrinho_${usuarioAtual.uid}`,
     JSON.stringify(carrinho)
   );
+}
+
+function estoqueDisponivelLocal(produto, tamanho) {
+  const base = produto?.estoque?.[tamanho] ?? 0;
+  const noCarrinho = carrinho
+    .filter(i => i.id === produto.id && i.tamanho === tamanho)
+    .reduce((s, i) => s + i.quantidade, 0);
+  return Math.max(0, base - noCarrinho);
 }
 
 // ================================
@@ -102,7 +111,7 @@ document.addEventListener("click", (e) => {
   }
 
   // Checa estoque disponível (estoque base - carrinho)
-  const disponivel = window.estoqueDisponivel ? window.estoqueDisponivel(produto, tamanho) : 0;
+  const disponivel = estoqueDisponivelLocal(produto, tamanho);
   if (disponivel <= 0) {
     alert("Esse tamanho está esgotado.");
     return;
