@@ -90,28 +90,50 @@ document.addEventListener("click", (e) => {
 
   const id = botao.dataset.id;
   const produto = (window.PRODUTOS || []).find(p => p.id === id);
+  if (!produto) return;
 
-  if (!produto) {
-    console.error("Produto não encontrado para id:", id);
+  const card = botao.closest(".card-produto");
+  const select = card?.querySelector(".select-tamanho");
+  const tamanho = select?.value;
+
+  if (!tamanho) {
+    alert("Selecione um tamanho (P/M/G) antes de adicionar.");
     return;
   }
 
-  // se já existe no carrinho, soma quantidade
-  const item = carrinho.find(i => i.id === id);
+  // Checa estoque disponível (estoque base - carrinho)
+  const disponivel = window.estoqueDisponivel ? window.estoqueDisponivel(produto, tamanho) : 0;
+  if (disponivel <= 0) {
+    alert("Esse tamanho está esgotado.");
+    return;
+  }
+
+  // chave composta: id+tamanho
+  const item = carrinho.find(i => i.id === id && i.tamanho === tamanho);
+
   if (item) {
+    if (item.quantidade >= disponivel) {
+      alert("Você já adicionou o máximo disponível desse tamanho.");
+      return;
+    }
     item.quantidade += 1;
   } else {
     carrinho.push({
       id: produto.id,
       produto: produto.nome,
       preco: produto.preco,
+      tamanho,
       quantidade: 1
     });
   }
 
   salvarCarrinho();
   atualizarCarrinho();
+
+  // Re-render pra atualizar os estoques exibidos nos cards
+  if (window.renderProdutos) window.renderProdutos(window.getProdutosBase());
 });
+
 
 // ================================
 // CARRINHO LATERAL
